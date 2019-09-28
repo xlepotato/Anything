@@ -1,9 +1,31 @@
 ﻿@model List<string>
 @{
-       Layout = "/Views/Shared/HeaderWithButtons.cshtml";
+    Layout = "/Views/Shared/HeaderWithButtons.cshtml";
 }
+<link href="~/Assets/Css/stylesheet.css" rel="stylesheet" />
 
+<div class="container">
+    <div class="row">
+        @*currency conversion section*@
+        <div class="col-sm-6">
+            <div class="card" id="card1">
+                <div class="card-body">
+                    <input class="w3-input" type="text">
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card" id="card2">
+                <div class="card-body">
+                    <h5 class="card-title">Special title treatment</h5>
+                    <p class="card-text">It's a broader card with text below as a natural lead-in to extra content. This content is a little longer.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
+<!--
 <div class="form-group">
     <input type="text" class="form-control" id="tbExchangeFrom" value="1">
 </div>
@@ -29,3 +51,4 @@
     </select>
 </div>
 Market Rate:<label id="lblResult">1</label>
+-->

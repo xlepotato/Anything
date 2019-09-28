@@ -19,9 +19,6 @@
     padding-left: 6px;
 }
 
-.nav a:focus, a:hover{
-    background-color: red;
-}
 
 a.userBtn:hover, a.userBtn:active {
     background-color: #0fa9d6 !important;

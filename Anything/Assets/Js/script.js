@@ -86,7 +86,7 @@
         document.getElementById(promptLocation).style.color = color;
     }
 
-    $("#btnRegister").click(function () {
+    $("#btnRegister").click(function () {2
         Register();
     });
     function Register() {
