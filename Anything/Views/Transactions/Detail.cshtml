@@ -1,0 +1,28 @@
+﻿@model int
+@{
+   
+    Layout = "/Views/Shared/HeaderLogoOnly.cshtml";
+}
+<script type="text/javascript" src="/assets/js/qrcode.js"></script>
+Amount: $0.00USD<br />
+Location: Location Name<br />
+Opening Hours: 00:00 - 00:00<br />
+Money Changer Name: Money Changer Name<br />
+Please present the QR code to the money changer<br />
+<div id="qrcode" style="width:100px; height:100px; margin-top:15px;"></div>
+<script type="text/javascript">
+    var qrcode = new QRCode(document.getElementById("qrcode"), {
+        width: 300,
+        height: 300
+    });
+
+    function makeCode() {
+        
+
+        qrcode.makeCode("@Model");
+    }
+
+    makeCode();
+
+   
+</script>

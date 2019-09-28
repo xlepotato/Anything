@@ -1,0 +1,23 @@
+﻿.container{
+    width:100%;
+    margin:0px;
+}
+
+.switchTab{
+    padding-top: 2em;
+    padding-bottom:2em;
+}
+
+.tabs{
+    padding: 0px;
+}
+.activeNow{
+    font-size: 18pt;
+}
+
+.inactiveNow{
+    font-size: 18pt;
+}
+
+
+

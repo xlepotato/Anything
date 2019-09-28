@@ -1,0 +1,28 @@
+﻿#logo{
+    margin-left: 15%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+.d-flex {
+    background-color: #F6F6F6;
+}
+
+.buttons{
+    margin-right:0;
+    float: right;
+    padding-right: 15%;
+    padding-top: 3%;
+}
+
+#dropdownIcon {
+    padding-left: 6px;
+}
+
+.nav a:focus, a:hover{
+    background-color: red;
+}
+
+a.userBtn:hover, a.userBtn:active {
+    background-color: #0fa9d6 !important;
+}

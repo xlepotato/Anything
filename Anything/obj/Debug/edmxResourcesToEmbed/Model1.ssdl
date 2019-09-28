@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="cz2006anythingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Currency">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Symbol" Type="nvarchar(max)" />
+    <Property Name="Flag" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="ExchangeRate">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SellingRate" Type="float" Nullable="false" />
+    <Property Name="BuyingRate" Type="float" Nullable="false" />
+    <Property Name="SellingRateCurrencyId" Type="int" Nullable="false" />
+    <Property Name="BuyingRateCurrencyId" Type="int" Nullable="false" />
+    <Property Name="MoneyChangerId" Type="int" Nullable="false" />
+    <Property Name="Status" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="MoneyChanger">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="OpeningHours" Type="nvarchar(max)" />
+    <Property Name="Location" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Transaction">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Paid" Type="float" Nullable="false" />
+    <Property Name="Exchanged" Type="float" Nullable="false" />
+    <Property Name="Rate" Type="float" Nullable="false" />
+    <Property Name="PaidCurrId" Type="int" Nullable="false" />
+    <Property Name="ExchangedCurrId" Type="int" Nullable="false" />
+    <Property Name="Date" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="MoneyChangerId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="Username" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="MobileNumber" Type="int" Nullable="false" />
+    <Property Name="MoneyChangerId" Type="int" />
+  </EntityType>
+  <Association Name="FK_ExchangeRate_Currency">
+    <End Role="Currency" Type="Self.Currency" Multiplicity="1" />
+    <End Role="ExchangeRate" Type="Self.ExchangeRate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Currency">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ExchangeRate">
+        <PropertyRef Name="SellingRateCurrencyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExchangeRate_Currency1">
+    <End Role="Currency" Type="Self.Currency" Multiplicity="1" />
+    <End Role="ExchangeRate" Type="Self.ExchangeRate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Currency">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ExchangeRate">
+        <PropertyRef Name="BuyingRateCurrencyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExchangeRate_MoneyChanger">
+    <End Role="MoneyChanger" Type="Self.MoneyChanger" Multiplicity="1" />
+    <End Role="ExchangeRate" Type="Self.ExchangeRate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MoneyChanger">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ExchangeRate">
+        <PropertyRef Name="MoneyChangerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Transaction_Currency">
+    <End Role="Currency" Type="Self.Currency" Multiplicity="1" />
+    <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Currency">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Transaction">
+        <PropertyRef Name="PaidCurrId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Transaction_Currency1">
+    <End Role="Currency" Type="Self.Currency" Multiplicity="1" />
+    <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Currency">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Transaction">
+        <PropertyRef Name="ExchangedCurrId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Transaction_MoneyChanger">
+    <End Role="MoneyChanger" Type="Self.MoneyChanger" Multiplicity="1" />
+    <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MoneyChanger">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Transaction">
+        <PropertyRef Name="MoneyChangerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_MoneyChanger">
+    <End Role="MoneyChanger" Type="Self.MoneyChanger" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MoneyChanger">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="MoneyChangerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="cz2006anythingModelStoreContainer">
+    <EntitySet Name="Currency" EntityType="Self.Currency" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ExchangeRate" EntityType="Self.ExchangeRate" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MoneyChanger" EntityType="Self.MoneyChanger" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Transaction" EntityType="Self.Transaction" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_ExchangeRate_Currency" Association="Self.FK_ExchangeRate_Currency">
+      <End Role="Currency" EntitySet="Currency" />
+      <End Role="ExchangeRate" EntitySet="ExchangeRate" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExchangeRate_Currency1" Association="Self.FK_ExchangeRate_Currency1">
+      <End Role="Currency" EntitySet="Currency" />
+      <End Role="ExchangeRate" EntitySet="ExchangeRate" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExchangeRate_MoneyChanger" Association="Self.FK_ExchangeRate_MoneyChanger">
+      <End Role="MoneyChanger" EntitySet="MoneyChanger" />
+      <End Role="ExchangeRate" EntitySet="ExchangeRate" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Transaction_Currency" Association="Self.FK_Transaction_Currency">
+      <End Role="Currency" EntitySet="Currency" />
+      <End Role="Transaction" EntitySet="Transaction" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Transaction_Currency1" Association="Self.FK_Transaction_Currency1">
+      <End Role="Currency" EntitySet="Currency" />
+      <End Role="Transaction" EntitySet="Transaction" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Transaction_MoneyChanger" Association="Self.FK_Transaction_MoneyChanger">
+      <End Role="MoneyChanger" EntitySet="MoneyChanger" />
+      <End Role="Transaction" EntitySet="Transaction" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_MoneyChanger" Association="Self.FK_User_MoneyChanger">
+      <End Role="MoneyChanger" EntitySet="MoneyChanger" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

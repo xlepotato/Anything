@@ -1,0 +1,33 @@
+﻿<html>
+<head>
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link href="~/Assets/Css/header.css" rel="stylesheet" />
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/script.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+</head>
+<body>
+
+    <div class="d-flex flex-row">
+        <img id="logo" src="~/Assets/Images/logo.png" />
+        <div class="d-flex justify-content-end buttons">
+            <div class="pull-right">
+                <ul class="nav pull-right">
+                    <li class="dropdown">
+                        <a href="#" class="btn btn-info btn-lg dropdown-toggle userBtn" data-toggle="dropdown">
+                            <span class="glyphicon glyphicon-user"></span>   username <span class="glyphicon glyphicon-menu-down" id="dropdownIcon"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/auth/logout"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    @RenderBody()
+</body>
+</html>
