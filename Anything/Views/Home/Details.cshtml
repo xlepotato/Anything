@@ -4,10 +4,15 @@
 }
 @if (Model != null)
 {
-<h2>@Model.Name</h2>
-<h2>@Model.Location</h2>
-<h2>@Model.OpeningHours</h2>
-<h2>@Model.ContactNumber</h2>
+    <h2>@Model.Name</h2>
+    <h2>@Model.Location</h2>
+    <h2>@Model.OpeningHours</h2>
+    <h2>@Model.ContactNumber</h2>
+    if (Model.PostalCode != null)
+    {
+        string postalCode = "https://www.google.com/maps/embed/v1/place?q="+Model.PostalCode+"&key=AIzaSyDORpCcy-EEX3CVLnhMK0Pi2l5v0r56KkY";
+        <iframe width="600" height="450" frameborder="0" style="border:0" src="@postalCode" allowfullscreen></iframe>
+    }
     if (Model.ExchangeRates.Count() > 0)
     {
         cz2006anythingEntities entities = new cz2006anythingEntities();

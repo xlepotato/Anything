@@ -27,6 +27,7 @@ namespace Anything
         public string OpeningHours { get; set; }
         public string Location { get; set; }
         public Nullable<int> ContactNumber { get; set; }
+        public string PostalCode { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ExchangeRate> ExchangeRates { get; set; }

@@ -70,7 +70,7 @@ namespace Anything.Controllers
         {
             using (cz2006anythingEntities model = new cz2006anythingEntities())
             {
-                var MoneyChanger = model.MoneyChangers.Where(z => z.Name.Contains(MoneyChangerName)).FirstOrDefault();
+                var MoneyChanger = model.MoneyChangers.Where(z => z.Name.Contains(MoneyChangerName)).OrderBy(z=>z.Name.Length).FirstOrDefault();
                 MoneyChanger.ExchangeRates.Count();
                 return View(MoneyChanger);
             }         
