@@ -36,15 +36,15 @@ namespace Anything.Controllers
                 return View(model.Currencies.ToList());
             }
         }
-        [HttpGet]
-        public ActionResult GetCurrency(float ExchangeAmount,string ExchangeFrom, string ExchangeTo)
-        {
-                float amount = (ExchangeAmount/rates.Where(z => z.Key == ExchangeFrom).FirstOrDefault().Value) * rates.Where(z => z.Key == ExchangeTo).FirstOrDefault().Value;
-                var result = new { Amount = amount , Rate = (1 / rates.Where(z => z.Key == ExchangeFrom).FirstOrDefault().Value) * rates.Where(z => z.Key == ExchangeTo).FirstOrDefault().Value};
-                return Json(result
-               , JsonRequestBehavior.AllowGet);
+        //[HttpGet]
+        //public ActionResult GetCurrency(float ExchangeAmount,string ExchangeFrom, string ExchangeTo)
+        //{
+        //        float amount = (ExchangeAmount/rates.Where(z => z.Key == ExchangeFrom).FirstOrDefault().Value) * rates.Where(z => z.Key == ExchangeTo).FirstOrDefault().Value;
+        //        var result = new { Amount = amount , Rate = (1 / rates.Where(z => z.Key == ExchangeFrom).FirstOrDefault().Value) * rates.Where(z => z.Key == ExchangeTo).FirstOrDefault().Value};
+        //        return Json(result
+        //       , JsonRequestBehavior.AllowGet);
             
-        }
+        //}
 
        
     }
