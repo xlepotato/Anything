@@ -18,7 +18,7 @@ namespace Anything.Controllers
         [HttpGet]
         public async System.Threading.Tasks.Task<ActionResult> Index()
         {
-            string apiUrl = "http://data.fixer.io/api/latest?access_key=e4e42612bf86976d190d8d29b20fcc32&base=eur";
+            string apiUrl = "http://data.fixer.io/api/latest?access_key=88e5742380260e37cd085046a10c3e68&base=eur";
 
             using (var client = new HttpClient())
             {
@@ -29,9 +29,11 @@ namespace Anything.Controllers
                 string textResult = await response.Content.ReadAsStringAsync();
                 JavaScriptSerializer j = new JavaScriptSerializer();
                 MarketRate a = (MarketRate)j.Deserialize(textResult, typeof(MarketRate));
-                rates = a.rates;
-                var currencies = a.rates.Keys.ToList();
-                return View(currencies);
+                rates = a.rates;      
+            }
+            using (cz2006anythingEntities model = new cz2006anythingEntities())
+            {
+                return View(model.Currencies.ToList());
             }
         }
         [HttpGet]
@@ -45,6 +47,6 @@ namespace Anything.Controllers
         }
 
        
-        }
     }
+}
   
