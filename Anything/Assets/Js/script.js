@@ -49,7 +49,40 @@
         });
     }
     //Home Page(Money Changer)////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+    var trMoneyChangerHtml = $("#trMoneyChanger").parent().html();
+    $("#trMoneyChanger").html("");
+    function Filter() {
+        var Data = {
+            Search: $("#tbSearch").val(),
+            ExchangeFrom: $("#selExchangeFrom").val(),
+            ExchangeTo: $("#selExchangeTo").val()
+        }
+        $.ajax({
+            url: window.location.href + "/Home/Filter",
+            data: Data,
+            typr: "GET",
+            contentType: "application/json;charset=UTF-8",
+            dataType: "json",
+            success: function (result) {
+                $("#tbMoneyChanger").html("");
+                $.each(result, function () {               
+                    $("#tbMoneyChanger").append(trMoneyChangerHtml.replace("{{Name}}", this.Name)
+                                                    .replace("{{Location}}", this.Location)
+                                                    .replace("{{Rate}}", this.Rate));
+                });
+            }
+        });
+    }
+    $("#tbSearch").on('input', function () {
+        Filter();
+    });
+    $("#selExchangeFrom").change(function () {
+        Filter();
+    });
+    $("#selExchangeTo").change(function () {
+        Filter();
+    });
+    Filter();
     //Login Page
     $("#btnLogin").click(function () {
         Login();

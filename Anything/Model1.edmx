@@ -19,12 +19,11 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="SellingRate" Type="float" Nullable="false" />
-          <Property Name="BuyingRate" Type="float" Nullable="false" />
-          <Property Name="SellingRateCurrencyId" Type="int" Nullable="false" />
-          <Property Name="BuyingRateCurrencyId" Type="int" Nullable="false" />
+          <Property Name="ExchangeFromId" Type="int" Nullable="false" />
+          <Property Name="ExchangeToId" Type="int" Nullable="false" />
+          <Property Name="Rate" Type="float" Nullable="false" />
           <Property Name="MoneyChangerId" Type="int" Nullable="false" />
-          <Property Name="Status" Type="nvarchar(max)" />
+          <Property Name="LastUpdated" Type="datetime" />
         </EntityType>
         <EntityType Name="MoneyChanger">
           <Key>
@@ -75,7 +74,7 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="ExchangeRate">
-              <PropertyRef Name="SellingRateCurrencyId" />
+              <PropertyRef Name="ExchangeToId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -87,7 +86,7 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="ExchangeRate">
-              <PropertyRef Name="BuyingRateCurrencyId" />
+              <PropertyRef Name="ExchangeFromId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -241,12 +240,11 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="SellingRate" Type="Double" Nullable="false" />
-          <Property Name="BuyingRate" Type="Double" Nullable="false" />
-          <Property Name="SellingRateCurrencyId" Type="Int32" Nullable="false" />
-          <Property Name="BuyingRateCurrencyId" Type="Int32" Nullable="false" />
+          <Property Name="ExchangeFromId" Type="Int32" Nullable="false" />
+          <Property Name="ExchangeToId" Type="Int32" Nullable="false" />
+          <Property Name="Rate" Type="Double" Nullable="false" />
           <Property Name="MoneyChangerId" Type="Int32" Nullable="false" />
-          <Property Name="Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastUpdated" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Currency" Relationship="Self.FK_ExchangeRate_Currency" FromRole="ExchangeRate" ToRole="Currency" />
           <NavigationProperty Name="Currency1" Relationship="Self.FK_ExchangeRate_Currency1" FromRole="ExchangeRate" ToRole="Currency" />
           <NavigationProperty Name="MoneyChanger" Relationship="Self.FK_ExchangeRate_MoneyChanger" FromRole="ExchangeRate" ToRole="MoneyChanger" />
@@ -307,7 +305,7 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="ExchangeRate">
-              <PropertyRef Name="SellingRateCurrencyId" />
+              <PropertyRef Name="ExchangeToId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -319,7 +317,7 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="ExchangeRate">
-              <PropertyRef Name="BuyingRateCurrencyId" />
+              <PropertyRef Name="ExchangeFromId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -480,12 +478,11 @@
             <EntityTypeMapping TypeName="cz2006anythingModel.ExchangeRate">
               <MappingFragment StoreEntitySet="ExchangeRate">
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="SellingRate" ColumnName="SellingRate" />
-                <ScalarProperty Name="BuyingRate" ColumnName="BuyingRate" />
-                <ScalarProperty Name="SellingRateCurrencyId" ColumnName="SellingRateCurrencyId" />
-                <ScalarProperty Name="BuyingRateCurrencyId" ColumnName="BuyingRateCurrencyId" />
+                <ScalarProperty Name="ExchangeFromId" ColumnName="ExchangeFromId" />
+                <ScalarProperty Name="ExchangeToId" ColumnName="ExchangeToId" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
                 <ScalarProperty Name="MoneyChangerId" ColumnName="MoneyChangerId" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

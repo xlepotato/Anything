@@ -15,12 +15,11 @@ namespace Anything
     public partial class ExchangeRate
     {
         public int Id { get; set; }
-        public double SellingRate { get; set; }
-        public double BuyingRate { get; set; }
-        public int SellingRateCurrencyId { get; set; }
-        public int BuyingRateCurrencyId { get; set; }
+        public int ExchangeFromId { get; set; }
+        public int ExchangeToId { get; set; }
+        public double Rate { get; set; }
         public int MoneyChangerId { get; set; }
-        public string Status { get; set; }
+        public Nullable<System.DateTime> LastUpdated { get; set; }
     
         public virtual Currency Currency { get; set; }
         public virtual Currency Currency1 { get; set; }

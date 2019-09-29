@@ -14,12 +14,11 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="SellingRate" Type="float" Nullable="false" />
-    <Property Name="BuyingRate" Type="float" Nullable="false" />
-    <Property Name="SellingRateCurrencyId" Type="int" Nullable="false" />
-    <Property Name="BuyingRateCurrencyId" Type="int" Nullable="false" />
+    <Property Name="ExchangeFromId" Type="int" Nullable="false" />
+    <Property Name="ExchangeToId" Type="int" Nullable="false" />
+    <Property Name="Rate" Type="float" Nullable="false" />
     <Property Name="MoneyChangerId" Type="int" Nullable="false" />
-    <Property Name="Status" Type="nvarchar(max)" />
+    <Property Name="LastUpdated" Type="datetime" />
   </EntityType>
   <EntityType Name="MoneyChanger">
     <Key>
@@ -70,7 +69,7 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="ExchangeRate">
-        <PropertyRef Name="SellingRateCurrencyId" />
+        <PropertyRef Name="ExchangeToId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -82,7 +81,7 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="ExchangeRate">
-        <PropertyRef Name="BuyingRateCurrencyId" />
+        <PropertyRef Name="ExchangeFromId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

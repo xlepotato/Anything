@@ -15,12 +15,11 @@
       <EntityTypeMapping TypeName="cz2006anythingModel.ExchangeRate">
         <MappingFragment StoreEntitySet="ExchangeRate">
           <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="SellingRate" ColumnName="SellingRate" />
-          <ScalarProperty Name="BuyingRate" ColumnName="BuyingRate" />
-          <ScalarProperty Name="SellingRateCurrencyId" ColumnName="SellingRateCurrencyId" />
-          <ScalarProperty Name="BuyingRateCurrencyId" ColumnName="BuyingRateCurrencyId" />
+          <ScalarProperty Name="ExchangeFromId" ColumnName="ExchangeFromId" />
+          <ScalarProperty Name="ExchangeToId" ColumnName="ExchangeToId" />
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
           <ScalarProperty Name="MoneyChangerId" ColumnName="MoneyChangerId" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

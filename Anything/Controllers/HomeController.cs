@@ -43,10 +43,28 @@ namespace Anything.Controllers
         //        var result = new { Amount = amount , Rate = (1 / rates.Where(z => z.Key == ExchangeFrom).FirstOrDefault().Value) * rates.Where(z => z.Key == ExchangeTo).FirstOrDefault().Value};
         //        return Json(result
         //       , JsonRequestBehavior.AllowGet);
-            
-        //}
 
-       
+        //}
+        public ActionResult Filter(string Search,string ExchangeFrom, string ExchangeTo)
+        {
+            using (cz2006anythingEntities model = new cz2006anythingEntities())
+            {
+                var exchangeRates = model.ExchangeRates.Where(z => z.ExchangeFromId == model.Currencies.Where(y => y.Name == ExchangeFrom).FirstOrDefault().Id
+                                                 && z.ExchangeToId == model.Currencies.Where(y => y.Name == ExchangeTo).FirstOrDefault().Id)
+                                                 .Where(z => z.MoneyChanger.Name.Contains(Search) || z.MoneyChanger.Location.Contains(Search))
+                                                 .OrderBy(z=>z.Rate);
+
+                return Json(
+                    exchangeRates.Select(z => new {
+                        z.Rate,
+                        z.MoneyChanger.Name,
+                        z.MoneyChanger.Location
+                    }).ToList()
+                    , JsonRequestBehavior.AllowGet);
+            }
+               
+        }
+
     }
 }
   
