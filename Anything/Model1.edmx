@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="cz2006anythingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="cz2006anythingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Currency">
           <Key>
             <PropertyRef Name="Id" />
@@ -33,6 +33,7 @@
           <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
           <Property Name="OpeningHours" Type="nvarchar(max)" />
           <Property Name="Location" Type="nvarchar(max)" />
+          <Property Name="ContactNumber" Type="int" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -217,8 +218,7 @@
             <End Role="User" EntitySet="User" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="cz2006anythingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -260,6 +260,7 @@
           <NavigationProperty Name="ExchangeRates" Relationship="Self.FK_ExchangeRate_MoneyChanger" FromRole="MoneyChanger" ToRole="ExchangeRate" />
           <NavigationProperty Name="Transactions" Relationship="Self.FK_Transaction_MoneyChanger" FromRole="MoneyChanger" ToRole="Transaction" />
           <NavigationProperty Name="Users" Relationship="Self.FK_User_MoneyChanger" FromRole="MoneyChanger" ToRole="User" />
+          <Property Name="ContactNumber" Type="Int32" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -489,6 +490,7 @@
           <EntitySetMapping Name="MoneyChangers">
             <EntityTypeMapping TypeName="cz2006anythingModel.MoneyChanger">
               <MappingFragment StoreEntitySet="MoneyChanger">
+                <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="OpeningHours" ColumnName="OpeningHours" />

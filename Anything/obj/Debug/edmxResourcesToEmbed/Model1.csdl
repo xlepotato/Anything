@@ -38,6 +38,7 @@
     <NavigationProperty Name="ExchangeRates" Relationship="Self.FK_ExchangeRate_MoneyChanger" FromRole="MoneyChanger" ToRole="ExchangeRate" />
     <NavigationProperty Name="Transactions" Relationship="Self.FK_Transaction_MoneyChanger" FromRole="MoneyChanger" ToRole="Transaction" />
     <NavigationProperty Name="Users" Relationship="Self.FK_User_MoneyChanger" FromRole="MoneyChanger" ToRole="User" />
+    <Property Name="ContactNumber" Type="Int32" />
   </EntityType>
   <EntityType Name="sysdiagram">
     <Key>

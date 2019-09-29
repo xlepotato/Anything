@@ -74,6 +74,7 @@
         });
     }
     $("#tbSearch").on('input', function () {
+        console.log(window.location.href);
         Filter();
     });
     $("#selExchangeFrom").change(function () {

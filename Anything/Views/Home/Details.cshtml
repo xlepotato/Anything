@@ -1,0 +1,30 @@
+﻿@model MoneyChanger
+@{
+    Layout = null;
+}
+@if (Model != null)
+{
+<h2>@Model.Name</h2>
+<h2>@Model.Location</h2>
+<h2>@Model.OpeningHours</h2>
+<h2>@Model.ContactNumber</h2>
+    if (Model.ExchangeRates.Count() > 0)
+    {
+        cz2006anythingEntities entities = new cz2006anythingEntities();
+        foreach (var exchangeRates in Model.ExchangeRates)
+
+        {
+
+            var exchangeFrom = entities.Currencies.Where(z => z.Id == exchangeRates.ExchangeFromId).FirstOrDefault();
+            var exchangeTo = entities.Currencies.Where(z => z.Id == exchangeRates.ExchangeToId).FirstOrDefault();
+
+            <h4><img src="@exchangeFrom.Flag"/>@exchangeFrom.Name</h4>
+            <h4><img src="@exchangeTo.Flag" />@exchangeTo.Name</h4>
+            <h4>@exchangeRates.Rate</h4>
+        }
+    }
+}
+else
+{
+    <h1>Money Changer Not Found</h1>
+}

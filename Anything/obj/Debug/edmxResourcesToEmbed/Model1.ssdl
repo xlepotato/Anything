@@ -28,6 +28,7 @@
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
     <Property Name="OpeningHours" Type="nvarchar(max)" />
     <Property Name="Location" Type="nvarchar(max)" />
+    <Property Name="ContactNumber" Type="int" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>

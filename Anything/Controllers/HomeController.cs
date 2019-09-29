@@ -15,7 +15,7 @@ namespace Anything.Controllers
     {
         public static Dictionary<string, float> rates;
         // GET: Home
-        [HttpGet]
+      
         public async System.Threading.Tasks.Task<ActionResult> Index()
         {
             //string apiUrl = "http://data.fixer.io/api/latest?access_key=88e5742380260e37cd085046a10c3e68&base=eur";
@@ -45,6 +45,7 @@ namespace Anything.Controllers
         //       , JsonRequestBehavior.AllowGet);
 
         //}
+      
         public ActionResult Filter(string Search,string ExchangeFrom, string ExchangeTo)
         {
             using (cz2006anythingEntities model = new cz2006anythingEntities())
@@ -52,7 +53,7 @@ namespace Anything.Controllers
                 var exchangeRates = model.ExchangeRates.Where(z => z.ExchangeFromId == model.Currencies.Where(y => y.Name == ExchangeFrom).FirstOrDefault().Id
                                                  && z.ExchangeToId == model.Currencies.Where(y => y.Name == ExchangeTo).FirstOrDefault().Id)
                                                  .Where(z => z.MoneyChanger.Name.Contains(Search) || z.MoneyChanger.Location.Contains(Search))
-                                                 .OrderBy(z=>z.Rate);
+                                                 .OrderByDescending(z=>z.Rate);
 
                 return Json(
                     exchangeRates.Select(z => new {
@@ -64,7 +65,16 @@ namespace Anything.Controllers
             }
                
         }
-
+        [Route("{MoneyChangerName}")]
+        public ActionResult Details(string MoneyChangerName)
+        {
+            using (cz2006anythingEntities model = new cz2006anythingEntities())
+            {
+                var MoneyChanger = model.MoneyChangers.Where(z => z.Name.Contains(MoneyChangerName)).FirstOrDefault();
+                MoneyChanger.ExchangeRates.Count();
+                return View(MoneyChanger);
+            }         
+        }
     }
 }
   

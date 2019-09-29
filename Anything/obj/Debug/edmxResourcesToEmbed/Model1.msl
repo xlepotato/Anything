@@ -26,6 +26,7 @@
     <EntitySetMapping Name="MoneyChangers">
       <EntityTypeMapping TypeName="cz2006anythingModel.MoneyChanger">
         <MappingFragment StoreEntitySet="MoneyChanger">
+          <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="OpeningHours" ColumnName="OpeningHours" />
