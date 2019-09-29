@@ -62,21 +62,12 @@ Market Rate:<label id="lblResult">1</label>
             </div>
             <div class="row">
                 <table class="table table-striped">
-                    <tbody>
-                        <tr>
-                            <td>John</td>
-                            <td>Doe</td>
-                            <td>john@example.com</td>
-                        </tr>
-                        <tr>
-                            <td>Mary</td>
-                            <td>Moe</td>
-                            <td>mary@example.com</td>
-                        </tr>
-                        <tr>
-                            <td>July</td>
-                            <td>Dooley</td>
-                            <td>july@example.com</td>
+                    <tbody id="tbMoneyChanger">
+                        <tr id="trMoneyChanger">
+                            <td>{{Name}}<br />
+                                {{Location}}</td>
+                            <td>{{Rate}}</td>
+                            <td><button id="btnDetails">View Details</button></td>
                         </tr>
                     </tbody>
                 </table>
