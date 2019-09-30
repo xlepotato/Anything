@@ -116,3 +116,10 @@ input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
     }
+
+.homeSearch {
+    width:80%; 
+    display:inline;
+    margin:0px;
+    /*padding:0px;*/
+}
