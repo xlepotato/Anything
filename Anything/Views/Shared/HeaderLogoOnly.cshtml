@@ -1,0 +1,33 @@
+﻿<html>
+<head>
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link href="~/Assets/Css/header.css" rel="stylesheet" />
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+    <link href="/Assets/Css/stylesheet.css" rel="stylesheet" />    
+</head>
+<body>
+    <div class="d-flex" id="header">
+        <img id="logo" src="~/Assets/Images/logo.png" />
+    </div>
+
+    <div class="container">
+        <div class="row" id="outerContainer">
+            @*currency conversion section*@
+
+            <div class="col-md-2"></div>
+            <div class="row col-md-8">
+                <div class="row">
+                    @RenderBody()
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div> @*end container*@
+
+</body>
+</html>
+
+

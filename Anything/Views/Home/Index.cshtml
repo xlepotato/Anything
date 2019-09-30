@@ -1,0 +1,79 @@
+﻿@model List<Currency>
+@{
+    Layout = "/Views/Shared/HeaderLogoOnly.cshtml";
+}
+
+
+<!--Left Container-->
+<div class="currencyInfoContainer form-group col-md-4" id="leftContainer">
+    <div class="drawBorder">
+        <input class="currencyInputTF" id="tbExchangeFrom" type="number" min="0.00" max="9999" value="1.00">
+        <button type="button" class="btn btn-default dropdown-toggle exchangeDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img class="dispFlag" src="~/Assets/Images/SGD.png" /> <label id="lblExchangeFrom">SGD</label> <span class="glyphicon glyphicon-menu-down"></span>
+        </button>
+        <ul class="dropdown-menu scrollable-menu">
+            @foreach (var x in Model)
+            {
+                <li>
+                    <label class="drop" href="#" title="Exchanging to"><img class="scrollbarDispFlag" src="@x.Flag">@x.Name</label>
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+<!--Mid Container-->
+<div class="currencyInfoContainer form-group col-md-4" id="midContainer">
+    <img src="~/Assets/Images/exchangeicon.jpg" id="exchangeIcon" />
+</div>
+<!--Right Container-->
+<div class="currencyInfoContainer form-group col-md-4" id="rightContainer" ;">
+    <div class="drawBorder">
+        <input class="currencyInputTF" id="tbExchangeTo" type="number" min="0.00" max="9999" value="1.00">
+        <button type="button" class="btn btn-default dropdown-toggle exchangeDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img class="dispFlag" src="~/Assets/Images/USD.png" /> <label id="lblExchangeTo">USD</label> <span class="glyphicon glyphicon-menu-down"></span>
+        </button>
+        <ul class="dropdown-menu scrollable-menu">
+            @foreach (var x in Model)
+            {
+                <li>
+                    <label class="drop" href="#" title="Exchanging to"><img class="scrollbarDispFlag" src="@x.Flag">@x.Name</label>
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+
+
+<div class="col-md-12">
+    <div class="putCenter" id="MarketRateDiv">Market Rate: <label id="lblResult">1.00</label></div>
+</div>
+
+<div class="col-md-12">
+    <div class="putCenter">
+        <button type="button" class="btn btn-primary btn-lg" id="btnViewMoneyChangers">View Money Changers</button>
+    </div>
+</div>
+<canvas id="myChart"></canvas>
+<!--Display and Filter Section-->
+
+<!--Filter: Search Money Changers-->
+<div style="font-size:20px; padding-top:50px;">
+    Search:
+    <input type="text" class="form-control " id="tbSearch">
+</div>
+
+<!--Display Money Changers-->
+<div>
+    <table class="table table-striped table-hover">
+        <tbody id="tbMoneyChanger">
+            <tr id="trMoneyChanger">
+                <td>
+                    <strong>{{Name}}</strong><br />
+                    {{Location}}
+                </td>
+                <td>{{Rate}}</td>
+                <td><button type="button" class="btn btn-default" id="btnDetails">View Details</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
