@@ -118,3 +118,43 @@ input[type=number]::-webkit-outer-spin-button {
     margin:0px;
     /*padding:0px;*/
 }
+
+.moneyChangerContainer{
+    padding:10px 0px;
+    margin:0px;
+    background-color:whitesmoke;
+}
+.moneyChangerName {
+    padding:10px 0px;
+    margin:0px;
+    font-family:Arial
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+.moneyChangerDetails {
+    padding: 10px 0px;
+    margin: 0px;
+    font-size: 15px;
+}
+
+.tableHeader {
+    background-color:black; 
+    color:white;
+}
+
+.mapModel{
+    width:300px;
+    height:300px;
+}
+
+
+.currencyExchangeContainer {
+    margin-top: 3%;
+}
+
+.tableConfig {
+    margin-top:10px;
+    border:thick 5px;
+    border-radius:5px;
+}

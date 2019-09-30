@@ -1,35 +1,110 @@
 ﻿@model MoneyChanger
 @{
-    Layout = null;
+    /**/
+
+    Layout = "/Views/Shared/HeaderLogoOnly.cshtml";
 }
+
+
 @if (Model != null)
 {
-    <h2>@Model.Name</h2>
-    <h2>@Model.Location</h2>
-    <h2>@Model.OpeningHours</h2>
-    <h2>@Model.ContactNumber</h2>
-    if (Model.PostalCode != null)
-    {
-        string postalCode = "https://www.google.com/maps/embed/v1/place?q="+Model.PostalCode+"&key=AIzaSyDORpCcy-EEX3CVLnhMK0Pi2l5v0r56KkY";
-        <iframe width="600" height="450" frameborder="0" style="border:0" src="@postalCode" allowfullscreen></iframe>
-    }
-    if (Model.ExchangeRates.Count() > 0)
-    {
-        cz2006anythingEntities entities = new cz2006anythingEntities();
-        foreach (var exchangeRates in Model.ExchangeRates)
+    <div class="col-md-5">
+        <div class="col-md-12 moneyChangerContainer">
+            <!--Money Changer Details-->
+            <div class="thumbnail">
+                <a href="/Assets/Images/TakaMC.png">
+                    <img src="/Assets/Images/TakaMC.png" class="rounded" alt="Cinque Terre" width="800" height="500" frameborder="0" style="border:0"></img>
+                </a>
+            </div>
+            <h2 class"moneyChangerName">@Model.Name</h2>
+            <img src="/Assets/Images/clock.png" width="20" height="20"></img>
+            <label class="moneyChangerDetails">@Model.OpeningHours</label><br />
+            <img src="/Assets/Images/phone.png" width="20" height="20"></img>
+            <label class="moneyChangerDetails">@Model.ContactNumber</label><br />
+            <img src="/Assets/Images/location.png" width="20" height="20"></img>
+            <label class="moneyChangerDetails">@Model.Location</label>
 
-        {
+            <!--Map display-->
+            @if (Model.PostalCode != null)
+            {
+                string postalCode = "https://www.google.com/maps/embed/v1/place?q=" + Model.PostalCode + "&key=AIzaSyDORpCcy-EEX3CVLnhMK0Pi2l5v0r56KkY";
+                <iframe class="col-md-12"frameborder="0" style="border:0; padding:0px; height:50%" src="@postalCode" ></iframe>
+            }
 
-            var exchangeFrom = entities.Currencies.Where(z => z.Id == exchangeRates.ExchangeFromId).FirstOrDefault();
-            var exchangeTo = entities.Currencies.Where(z => z.Id == exchangeRates.ExchangeToId).FirstOrDefault();
+        </div>
+    </div>
 
-            <h4><img src="@exchangeFrom.Flag"/>@exchangeFrom.Name</h4>
-            <h4><img src="@exchangeTo.Flag" />@exchangeTo.Name</h4>
-            <h4>@exchangeRates.Rate</h4>
-        }
-    }
+    <div class="col-md-7">
+        <table class="table tableConfig">
+            <thead>
+                <tr class="tableHeader">
+                    <th>Currency</th>
+                    <th>We Buy&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                    <th>We Sell</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <img src="/Assets/Images/VND.png" width="20" height="20" />Vietnamese Dong
+                    </td>
+                    <td>3.08</td>
+                    <td>3.21</td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="/Assets/Images/AUD.png" width="20" height="20" />Australian Dollars
+                    </td>
+                    <td>1.01</td>
+                    <td>0.93</td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="/Assets/Images/MYR.png" width="20" height="20" />Malaysia Ringgit
+                    </td>
+                    <td>1.63</td>
+                    <td>1.83</td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="/Assets/Images/USD.png" width="20" height="20" />United States Dollars
+                    </td>
+                    <td>1.03</td>
+                    <td>0.83</td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="/Assets/Images/INR.png" width="20" height="20" />Indian Rupee
+                    </td>
+                    <td>120.2</td>
+                    <td>119.4</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 }
 else
 {
-    <h1>Money Changer Not Found</h1>
+    <h1> Money Changer Not Found </h1>
 }
+
+
+@*<div class="container">
+        Offered Exchange Rates
+        <div class="col-sm-6 col-md-6"></div>
+        @if (Model.ExchangeRates.Count() > 0)
+        {
+            cz2006anythingEntities entities = new cz2006anythingEntities();
+            foreach (var exchangeRates in Model.ExchangeRates)
+
+            {
+                var exchangeFrom = entities.Currencies.Where(z => z.Id == exchangeRates.ExchangeFromId).FirstOrDefault();
+                var exchangeTo = entities.Currencies.Where(z => z.Id == exchangeRates.ExchangeToId).FirstOrDefault();
+                <div class="col-sm-6 col-md-6">
+                    <h4><img src="@exchangeFrom.Flag" />@exchangeFrom.Name</h4>
+                    <h4><img src="@exchangeTo.Flag" />@exchangeTo.Name</h4>
+                    <h4>@exchangeRates.Rate</h4>
+                </div>
+            }
+        }
+    </div>*@
