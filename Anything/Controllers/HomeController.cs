@@ -69,38 +69,39 @@ namespace Anything.Controllers
             }
                
         }
-        //public async System.Threading.Tasks.Task<ActionResult> GetGraph(string ExchangeFrom, string ExchangeTo)
-        //{
-        //    ExchangeFrom = "SGD";
-        //    ExchangeTo = "MYR";
-        //    int numOfDays = 30;
-        //    HistoricalRates historicalRates = new HistoricalRates();
-        //    historicalRates.ShortDate = new List<string>();
-        //    historicalRates.Amount = new List<float>();
-        //    DateTime historicalDate = DateTime.Now.AddDays(-numOfDays+1);
-        //    for (int i = 0; i < numOfDays; i++)
-        //    {
-        //        DateTime thisDate = historicalDate.AddDays(i);
-        //        string apiUrl = " http://data.fixer.io/api/" + thisDate.ToString("yyyy-MM-dd") + "?access_key=" + Key + "&base=EUR";
+        public async System.Threading.Tasks.Task<ActionResult> GetGraph(string ExchangeFrom, string ExchangeTo)
+        {
+            ExchangeFrom = "SGD";
+            ExchangeTo = "MYR";
+            int numOfDays = 3;
+            HistoricalRates historicalRates = new HistoricalRates();
+            historicalRates.Title = ExchangeFrom + " To " + ExchangeTo;
+            historicalRates.ShortDate = new List<string>();
+            historicalRates.Amount = new List<float>();
+            DateTime historicalDate = DateTime.Now.AddDays(-numOfDays);
+            for (int i = 0; i < numOfDays; i++)
+            {
+                DateTime thisDate = historicalDate.AddDays(i);
+                string apiUrl = " http://data.fixer.io/api/" + thisDate.ToString("yyyy-MM-dd") + "?access_key=" + Key + "&base=EUR";
 
-        //        using (var client = new HttpClient())
-        //        {
-        //            var uri = new Uri(apiUrl);
-        //            var response = await client.GetAsync(uri);
-        //            string textResult = await response.Content.ReadAsStringAsync();
-        //            JavaScriptSerializer j = new JavaScriptSerializer();
-        //            MarketRate a = (MarketRate)j.Deserialize(textResult, typeof(MarketRate));
-        //            float exchangeFrom = a.rates.Where(z => z.Key == ExchangeFrom).FirstOrDefault().Value;
-        //            float exchangeTo = a.rates.Where(z => z.Key == ExchangeTo).FirstOrDefault().Value;
-               
-                    
-        //            historicalRates.ShortDate.Add(thisDate.ToString("dd MMM"));
-        //            historicalRates.Amount.Add(ConvertCurrency(1, exchangeFrom, exchangeTo));
-        
-        //        }
-        //    }
-        //    return Json(historicalRates, JsonRequestBehavior.AllowGet);
-        //}
+                using (var client = new HttpClient())
+                {
+                    var uri = new Uri(apiUrl);
+                    var response = await client.GetAsync(uri);
+                    string textResult = await response.Content.ReadAsStringAsync();
+                    JavaScriptSerializer j = new JavaScriptSerializer();
+                    MarketRate a = (MarketRate)j.Deserialize(textResult, typeof(MarketRate));
+                    float exchangeFrom = a.rates.Where(z => z.Key == ExchangeFrom).FirstOrDefault().Value;
+                    float exchangeTo = a.rates.Where(z => z.Key == ExchangeTo).FirstOrDefault().Value;
+
+                   
+                    historicalRates.ShortDate.Add(thisDate.ToString("dd MMM"));
+                    historicalRates.Amount.Add(ConvertCurrency(1, exchangeFrom, exchangeTo));
+
+                }
+            }
+            return Json(historicalRates, JsonRequestBehavior.AllowGet);
+        }
         private float ConvertCurrency(float ExchangeAmount, float ExchangeFrom, float ExchangeTo)
         {
             float amount = (ExchangeAmount / ExchangeFrom) * ExchangeTo;

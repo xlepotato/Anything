@@ -56,12 +56,12 @@
             contentType: "application/json;charset=UTF-8",
             dataType: "json",
             success: function (result){
-                GenerateGraph(result.ShortDate, result.Amount);
+                GenerateGraph(result.Title,result.ShortDate, result.Amount);
             }
         });
     }
     GetGraph();
-    function GenerateGraph(ShortDates , Amounts) {
+    function GenerateGraph(Title,ShortDates , Amounts) {
         var ctx = document.getElementById('myChart').getContext('2d');
         var red = Math.floor((Math.random() * 255) + 0);
         var green = Math.floor((Math.random() * 255) + 0);
@@ -74,7 +74,7 @@
             data: {
                 labels: ShortDates,
                 datasets: [{
-                    label: 'My First dataset',
+                    label: Title,
                     backgroundColor: 'rgb(' + red + ', ' + green + ', ' + blue + ')',
                     borderColor: 'rgb(' + red + ', ' + green + ', ' + blue + ')',
                     data: Amounts
