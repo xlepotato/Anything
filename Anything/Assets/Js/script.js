@@ -48,6 +48,43 @@
             }
         });
     }
+    //Home Page(Graph)////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    function GetGraph() {
+        $.ajax({
+            url: window.location.href + "/Home/GetGraph",  
+            typr: "GET",
+            contentType: "application/json;charset=UTF-8",
+            dataType: "json",
+            success: function (result){
+                GenerateGraph(result.ShortDate, result.Amount);
+            }
+        });
+    }
+    GetGraph();
+    function GenerateGraph(ShortDates , Amounts) {
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var red = Math.floor((Math.random() * 255) + 0);
+        var green = Math.floor((Math.random() * 255) + 0);
+        var blue = Math.floor((Math.random() * 255) + 0);
+        var chart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'line',
+
+            // The data for our dataset
+            data: {
+                labels: ShortDates,
+                datasets: [{
+                    label: 'My First dataset',
+                    backgroundColor: 'rgb(' + red + ', ' + green + ', ' + blue + ')',
+                    borderColor: 'rgb(' + red + ', ' + green + ', ' + blue + ')',
+                    data: Amounts
+                }]
+            },
+
+            // Configuration options go here
+            options: {}
+        });
+    }
     //Home Page(Money Changer)////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     var trMoneyChangerHtml = $("#trMoneyChanger").parent().html();
     $("#trMoneyChanger").html("");
