@@ -5,25 +5,53 @@
 <link href="~/Assets/Css/stylesheet.css" rel="stylesheet" />
 
 <div class="container">
-    <div class="row">
+    <div class="row" id="outerContainer">
         @*currency conversion section*@
-        <div class="col-sm-6">
-            <div class="card" id="card1">
-                <div class="card-body">
-                    <input class="w3-input" type="text">
+
+        <div class="col-xs-2"></div>
+
+        <div class="row col-xs-8">
+            <!--Left Container-->
+            <div class="currencyInfoContainer form-group col-xs-4 col-md-4" id="leftContainer">
+                <div class="drawBorder">
+                    <input class="currencyInputTF" id="tbExchangeFrom" type="number" min="0.00" max="9999" value="1.00">
+                    <select class="form-control exchangeDropdown btn dropdown-toggle" id="selExchangeFrom">
+                        @foreach (var x in Model)
+                        {
+                            <option>@x</option>
+                        }
+                    </select>
                 </div>
+                <label for="tbExchangeFrom" class="col-xs-12 boxLabel">You Have</label>
+            </div>
+            <!--Mid Container-->
+            <div class="currencyInfoContainer form-group col-xs-4" id="midContainer">
+                <img src="~/Assets/Images/exchangeIcon.png" id="exchangeIcon" />
+            </div>
+            <!--Right Container-->
+            <div class="currencyInfoContainer form-group col-xs-4" id="rightContainer" ;">
+                <div class="drawBorder">
+                    <input class="currencyInputTF" id="tbExchangeTo" type="number" min="0.00" max="9999" value="1.00">
+                    <select class="form-control exchangeDropdown" id="selExchangeTo">
+                        @foreach (var x in Model)
+                        {
+                            <option>@x</option>
+                        }
+                    </select>
+                </div>
+                <label for="tbExchangeTo" class="col-xs-12 boxLabel">You Get</label>
             </div>
         </div>
-        <div class="col-sm-6">
-            <div class="card" id="card2">
-                <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">It's a broader card with text below as a natural lead-in to extra content. This content is a little longer.</p>
-                </div>
-            </div>
-        </div>
+        <div class="col-xs-2"></div>
     </div>
-</div>
+    <div class="row">
+        <div class="col-xs-2 col-md-2"></div>
+        <div class="col-xs-8 col-md-8">
+            <div class="putCenter">Market Rate: <label id="lblResult">1.00</label></div>
+        </div>
+        <div class="col-xs-2 col-md-2"></div>
+    </div>
+</div> @*end container*@
 
 
 <div class="form-group">
@@ -64,8 +92,10 @@ Market Rate:<label id="lblResult">1</label>
                 <table class="table table-striped">
                     <tbody id="tbMoneyChanger">
                         <tr id="trMoneyChanger">
-                            <td>{{Name}}<br />
-                                {{Location}}</td>
+                            <td>
+                                {{Name}}<br />
+                                {{Location}}
+                            </td>
                             <td>{{Rate}}</td>
                             <td><button type="button" class="btn btn-default" id="btnDetails">View Details</button></td>
                         </tr>

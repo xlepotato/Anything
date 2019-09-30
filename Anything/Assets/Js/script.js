@@ -1,89 +1,89 @@
 ﻿$(document).ready(function () {
     //Home Page(Exchange)////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    $("#tbExchangeFrom").on('input', function () {
-        GetCurrencyTo();
-    });
-    $("#tbExchangeTo").on('input', function () {
-        GetCurrencyFrom();
-    });
-    $("#selExchangeFrom").change(function () {
-        GetCurrencyTo();
-    });
-    $("#selExchangeTo").change(function () {
-        GetCurrencyFrom();
-    });
-    function GetCurrencyTo() {
-        var Data = {
-            ExchangeAmount: $("#tbExchangeFrom").val(),
-            ExchangeFrom: $("#selExchangeFrom").val(),
-            ExchangeTo: $("#selExchangeTo").val()
-        }
-        $.ajax({
-            url: window.location.href + "/Home/GetCurrency",
-            data: Data,
-            typr: "GET",
-            contentType: "application/json;charset=UTF-8",
-            dataType: "json",
-            success: function (result) {
-                $("#tbExchangeTo").val(result.Amount);
-                $("#lblResult").text(result.Rate);
-            }
-        });
-    }
-    function GetCurrencyFrom() {
-        var Data = {
-            ExchangeAmount: $("#tbExchangeTo").val(),
-            ExchangeFrom: $("#selExchangeTo").val(),
-            ExchangeTo: $("#selExchangeFrom").val()
-        }
-        $.ajax({
-            url: window.location.href + "/Home/GetCurrency",
-            data: Data,
-            typr: "GET",
-            contentType: "application/json;charset=UTF-8",
-            dataType: "json",
-            success: function (result) {
-                $("#tbExchangeFrom").val(result.Amount);
-                $("#lblResult").text(result.Rate);
-            }
-        });
-    }
-    //Home Page(Money Changer)////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    var trMoneyChangerHtml = $("#trMoneyChanger").parent().html();
-    $("#trMoneyChanger").html("");
-    function Filter() {
-        var Data = {
-            Search: $("#tbSearch").val(),
-            ExchangeFrom: $("#selExchangeFrom").val(),
-            ExchangeTo: $("#selExchangeTo").val()
-        }
-        $.ajax({
-            url: window.location.href + "/Home/Filter",
-            data: Data,
-            typr: "GET",
-            contentType: "application/json;charset=UTF-8",
-            dataType: "json",
-            success: function (result) {
-                $("#tbMoneyChanger").html("");
-                $.each(result, function () {               
-                    $("#tbMoneyChanger").append(trMoneyChangerHtml.replace("{{Name}}", this.Name)
-                                                    .replace("{{Location}}", this.Location)
-                                                    .replace("{{Rate}}", this.Rate));
-                });
-            }
-        });
-    }
-    $("#tbSearch").on('input', function () {
-        console.log(window.location.href);
-        Filter();
-    });
-    $("#selExchangeFrom").change(function () {
-        Filter();
-    });
-    $("#selExchangeTo").change(function () {
-        Filter();
-    });
-    Filter();
+    //$("#tbExchangeFrom").on('input', function () {
+    //    GetCurrencyTo();
+    //});
+    //$("#tbExchangeTo").on('input', function () {
+    //    GetCurrencyFrom();
+    //});
+    //$("#selExchangeFrom").change(function () {
+    //    GetCurrencyTo();
+    //});
+    //$("#selExchangeTo").change(function () {
+    //    GetCurrencyFrom();
+    //});
+    //function GetCurrencyTo() {
+    //    var Data = {
+    //        ExchangeAmount: $("#tbExchangeFrom").val(),
+    //        ExchangeFrom: $("#selExchangeFrom").val(),
+    //        ExchangeTo: $("#selExchangeTo").val()
+    //    }
+    //    $.ajax({
+    //        url: window.location.href + "/Home/GetCurrency",
+    //        data: Data,
+    //        typr: "GET",
+    //        contentType: "application/json;charset=UTF-8",
+    //        dataType: "json",
+    //        success: function (result) {
+    //            $("#tbExchangeTo").val(result.Amount);
+    //            $("#lblResult").text(result.Rate);
+    //        }
+    //    });
+    //}
+    //function GetCurrencyFrom() {
+    //    var Data = {
+    //        ExchangeAmount: $("#tbExchangeTo").val(),
+    //        ExchangeFrom: $("#selExchangeTo").val(),
+    //        ExchangeTo: $("#selExchangeFrom").val()
+    //    }
+    //    $.ajax({
+    //        url: window.location.href + "/Home/GetCurrency",
+    //        data: Data,
+    //        typr: "GET",
+    //        contentType: "application/json;charset=UTF-8",
+    //        dataType: "json",
+    //        success: function (result) {
+    //            $("#tbExchangeFrom").val(result.Amount);
+    //            $("#lblResult").text(result.Rate);
+    //        }
+    //    });
+    //}
+    ////Home Page(Money Changer)////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //var trMoneyChangerHtml = $("#trMoneyChanger").parent().html();
+    //$("#trMoneyChanger").html("");
+    //function Filter() {
+    //    var Data = {
+    //        Search: $("#tbSearch").val(),
+    //        ExchangeFrom: $("#selExchangeFrom").val(),
+    //        ExchangeTo: $("#selExchangeTo").val()
+    //    }
+    //    $.ajax({
+    //        url: window.location.href + "/Home/Filter",
+    //        data: Data,
+    //        typr: "GET",
+    //        contentType: "application/json;charset=UTF-8",
+    //        dataType: "json",
+    //        success: function (result) {
+    //            $("#tbMoneyChanger").html("");
+    //            $.each(result, function () {               
+    //                $("#tbMoneyChanger").append(trMoneyChangerHtml.replace("{{Name}}", this.Name)
+    //                                                .replace("{{Location}}", this.Location)
+    //                                                .replace("{{Rate}}", this.Rate));
+    //            });
+    //        }
+    //    });
+    //}
+    //$("#tbSearch").on('input', function () {
+    //    console.log(window.location.href);
+    //    Filter();
+    //});
+    //$("#selExchangeFrom").change(function () {
+    //    Filter();
+    //});
+    //$("#selExchangeTo").change(function () {
+    //    Filter();
+    //});
+    //Filter();
     //Login Page
     $("#btnLogin").click(function () {
         Login();

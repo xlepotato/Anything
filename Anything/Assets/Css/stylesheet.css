@@ -1,6 +1,6 @@
 ﻿.container{
     width:100%;
-    margin:0px;
+    
 }
 
 .switchTab{
@@ -20,6 +20,99 @@
     font-size: 18pt;
 }
 
+#outerContainer{    
+    padding-top: 2em;
+}
+
+#mainContainer {
+    
+   
+}
+
+.currencyInfoContainer{
+    margin-top: 2em;
+}
+
+#leftContainer {
+    
+    width: 35%;
+}
+
+#midContainer{
+    
+    width: 29%;
+    margin-left: 0.5em;
+    text-align: center;
+}
+
+#rightContainer{
+    
+    float: right;
+    width: 35%;
+}
+
+#exchangeIcon{
+    width: 35%;
+    height: 15%;
+}
+.drawBorder {
+    border: 2px solid black;
+    width: 100%;
+    border-radius: 15px;
+    padding: 2em;
+}
 
 
+.putcenter {
+    border: black solid 3px;
+    text-align: center;
+    font-size: 20pt;
+    width: 40%;
+    padding-top: 0.4em;
+    margin-left: 28%;
+}
 
+.boxLabel{
+    text-align: center;
+    font-size: 18pt;
+}
+
+
+.mainContainer{
+    display:inline-flex;
+}
+
+.currencyInputTF {
+    width: 3em;
+    padding-top: 0.5em;
+    font-size: 35pt;
+    text-align: center;
+}
+
+.exchangeDropdown{
+    width: 40%;
+    height: 4em;
+    font-size: 15pt;
+    margin-top: 1em;
+    margin-right: 0.5em;
+    float: right;
+    border:none;
+    outline: none;
+    box-shadow: none;
+}
+
+input {
+    outline: 0;
+    border-width: 0 0 2px;
+    border-color: gray;
+}
+
+input:focus {
+    border-color: black;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    }

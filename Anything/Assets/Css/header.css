@@ -4,14 +4,14 @@
     padding-bottom: 1%;
 }
 
-.d-flex {
+#header {
     background-color: #F6F6F6;
 }
 
 .buttons{
     margin-right:0;
     float: right;
-    padding-right: 15%;
+    padding-right: 18%;
     padding-top: 3%;
 }
 
