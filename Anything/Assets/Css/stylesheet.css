@@ -23,24 +23,22 @@
     padding-top: 2em;
 }
 
-#mainContainer {
-   
-}
-
 .currencyInfoContainer{
     margin-top: 2em;
-}
-
-#leftContainer {
-    
 }
 
 #midContainer{
     text-align: center;
 }
 
-#rightContainer{
+.dispFlag{
+    width: 55px;
+    height: 55px;
+}
 
+.scrollbarDispFlag {
+    width: 30px;
+    height: 30px;
 }
 
 #exchangeIcon{
@@ -52,7 +50,7 @@
     border: 2px solid black;
     width: 100%;
     border-radius: 15px;
-    padding: 2em;
+    padding: 1em;
 }
 
 #MarketRateDiv {
@@ -64,7 +62,7 @@
     text-align: center;
     width: 40%;
     padding-top: 0.4em;
-    margin-left: 28%;
+    margin-left: 30%;
     margin-bottom: 0.5em;
 }
 
@@ -77,23 +75,46 @@
     font-size: 18pt;
 }
 
-
 .currencyInputTF {
-    width: 3em;
+    width: 40%;
     padding-top: 0.5em;
     font-size: 35pt;
     text-align: center;
 }
 
 .exchangeDropdown{
-    width: 40%;
+    width: 60%;
     height: 4em;
-    font-size: 15pt;
+    font-size: 12pt;
     margin-top: 1em;
     float: right;
     border:none;
     outline: none;
     box-shadow: none;
+}
+
+.dropdown-menu li:hover {
+    background-color: #ddd;
+}
+
+.dropdown-menu > li > li:hover {
+    background: #f1f9fd;
+}
+
+.down:hover .scrollable-menu {
+    display: block;
+}
+
+.dropdown-menu {
+    margin-left: 10em;
+    margin-top: -2em;
+}
+
+.scrollable-menu{
+    height: auto;
+    width: 20%;
+    max-height: 200px;
+    overflow-x: hidden;
 }
 
 input {
@@ -112,9 +133,48 @@ input[type=number]::-webkit-outer-spin-button {
     margin: 0;
 }
 
-.homeSearch {
-    width:80%; 
-    display:inline;
+.homeSearch { 
+    /*display:inline;*/
     margin:0px;
     /*padding:0px;*/
+}
+
+.moneyChangerContainer{
+    padding:10px 0px;
+    margin:0px;
+    background-color:whitesmoke;
+}
+.moneyChangerName {
+    padding:10px 0px;
+    margin:0px;
+    font-family:Arial
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+.moneyChangerDetails {
+    padding: 10px 0px;
+    margin: 0px;
+    font-size: 15px;
+}
+
+.tableHeader {
+    background-color:black; 
+    color:white;
+}
+
+.mapModel{
+    width:300px;
+    height:300px;
+}
+
+
+.currencyExchangeContainer {
+    margin-top: 3%;
+}
+
+.tableConfig {
+    margin-top:10px;
+    border:thick 5px;
+    border-radius:5px;
 }
