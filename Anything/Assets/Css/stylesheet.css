@@ -1,6 +1,5 @@
 ﻿.container{
     width:100%;
-    
 }
 
 .switchTab{
@@ -25,7 +24,6 @@
 }
 
 #mainContainer {
-    
    
 }
 
@@ -35,26 +33,21 @@
 
 #leftContainer {
     
-    width: 35%;
 }
 
 #midContainer{
-    
-    width: 29%;
-    margin-left: 0.5em;
     text-align: center;
 }
 
 #rightContainer{
-    
-    float: right;
-    width: 35%;
+
 }
 
 #exchangeIcon{
     width: 35%;
-    height: 15%;
+    height: 20%;
 }
+
 .drawBorder {
     border: 2px solid black;
     width: 100%;
@@ -62,25 +55,28 @@
     padding: 2em;
 }
 
+#MarketRateDiv {
+    border: black solid 3px;
+    font-size: 20pt;
+}
 
 .putcenter {
-    border: black solid 3px;
     text-align: center;
-    font-size: 20pt;
     width: 40%;
     padding-top: 0.4em;
     margin-left: 28%;
+    margin-bottom: 0.5em;
 }
 
-.boxLabel{
+#btnViewMoneyChangers{
+    font-size: 18pt;
+}
+
+.boxLabel {
     text-align: center;
     font-size: 18pt;
 }
 
-
-.mainContainer{
-    display:inline-flex;
-}
 
 .currencyInputTF {
     width: 3em;
@@ -94,7 +90,6 @@
     height: 4em;
     font-size: 15pt;
     margin-top: 1em;
-    margin-right: 0.5em;
     float: right;
     border:none;
     outline: none;
@@ -115,7 +110,7 @@ input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
-    }
+}
 
 .homeSearch {
     width:80%; 

@@ -1,55 +1,56 @@
 ﻿@model List<Currency>
 @{
-    Layout = "/Views/Shared/HeaderWithButtons.cshtml";
+    Layout = "/Views/Shared/HeaderLogoOnly.cshtml";
 }
-<link href="~/Assets/Css/stylesheet.css" rel="stylesheet" />
+
 
 <div class="container">
     <div class="row" id="outerContainer">
         @*currency conversion section*@
 
-        <div class="col-xs-2"></div>
-
-        <div class="row col-xs-8">
+        <div class="col-md-2"></div>
+        <div class="row col-md-8">
             <!--Left Container-->
-            <div class="currencyInfoContainer form-group col-xs-4 col-md-4" id="leftContainer">
-                <div class="drawBorder">
-                    <input class="currencyInputTF" id="tbExchangeFrom" type="number" min="0.00" max="9999" value="1.00">
-                    <select class="form-control exchangeDropdown btn dropdown-toggle" id="selExchangeFrom">
-                        @foreach (var x in Model)
-                        {
-                            <option>@x.Name</option>
-                        }
-                    </select>
+            <div class="row">
+                <div class="currencyInfoContainer form-group col-xs-4 col-md-4" id="leftContainer">
+                    <div class="drawBorder">
+                        <input class="currencyInputTF" id="tbExchangeFrom" type="number" min="0.00" max="9999" value="1.00">
+                        <select class="form-control exchangeDropdown btn dropdown-toggle" id="selExchangeFrom">
+                            @foreach (var x in Model)
+                            {
+                                <option>@x.Name</option>
+                            }
+                        </select>
+                    </div>                
                 </div>
-                <label for="tbExchangeFrom" class="col-xs-12 boxLabel">You Have</label>
-            </div>
-            <!--Mid Container-->
-            <div class="currencyInfoContainer form-group col-xs-4" id="midContainer">
-                <img src="~/Assets/Images/exchangeIcon.png" id="exchangeIcon" />
-            </div>
-            <!--Right Container-->
-            <div class="currencyInfoContainer form-group col-xs-4" id="rightContainer" ;">
-                <div class="drawBorder">
-                    <input class="currencyInputTF" id="tbExchangeTo" type="number" min="0.00" max="9999" value="1.00">
-                    <select class="form-control exchangeDropdown" id="selExchangeTo">
-                        @foreach (var x in Model)
-                        {
-                            <option>@x.Name</option>
-                        }
-                    </select>
+                 @*@foreach (var x in Model)
+                {
+                     <h5><img src="@x.Flag" /></h5>
+                    <h5>@x.Name</h5>
+                }*@
+                <!--Mid Container-->
+                <div class="currencyInfoContainer form-group col-md-4" id="midContainer">
+                    <img src="~/Assets/Images/exchangeicon.jpg" id="exchangeIcon" />
                 </div>
-                <label for="tbExchangeTo" class="col-xs-12 boxLabel">You Get</label>
+                <!--Right Container-->
+                <div class="currencyInfoContainer form-group col-md-4" id="rightContainer" ;">
+                    <div class="drawBorder">
+                        <input class="currencyInputTF" id="tbExchangeTo" type="number" min="0.00" max="9999" value="1.00">
+                        <select class="form-control exchangeDropdown" id="selExchangeTo">
+                            @foreach (var x in Model)
+                            {
+                                <option>@x.Name</option>
+                            }
+                        </select>
+                    </div>
+                </div>
             </div>
+            <div class="col-md-12">
+                <div class="putCenter" id="MarketRateDiv">Market Rate: <label id="lblResult">1.00</label></div>
+            </div>
+            <div class="col-md-12"> <div class="putCenter"><button type="button" class="btn btn-primary btn-lg" id="btnViewMoneyChangers">View Money Changers</button></div></div>
         </div>
-        <div class="col-xs-2"></div>
-    </div>
-    <div class="row">
-        <div class="col-xs-2 col-md-2"></div>
-        <div class="col-xs-8 col-md-8">
-            <div class="putCenter">Market Rate: <label id="lblResult">1.00</label></div>
-        </div>
-        <div class="col-xs-2 col-md-2"></div>
+        <div class="col-md-2"></div>
     </div>
 </div> @*end container*@
 
