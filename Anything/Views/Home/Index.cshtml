@@ -18,7 +18,7 @@
                     <select class="form-control exchangeDropdown btn dropdown-toggle" id="selExchangeFrom">
                         @foreach (var x in Model)
                         {
-                            <option>@x</option>
+                            <option>@x.Name</option>
                         }
                     </select>
                 </div>
@@ -35,7 +35,7 @@
                     <select class="form-control exchangeDropdown" id="selExchangeTo">
                         @foreach (var x in Model)
                         {
-                            <option>@x</option>
+                            <option>@x.Name</option>
                         }
                     </select>
                 </div>
@@ -54,31 +54,6 @@
 </div> @*end container*@
 
 
-<div class="form-group">
-    <input type="text" class="form-control" id="tbExchangeFrom" value="1">
-</div>
-<div class="form-group">
-    <label for="sel1">Select list:</label>
-    <select class="form-control" id="selExchangeFrom">
-        @foreach (var x in Model)
-        {
-            <option>@x.Name</option>
-        }
-    </select>
-</div>
-<div class="form-group">
-    <input type="text" class="form-control" id="tbExchangeTo" value="1">
-</div>
-<div class="form-group">
-    <label for="sel1">Select list:</label>
-    <select class="form-control" id="selExchangeTo">
-        @foreach (var x in Model)
-        {
-            <option>@x.Name</option>
-        }
-    </select>
-</div>
-Market Rate:<label id="lblResult">1</label>
 
 <div class="container">
     <div class="row">
