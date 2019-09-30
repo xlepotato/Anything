@@ -40,15 +40,15 @@
         <ul class="dropdown-menu scrollable-menu">
             @foreach (var x in Model)
             {
-            <li>
-                <label class="drop" href="#" title="Exchanging to"><img class="scrollbarDispFlag" src="@x.Flag">@x.Name</label>
-            </li>
+                <li>
+                    <label class="drop" href="#" title="Exchanging to"><img class="scrollbarDispFlag" src="@x.Flag">@x.Name</label>
+                </li>
             }
         </ul>
-            @*@foreach (var x in Model)
-                {
-                    <option>@x.Name</option>
-                }*@
+        @*@foreach (var x in Model)
+            {
+                <option>@x.Name</option>
+            }*@
 
     </div>
 </div>
@@ -63,7 +63,26 @@
     </div>
 </div>
 
+<!--Display and Filter Section-->
 
+<!--Filter: Search Money Changers-->
+<div style="font-size:20px; padding-top:50px;">
+    Search:
+    <input type="text" class="form-control " id="tbSearch">
+</div>
 
-
-
+<!--Display Money Changers-->
+<div>
+    <table class="table table-striped table-hover">
+        <tbody id="tbMoneyChanger">
+            <tr id="trMoneyChanger">
+                <td>
+                    <strong>{{Name}}</strong><br />
+                    {{Location}}
+                </td>
+                <td>{{Rate}}</td>
+                <td><button type="button" class="btn btn-default" id="btnDetails">View Details</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
