@@ -27,6 +27,7 @@ namespace Anything
     
         public virtual DbSet<Currency> Currencies { get; set; }
         public virtual DbSet<ExchangeRate> ExchangeRates { get; set; }
+        public virtual DbSet<HistoricalRate> HistoricalRates { get; set; }
         public virtual DbSet<MoneyChanger> MoneyChangers { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Transaction> Transactions { get; set; }

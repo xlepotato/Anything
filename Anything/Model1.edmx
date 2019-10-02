@@ -25,6 +25,16 @@
           <Property Name="MoneyChangerId" Type="int" Nullable="false" />
           <Property Name="LastUpdated" Type="datetime" />
         </EntityType>
+        <EntityType Name="HistoricalRate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ExchangeFromId" Type="int" />
+          <Property Name="ExchangeToId" Type="int" />
+          <Property Name="Rate" Type="float" />
+          <Property Name="Date" Type="date" />
+        </EntityType>
         <EntityType Name="MoneyChanger">
           <Key>
             <PropertyRef Name="Id" />
@@ -104,6 +114,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_HistoricalRate_Currency">
+          <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
+          <End Role="HistoricalRate" Type="Self.HistoricalRate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HistoricalRate">
+              <PropertyRef Name="ExchangeFromId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HistoricalRate_Currency1">
+          <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
+          <End Role="HistoricalRate" Type="Self.HistoricalRate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HistoricalRate">
+              <PropertyRef Name="ExchangeToId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Transaction_Currency">
           <End Role="Currency" Type="Self.Currency" Multiplicity="1" />
           <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
@@ -155,6 +189,7 @@
         <EntityContainer Name="cz2006anythingModelStoreContainer">
           <EntitySet Name="Currency" EntityType="Self.Currency" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ExchangeRate" EntityType="Self.ExchangeRate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HistoricalRate" EntityType="Self.HistoricalRate" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MoneyChanger" EntityType="Self.MoneyChanger" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Transaction" EntityType="Self.Transaction" Schema="dbo" store:Type="Tables" />
@@ -170,6 +205,14 @@
           <AssociationSet Name="FK_ExchangeRate_MoneyChanger" Association="Self.FK_ExchangeRate_MoneyChanger">
             <End Role="MoneyChanger" EntitySet="MoneyChanger" />
             <End Role="ExchangeRate" EntitySet="ExchangeRate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HistoricalRate_Currency" Association="Self.FK_HistoricalRate_Currency">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="HistoricalRate" EntitySet="HistoricalRate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HistoricalRate_Currency1" Association="Self.FK_HistoricalRate_Currency1">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="HistoricalRate" EntitySet="HistoricalRate" />
           </AssociationSet>
           <AssociationSet Name="FK_Transaction_Currency" Association="Self.FK_Transaction_Currency">
             <End Role="Currency" EntitySet="Currency" />
@@ -203,6 +246,8 @@
           <Property Name="Flag" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ExchangeRates" Relationship="Self.FK_ExchangeRate_Currency" FromRole="Currency" ToRole="ExchangeRate" />
           <NavigationProperty Name="ExchangeRates1" Relationship="Self.FK_ExchangeRate_Currency1" FromRole="Currency" ToRole="ExchangeRate" />
+          <NavigationProperty Name="HistoricalRates" Relationship="Self.FK_HistoricalRate_Currency" FromRole="Currency" ToRole="HistoricalRate" />
+          <NavigationProperty Name="HistoricalRates1" Relationship="Self.FK_HistoricalRate_Currency1" FromRole="Currency" ToRole="HistoricalRate" />
           <NavigationProperty Name="Transactions" Relationship="Self.FK_Transaction_Currency" FromRole="Currency" ToRole="Transaction" />
           <NavigationProperty Name="Transactions1" Relationship="Self.FK_Transaction_Currency1" FromRole="Currency" ToRole="Transaction" />
         </EntityType>
@@ -219,6 +264,18 @@
           <NavigationProperty Name="Currency" Relationship="Self.FK_ExchangeRate_Currency" FromRole="ExchangeRate" ToRole="Currency" />
           <NavigationProperty Name="Currency1" Relationship="Self.FK_ExchangeRate_Currency1" FromRole="ExchangeRate" ToRole="Currency" />
           <NavigationProperty Name="MoneyChanger" Relationship="Self.FK_ExchangeRate_MoneyChanger" FromRole="ExchangeRate" ToRole="MoneyChanger" />
+        </EntityType>
+        <EntityType Name="HistoricalRate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExchangeFromId" Type="Int32" />
+          <Property Name="ExchangeToId" Type="Int32" />
+          <Property Name="Rate" Type="Double" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Currency" Relationship="Self.FK_HistoricalRate_Currency" FromRole="HistoricalRate" ToRole="Currency" />
+          <NavigationProperty Name="Currency1" Relationship="Self.FK_HistoricalRate_Currency1" FromRole="HistoricalRate" ToRole="Currency" />
         </EntityType>
         <EntityType Name="MoneyChanger">
           <Key>
@@ -294,6 +351,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_HistoricalRate_Currency">
+          <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
+          <End Role="HistoricalRate" Type="Self.HistoricalRate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HistoricalRate">
+              <PropertyRef Name="ExchangeFromId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HistoricalRate_Currency1">
+          <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
+          <End Role="HistoricalRate" Type="Self.HistoricalRate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HistoricalRate">
+              <PropertyRef Name="ExchangeToId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Transaction_Currency">
           <End Role="Currency" Type="Self.Currency" Multiplicity="1" />
           <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
@@ -357,6 +438,7 @@
         <EntityContainer Name="cz2006anythingEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Currencies" EntityType="Self.Currency" />
           <EntitySet Name="ExchangeRates" EntityType="Self.ExchangeRate" />
+          <EntitySet Name="HistoricalRates" EntityType="Self.HistoricalRate" />
           <EntitySet Name="MoneyChangers" EntityType="Self.MoneyChanger" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="Transactions" EntityType="Self.Transaction" />
@@ -368,6 +450,14 @@
           <AssociationSet Name="FK_ExchangeRate_Currency1" Association="Self.FK_ExchangeRate_Currency1">
             <End Role="Currency" EntitySet="Currencies" />
             <End Role="ExchangeRate" EntitySet="ExchangeRates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HistoricalRate_Currency" Association="Self.FK_HistoricalRate_Currency">
+            <End Role="Currency" EntitySet="Currencies" />
+            <End Role="HistoricalRate" EntitySet="HistoricalRates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HistoricalRate_Currency1" Association="Self.FK_HistoricalRate_Currency1">
+            <End Role="Currency" EntitySet="Currencies" />
+            <End Role="HistoricalRate" EntitySet="HistoricalRates" />
           </AssociationSet>
           <AssociationSet Name="FK_Transaction_Currency" Association="Self.FK_Transaction_Currency">
             <End Role="Currency" EntitySet="Currencies" />
@@ -415,6 +505,17 @@
                 <ScalarProperty Name="Rate" ColumnName="Rate" />
                 <ScalarProperty Name="MoneyChangerId" ColumnName="MoneyChangerId" />
                 <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HistoricalRates">
+            <EntityTypeMapping TypeName="cz2006anythingModel.HistoricalRate">
+              <MappingFragment StoreEntitySet="HistoricalRate">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ExchangeFromId" ColumnName="ExchangeFromId" />
+                <ScalarProperty Name="ExchangeToId" ColumnName="ExchangeToId" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

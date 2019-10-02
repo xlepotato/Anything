@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.5\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.5\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -26,6 +27,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>2.3</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -164,6 +166,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HistoricalRate.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -196,6 +201,184 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Css\bootstrap.min.css" />
+    <Content Include="Assets\Css\header.css" />
+    <Content Include="Assets\Css\stylesheet.css" />
+    <Content Include="Assets\Images\AED.png" />
+    <Content Include="Assets\Images\AFN.png" />
+    <Content Include="Assets\Images\ALL.png" />
+    <Content Include="Assets\Images\AMD.png" />
+    <Content Include="Assets\Images\ANG.png" />
+    <Content Include="Assets\Images\AOA.png" />
+    <Content Include="Assets\Images\ARS.png" />
+    <Content Include="Assets\Images\AUD.png" />
+    <Content Include="Assets\Images\AWG.png" />
+    <Content Include="Assets\Images\AZN.png" />
+    <Content Include="Assets\Images\BAM.png" />
+    <Content Include="Assets\Images\BBD.png" />
+    <Content Include="Assets\Images\BDT.png" />
+    <Content Include="Assets\Images\BGN.png" />
+    <Content Include="Assets\Images\BHD.png" />
+    <Content Include="Assets\Images\BIF.png" />
+    <Content Include="Assets\Images\BMD.png" />
+    <Content Include="Assets\Images\BND.png" />
+    <Content Include="Assets\Images\BOB.png" />
+    <Content Include="Assets\Images\BRL.png" />
+    <Content Include="Assets\Images\BSD.png" />
+    <Content Include="Assets\Images\BTC.png" />
+    <Content Include="Assets\Images\BTN.png" />
+    <Content Include="Assets\Images\BWP.png" />
+    <Content Include="Assets\Images\BYN.png" />
+    <Content Include="Assets\Images\BZD.png" />
+    <Content Include="Assets\Images\CAD.png" />
+    <Content Include="Assets\Images\cat.jpg" />
+    <Content Include="Assets\Images\CDF.png" />
+    <Content Include="Assets\Images\CHF.png" />
+    <Content Include="Assets\Images\CLF.png" />
+    <Content Include="Assets\Images\clock.png" />
+    <Content Include="Assets\Images\CLP.png" />
+    <Content Include="Assets\Images\CNY.png" />
+    <Content Include="Assets\Images\COP.png" />
+    <Content Include="Assets\Images\CRC.png" />
+    <Content Include="Assets\Images\CUC.png" />
+    <Content Include="Assets\Images\CUP.png" />
+    <Content Include="Assets\Images\CVE.png" />
+    <Content Include="Assets\Images\CZK.png" />
+    <Content Include="Assets\Images\DJF.png" />
+    <Content Include="Assets\Images\DKK.png" />
+    <Content Include="Assets\Images\DOP.png" />
+    <Content Include="Assets\Images\DZD.png" />
+    <Content Include="Assets\Images\EGP.png" />
+    <Content Include="Assets\Images\ERN.png" />
+    <Content Include="Assets\Images\ETB.png" />
+    <Content Include="Assets\Images\EUR.png" />
+    <Content Include="Assets\Images\exchangeicon.jpg" />
+    <Content Include="Assets\Images\FJD.png" />
+    <Content Include="Assets\Images\FKP.png" />
+    <Content Include="Assets\Images\GBP.png" />
+    <Content Include="Assets\Images\GEL.png" />
+    <Content Include="Assets\Images\GGP.png" />
+    <Content Include="Assets\Images\GHS.png" />
+    <Content Include="Assets\Images\GIP.png" />
+    <Content Include="Assets\Images\GMD.png" />
+    <Content Include="Assets\Images\GNF.png" />
+    <Content Include="Assets\Images\GTQ.png" />
+    <Content Include="Assets\Images\GYD.png" />
+    <Content Include="Assets\Images\HKD.png" />
+    <Content Include="Assets\Images\HNL.png" />
+    <Content Include="Assets\Images\HRK.png" />
+    <Content Include="Assets\Images\HTG.png" />
+    <Content Include="Assets\Images\HUF.png" />
+    <Content Include="Assets\Images\IDR.png" />
+    <Content Include="Assets\Images\ILS.png" />
+    <Content Include="Assets\Images\IMP.png" />
+    <Content Include="Assets\Images\INR.png" />
+    <Content Include="Assets\Images\IQD.png" />
+    <Content Include="Assets\Images\IRR.png" />
+    <Content Include="Assets\Images\ISK.png" />
+    <Content Include="Assets\Images\JEP.png" />
+    <Content Include="Assets\Images\JMD.png" />
+    <Content Include="Assets\Images\JOD.png" />
+    <Content Include="Assets\Images\JPY.png" />
+    <Content Include="Assets\Images\KES.png" />
+    <Content Include="Assets\Images\KGS.png" />
+    <Content Include="Assets\Images\KMF.png" />
+    <Content Include="Assets\Images\KPW.png" />
+    <Content Include="Assets\Images\KRW.png" />
+    <Content Include="Assets\Images\KWD.png" />
+    <Content Include="Assets\Images\KYD.png" />
+    <Content Include="Assets\Images\KZT.png" />
+    <Content Include="Assets\Images\LAK.png" />
+    <Content Include="Assets\Images\LBP.png" />
+    <Content Include="Assets\Images\LKR.png" />
+    <Content Include="Assets\Images\location.png" />
+    <Content Include="Assets\Images\logo.png" />
+    <Content Include="Assets\Images\LRD.png" />
+    <Content Include="Assets\Images\LSL.png" />
+    <Content Include="Assets\Images\LYD.png" />
+    <Content Include="Assets\Images\MAD.png" />
+    <Content Include="Assets\Images\MDL.png" />
+    <Content Include="Assets\Images\MGA.png" />
+    <Content Include="Assets\Images\MKD.png" />
+    <Content Include="Assets\Images\MMK.png" />
+    <Content Include="Assets\Images\MNT.png" />
+    <Content Include="Assets\Images\MOP.png" />
+    <Content Include="Assets\Images\MUR.png" />
+    <Content Include="Assets\Images\MVR.png" />
+    <Content Include="Assets\Images\MWK.png" />
+    <Content Include="Assets\Images\MXN.png" />
+    <Content Include="Assets\Images\MYR.png" />
+    <Content Include="Assets\Images\MZN.png" />
+    <Content Include="Assets\Images\NAD.png" />
+    <Content Include="Assets\Images\NGN.png" />
+    <Content Include="Assets\Images\NIO.png" />
+    <Content Include="Assets\Images\NOK.png" />
+    <Content Include="Assets\Images\NPR.png" />
+    <Content Include="Assets\Images\NZD.png" />
+    <Content Include="Assets\Images\OMR.png" />
+    <Content Include="Assets\Images\PAB.png" />
+    <Content Include="Assets\Images\PEN.png" />
+    <Content Include="Assets\Images\PGK.png" />
+    <Content Include="Assets\Images\phone.png" />
+    <Content Include="Assets\Images\PHP.png" />
+    <Content Include="Assets\Images\PKR.png" />
+    <Content Include="Assets\Images\PLN.png" />
+    <Content Include="Assets\Images\PYG.png" />
+    <Content Include="Assets\Images\QAR.png" />
+    <Content Include="Assets\Images\RON.png" />
+    <Content Include="Assets\Images\RSD.png" />
+    <Content Include="Assets\Images\RUB.png" />
+    <Content Include="Assets\Images\RWF.png" />
+    <Content Include="Assets\Images\SAR.png" />
+    <Content Include="Assets\Images\SBD.png" />
+    <Content Include="Assets\Images\SCR.png" />
+    <Content Include="Assets\Images\SDG.png" />
+    <Content Include="Assets\Images\SEK.png" />
+    <Content Include="Assets\Images\SGD.png" />
+    <Content Include="Assets\Images\SHP.png" />
+    <Content Include="Assets\Images\SLL.png" />
+    <Content Include="Assets\Images\SOS.png" />
+    <Content Include="Assets\Images\SRD.png" />
+    <Content Include="Assets\Images\SVC.png" />
+    <Content Include="Assets\Images\SYP.png" />
+    <Content Include="Assets\Images\SZL.png" />
+    <Content Include="Assets\Images\TakaMC.png" />
+    <Content Include="Assets\Images\THB.png" />
+    <Content Include="Assets\Images\TJS.png" />
+    <Content Include="Assets\Images\TMT.png" />
+    <Content Include="Assets\Images\TND.png" />
+    <Content Include="Assets\Images\TOP.png" />
+    <Content Include="Assets\Images\TRY.png" />
+    <Content Include="Assets\Images\TTD.png" />
+    <Content Include="Assets\Images\TWD.png" />
+    <Content Include="Assets\Images\TZS.png" />
+    <Content Include="Assets\Images\UAH.png" />
+    <Content Include="Assets\Images\UGX.png" />
+    <Content Include="Assets\Images\USD.png" />
+    <Content Include="Assets\Images\UYU.png" />
+    <Content Include="Assets\Images\UZS.png" />
+    <Content Include="Assets\Images\VEF.png" />
+    <Content Include="Assets\Images\VND.png" />
+    <Content Include="Assets\Images\VUV.png" />
+    <Content Include="Assets\Images\WST.png" />
+    <Content Include="Assets\Images\XAF.png" />
+    <Content Include="Assets\Images\XAG.png" />
+    <Content Include="Assets\Images\XAU.png" />
+    <Content Include="Assets\Images\XCD.png" />
+    <Content Include="Assets\Images\XDR.png" />
+    <Content Include="Assets\Images\XOF.png" />
+    <Content Include="Assets\Images\XPF.png" />
+    <Content Include="Assets\Images\YER.png" />
+    <Content Include="Assets\Images\ZAR.png" />
+    <Content Include="Assets\Images\ZMW.png" />
+    <Content Include="Assets\Js\bootstrap.min.js" />
+    <Content Include="Assets\Js\jquery.min.js" />
+    <Content Include="Assets\Js\qr-scanner-worker.min.js" />
+    <Content Include="Assets\Js\qr-scanner.js" />
+    <Content Include="Assets\Js\qr-scanner.min.js" />
+    <Content Include="Assets\Js\qrcode.js" />
+    <Content Include="Assets\Js\script.js" />
+    <Content Include="Assets\Js\worker.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -215,6 +398,46 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\esm\popper-utils.js" />
+    <Content Include="Scripts\esm\popper-utils.min.js" />
+    <Content Include="Scripts\esm\popper.js" />
+    <Content Include="Scripts\esm\popper.min.js" />
+    <EntityDeploy Include="Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\popper-utils.js" />
+    <Content Include="Scripts\popper-utils.min.js" />
+    <Content Include="Scripts\popper.js" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\umd\popper-utils.js" />
+    <Content Include="Scripts\umd\popper-utils.min.js" />
+    <Content Include="Scripts\umd\popper.js" />
+    <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -246,27 +469,44 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="Model1.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </Content>
     <None Include="packages.config" />
     <Content Include="Views\Home\Details.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Shared\HeaderLogoDetails.cshtml" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="Scripts\esm\popper-utils.min.js.map" />
+    <Content Include="Scripts\esm\popper.js.map" />
+    <Content Include="Scripts\esm\popper.min.js.map" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Scripts\popper-utils.min.js.map" />
+    <Content Include="Scripts\popper.js.map" />
+    <Content Include="Scripts\popper.min.js.map" />
+    <Content Include="Scripts\README.md" />
+    <Content Include="Scripts\umd\popper-utils.js.map" />
+    <Content Include="Scripts\umd\popper-utils.min.js.map" />
+    <Content Include="Scripts\umd\popper.js.map" />
+    <Content Include="Scripts\umd\popper.min.js.map" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">

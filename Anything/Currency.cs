@@ -19,6 +19,8 @@ namespace Anything
         {
             this.ExchangeRates = new HashSet<ExchangeRate>();
             this.ExchangeRates1 = new HashSet<ExchangeRate>();
+            this.HistoricalRates = new HashSet<HistoricalRate>();
+            this.HistoricalRates1 = new HashSet<HistoricalRate>();
             this.Transactions = new HashSet<Transaction>();
             this.Transactions1 = new HashSet<Transaction>();
         }
@@ -32,6 +34,10 @@ namespace Anything
         public virtual ICollection<ExchangeRate> ExchangeRates { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ExchangeRate> ExchangeRates1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HistoricalRate> HistoricalRates { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HistoricalRate> HistoricalRates1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Transaction> Transactions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

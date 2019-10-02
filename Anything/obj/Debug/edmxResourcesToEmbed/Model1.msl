@@ -23,6 +23,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="HistoricalRates">
+      <EntityTypeMapping TypeName="cz2006anythingModel.HistoricalRate">
+        <MappingFragment StoreEntitySet="HistoricalRate">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ExchangeFromId" ColumnName="ExchangeFromId" />
+          <ScalarProperty Name="ExchangeToId" ColumnName="ExchangeToId" />
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="MoneyChangers">
       <EntityTypeMapping TypeName="cz2006anythingModel.MoneyChanger">
         <MappingFragment StoreEntitySet="MoneyChanger">
