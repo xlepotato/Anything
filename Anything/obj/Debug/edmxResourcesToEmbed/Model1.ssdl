@@ -27,8 +27,8 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ExchangeFromId" Type="int" />
     <Property Name="ExchangeToId" Type="int" />
-    <Property Name="Rate" Type="float" />
-    <Property Name="Date" Type="date" />
+    <Property Name="Rate" Type="float" Nullable="false" />
+    <Property Name="Date" Type="date" Nullable="false" />
   </EntityType>
   <EntityType Name="MoneyChanger">
     <Key>

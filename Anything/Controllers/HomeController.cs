@@ -73,38 +73,75 @@ namespace Anything.Controllers
         {
             ExchangeFrom = "SGD";
             ExchangeTo = "MYR";
-            int numOfDays = 3;
+            int numOfDays = 30;
             HistoricalRates historicalRates = new HistoricalRates();
             historicalRates.Title = ExchangeFrom + " To " + ExchangeTo;
             historicalRates.ShortDate = new List<string>();
-            historicalRates.Amount = new List<float>();
-            DateTime historicalDate = DateTime.Now.AddDays(-numOfDays);
-            for (int i = 0; i < numOfDays; i++)
+            historicalRates.Amount = new List<double>();
+            DateTime dateNow = DateTime.Now;
+            DateTime historicalDate = dateNow.AddDays(-numOfDays);
+            using (cz2006anythingEntities model = new cz2006anythingEntities())
             {
-                DateTime thisDate = historicalDate.AddDays(i);
-                string apiUrl = " http://data.fixer.io/api/" + thisDate.ToString("yyyy-MM-dd") + "?access_key=" + Key + "&base=EUR";
-
-                using (var client = new HttpClient())
+                var exchangeFromCurrId = model.Currencies.Where(x => x.Name == ExchangeFrom).FirstOrDefault().Id;
+                var exchangeToCurrId = model.Currencies.Where(x => x.Name == ExchangeTo).FirstOrDefault().Id;
+                var storedHistoricalRates = model.HistoricalRates.Where(z => z.ExchangeFromId == exchangeFromCurrId
+                                                    && z.ExchangeToId == exchangeToCurrId);
+                DateTime latestStoredHistoricalRateDate = new DateTime();
+                if (storedHistoricalRates != null && storedHistoricalRates.FirstOrDefault() !=null)
+                {               
+                    latestStoredHistoricalRateDate = storedHistoricalRates.OrderByDescending(z => z.Date).FirstOrDefault().Date;
+                }
+                if (!(storedHistoricalRates.FirstOrDefault() == null ||
+                     latestStoredHistoricalRateDate < dateNow.AddDays(-numOfDays)))
+                {                  
+                    TimeSpan dateDiff = dateNow.Subtract(latestStoredHistoricalRateDate);
+                    numOfDays = dateDiff.Days;
+                    historicalDate = dateNow.AddDays(-numOfDays);
+                    if(historicalDate.ToString("yyyy-MM-dd") == latestStoredHistoricalRateDate.ToString("yyyy-MM-dd"))
+                    {
+                        numOfDays = 0;
+                    }
+                }
+                for (int i = 0; i < numOfDays; i++)
                 {
-                    var uri = new Uri(apiUrl);
-                    var response = await client.GetAsync(uri);
-                    string textResult = await response.Content.ReadAsStringAsync();
-                    JavaScriptSerializer j = new JavaScriptSerializer();
-                    MarketRate a = (MarketRate)j.Deserialize(textResult, typeof(MarketRate));
-                    float exchangeFrom = a.rates.Where(z => z.Key == ExchangeFrom).FirstOrDefault().Value;
-                    float exchangeTo = a.rates.Where(z => z.Key == ExchangeTo).FirstOrDefault().Value;
+                    DateTime thisDate = historicalDate.AddDays(i);
+                    string apiUrl = " http://data.fixer.io/api/" + thisDate.ToString("yyyy-MM-dd") + "?access_key=" + Key + "&base=EUR";
 
-                   
-                    historicalRates.ShortDate.Add(thisDate.ToString("dd MMM"));
-                    historicalRates.Amount.Add(ConvertCurrency(1, exchangeFrom, exchangeTo));
+                    using (var client = new HttpClient())
+                    {
+                        var uri = new Uri(apiUrl);
+                        var response = await client.GetAsync(uri);
+                        string textResult = await response.Content.ReadAsStringAsync();
+                        JavaScriptSerializer j = new JavaScriptSerializer();
+                        MarketRate a = (MarketRate)j.Deserialize(textResult, typeof(MarketRate));
+                        if (a.success == true)
+                        {
+                            double exchangeFrom = a.rates.Where(z => z.Key == ExchangeFrom).FirstOrDefault().Value;
+                            double exchangeTo = a.rates.Where(z => z.Key == ExchangeTo).FirstOrDefault().Value;
 
+                            HistoricalRate newHistoricalRate = new HistoricalRate();
+                            newHistoricalRate.ExchangeFromId = exchangeFromCurrId;
+                            newHistoricalRate.ExchangeToId = exchangeToCurrId;
+                            newHistoricalRate.Rate = ConvertCurrency(1, exchangeFrom, exchangeTo);
+                            newHistoricalRate.Date = thisDate;
+
+                            model.HistoricalRates.Add(newHistoricalRate);
+                        }
+
+                    }
+                }
+                model.SaveChanges();
+                foreach(var x in model.HistoricalRates)
+                {
+                    historicalRates.ShortDate.Add(x.Date.ToString("dd MMM"));
+                    historicalRates.Amount.Add(x.Rate);
                 }
             }
             return Json(historicalRates, JsonRequestBehavior.AllowGet);
         }
-        private float ConvertCurrency(float ExchangeAmount, float ExchangeFrom, float ExchangeTo)
+        private double ConvertCurrency(double ExchangeAmount, double ExchangeFrom, double ExchangeTo)
         {
-            float amount = (ExchangeAmount / ExchangeFrom) * ExchangeTo;
+            double amount = (ExchangeAmount / ExchangeFrom) * ExchangeTo;
             return amount;
         }
         [Route("{MoneyChangerName}")]

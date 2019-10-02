@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="cz2006anythingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="cz2006anythingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Currency">
           <Key>
             <PropertyRef Name="Id" />
@@ -32,8 +32,8 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ExchangeFromId" Type="int" />
           <Property Name="ExchangeToId" Type="int" />
-          <Property Name="Rate" Type="float" />
-          <Property Name="Date" Type="date" />
+          <Property Name="Rate" Type="float" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
         </EntityType>
         <EntityType Name="MoneyChanger">
           <Key>
@@ -231,8 +231,7 @@
             <End Role="User" EntitySet="User" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="cz2006anythingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -272,8 +271,8 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ExchangeFromId" Type="Int32" />
           <Property Name="ExchangeToId" Type="Int32" />
-          <Property Name="Rate" Type="Double" />
-          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="Rate" Type="Double" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Precision="0" Nullable="false" />
           <NavigationProperty Name="Currency" Relationship="Self.FK_HistoricalRate_Currency" FromRole="HistoricalRate" ToRole="Currency" />
           <NavigationProperty Name="Currency1" Relationship="Self.FK_HistoricalRate_Currency1" FromRole="HistoricalRate" ToRole="Currency" />
         </EntityType>

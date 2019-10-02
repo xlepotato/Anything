@@ -36,8 +36,8 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ExchangeFromId" Type="Int32" />
     <Property Name="ExchangeToId" Type="Int32" />
-    <Property Name="Rate" Type="Double" />
-    <Property Name="Date" Type="DateTime" Precision="0" />
+    <Property Name="Rate" Type="Double" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Precision="0" Nullable="false" />
     <NavigationProperty Name="Currency" Relationship="Self.FK_HistoricalRate_Currency" FromRole="HistoricalRate" ToRole="Currency" />
     <NavigationProperty Name="Currency1" Relationship="Self.FK_HistoricalRate_Currency1" FromRole="HistoricalRate" ToRole="Currency" />
   </EntityType>

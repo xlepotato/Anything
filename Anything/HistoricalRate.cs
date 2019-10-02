@@ -17,8 +17,8 @@ namespace Anything
         public int Id { get; set; }
         public Nullable<int> ExchangeFromId { get; set; }
         public Nullable<int> ExchangeToId { get; set; }
-        public Nullable<double> Rate { get; set; }
-        public Nullable<System.DateTime> Date { get; set; }
+        public double Rate { get; set; }
+        public System.DateTime Date { get; set; }
     
         public virtual Currency Currency { get; set; }
         public virtual Currency Currency1 { get; set; }
