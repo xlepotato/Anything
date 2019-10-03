@@ -71,21 +71,23 @@ namespace Anything.Controllers
         }
         public async System.Threading.Tasks.Task<ActionResult> GetGraph(string ExchangeFrom, string ExchangeTo)
         {
-            ExchangeFrom = "SGD";
-            ExchangeTo = "MYR";
+            ExchangeFrom = "MYR";
+            ExchangeTo = "SGD";
             int numOfDays = 30;
             HistoricalRates historicalRates = new HistoricalRates();
             historicalRates.Title = ExchangeFrom + " To " + ExchangeTo;
             historicalRates.ShortDate = new List<string>();
             historicalRates.Amount = new List<double>();
+            historicalRates.RegressionY = new List<double>();
             DateTime dateNow = DateTime.Now;
             DateTime historicalDate = dateNow.AddDays(-numOfDays);
+            IQueryable<HistoricalRate> storedHistoricalRates;
             using (cz2006anythingEntities model = new cz2006anythingEntities())
             {
                 model.HistoricalRates.RemoveRange(model.HistoricalRates.Where(z => z.Date < historicalDate));
                 var exchangeFromCurrId = model.Currencies.Where(x => x.Name == ExchangeFrom).FirstOrDefault().Id;
                 var exchangeToCurrId = model.Currencies.Where(x => x.Name == ExchangeTo).FirstOrDefault().Id;
-                var storedHistoricalRates = model.HistoricalRates.Where(z => z.ExchangeFromId == exchangeFromCurrId
+                storedHistoricalRates = model.HistoricalRates.Where(z => z.ExchangeFromId == exchangeFromCurrId
                                                     && z.ExchangeToId == exchangeToCurrId);
                 DateTime latestStoredHistoricalRateDate = new DateTime();
                 if (storedHistoricalRates != null && storedHistoricalRates.FirstOrDefault() !=null)
@@ -114,11 +116,11 @@ namespace Anything.Controllers
                         var response = await client.GetAsync(uri);
                         string textResult = await response.Content.ReadAsStringAsync();
                         JavaScriptSerializer j = new JavaScriptSerializer();
-                        MarketRate a = (MarketRate)j.Deserialize(textResult, typeof(MarketRate));
-                        if (a.success == true)
+                        MarketRate marketRate = (MarketRate)j.Deserialize(textResult, typeof(MarketRate));
+                        if (marketRate.success == true)
                         {
-                            double exchangeFrom = a.rates.Where(z => z.Key == ExchangeFrom).FirstOrDefault().Value;
-                            double exchangeTo = a.rates.Where(z => z.Key == ExchangeTo).FirstOrDefault().Value;
+                            double exchangeFrom = marketRate.rates.Where(z => z.Key == ExchangeFrom).FirstOrDefault().Value;
+                            double exchangeTo = marketRate.rates.Where(z => z.Key == ExchangeTo).FirstOrDefault().Value;
 
                             HistoricalRate newHistoricalRate = new HistoricalRate();
                             newHistoricalRate.ExchangeFromId = exchangeFromCurrId;
@@ -133,10 +135,36 @@ namespace Anything.Controllers
                 }
                
                 model.SaveChanges();
-                foreach(var x in model.HistoricalRates)
+
+                List<int> RegressionX = new List<int>();
+                int n = storedHistoricalRates.Count();
+                for (int i = 0; i < n; i++)
+                {
+                    RegressionX.Add(i);
+                }
+
+                int sumX = RegressionX.Sum();
+                double sumY = 0;
+              
+   
+                List<double> xY = new List<double>();
+                List<double> squareX = new List<double>();
+                for (int i = 0; i < n; i++)
+                {
+                    squareX.Add(RegressionX[i] * RegressionX[i]);
+                    double y = storedHistoricalRates.OrderByDescending(z=>z.Date).Skip(n-i-1).FirstOrDefault().Rate;
+                    sumY += y;
+                    xY.Add(RegressionX[i] * y);
+                }
+                double b = (n * xY.Sum() - sumX * sumY) / (n * squareX.Sum() - sumX * sumX);
+                double a = (sumY / n) - b * (sumX / n);
+                int counter = 0;
+                foreach (var x in storedHistoricalRates)
                 {
                     historicalRates.ShortDate.Add(x.Date.ToString("dd MMM"));
                     historicalRates.Amount.Add(x.Rate);
+                    historicalRates.RegressionY.Add(a+b*(counter));
+                    counter++;
                 }
             }
             return Json(historicalRates, JsonRequestBehavior.AllowGet);

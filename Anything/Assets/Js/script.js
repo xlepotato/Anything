@@ -56,12 +56,12 @@
             contentType: "application/json;charset=UTF-8",
             dataType: "json",
             success: function (result){
-                GenerateGraph(result.Title,result.ShortDate, result.Amount);
+                GenerateGraph(result.Title, result.ShortDate, result.RegressionY, result.Amount);
             }
         });
     }
     GetGraph();
-    function GenerateGraph(Title,ShortDates , Amounts) {
+    function GenerateGraph(Title, ShortDates, RegressionY , Amounts) {
         var ctx = document.getElementById('myChart').getContext('2d');
         var red = Math.floor((Math.random() * 255) + 0);
         var green = Math.floor((Math.random() * 255) + 0);
@@ -74,9 +74,19 @@
             data: {
                 labels: ShortDates,
                 datasets: [{
-                    label: Title,
-                    backgroundColor: 'rgb(' + red + ', ' + green + ', ' + blue + ')',
+                    label: 'Linear Regression',
+                    
                     borderColor: 'rgb(' + red + ', ' + green + ', ' + blue + ')',
+                    fill: false,
+                    data: RegressionY,
+
+                    // Changes this dataset to become a line
+
+                },{
+                    label: Title,
+                    //backgroundColor: 'rgb(' + red + ', ' + green + ', ' + blue + ')',
+                    borderColor: 'rgb(' + red + ', ' + green + ', ' + blue + ')',
+                   
                     data: Amounts
                 }]
             },

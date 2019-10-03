@@ -10,5 +10,6 @@ namespace Anything.Models
         public string Title { get; set; }
         public List<string> ShortDate { get; set; }
         public List<double> Amount { get; set; }
+        public List<double> RegressionY { get; set; }
     }
 }
