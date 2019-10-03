@@ -82,6 +82,7 @@ namespace Anything.Controllers
             DateTime historicalDate = dateNow.AddDays(-numOfDays);
             using (cz2006anythingEntities model = new cz2006anythingEntities())
             {
+                model.HistoricalRates.RemoveRange(model.HistoricalRates.Where(z => z.Date < historicalDate));
                 var exchangeFromCurrId = model.Currencies.Where(x => x.Name == ExchangeFrom).FirstOrDefault().Id;
                 var exchangeToCurrId = model.Currencies.Where(x => x.Name == ExchangeTo).FirstOrDefault().Id;
                 var storedHistoricalRates = model.HistoricalRates.Where(z => z.ExchangeFromId == exchangeFromCurrId
@@ -130,6 +131,7 @@ namespace Anything.Controllers
 
                     }
                 }
+               
                 model.SaveChanges();
                 foreach(var x in model.HistoricalRates)
                 {
