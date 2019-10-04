@@ -1,22 +1,40 @@
 ﻿$(document).ready(function () {
     //Home Page(Exchange)////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    GetCurrencyTo();
     $("#tbExchangeFrom").on('input', function () {
         GetCurrencyTo();
+        GetGraph($("#btnExchangeFrom").text().trim(), $("#btnExchangeTo").text().trim());
     });
     $("#tbExchangeTo").on('input', function () {
         GetCurrencyFrom();
+        GetGraph($("#btnExchangeTo").text().trim(), $("#btnExchangeFrom").text().trim());
     });
-    $("#selExchangeFrom").change(function () {
+
+    $("#ddlExchangeFrom li a").click(function () {
+        var spanHtml = $("#btnExchangeFrom span")[0].outerHTML;
+        $("#btnExchangeFrom").html("");
+        $("#btnExchangeFrom").append($(this).html());
+        $("#btnExchangeFrom img").removeClass("scrollbarDispFlag").addClass("dispFlag");
+        $("#btnExchangeFrom").append(spanHtml);
+        
         GetCurrencyTo();
+        GetGraph($("#btnExchangeFrom").text().trim(), $("#btnExchangeTo").text().trim());
     });
-    $("#selExchangeTo").change(function () {
+    $("#ddlExchangeTo li a").click(function () {
+        var spanHtml = $("#btnExchangeTo span")[0].outerHTML;
+        $("#btnExchangeTo").html("");
+        $("#btnExchangeTo").append($(this).html());
+        $("#btnExchangeTo img").removeClass("scrollbarDispFlag").addClass("dispFlag");
+        $("#btnExchangeTo").append(spanHtml);
+
         GetCurrencyFrom();
+        GetGraph($("#btnExchangeTo").text().trim(), $("#btnExchangeFrom").text().trim());
     });
     function GetCurrencyTo() {
         var Data = {
             ExchangeAmount: $("#tbExchangeFrom").val(),
-            ExchangeFrom: $("#selExchangeFrom").val(),
-            ExchangeTo: $("#selExchangeTo").val()
+            ExchangeFrom: $("#btnExchangeFrom").text().trim(),
+            ExchangeTo: $("#btnExchangeTo").text().trim()
         }
         $.ajax({
             url: window.location.href + "/Home/GetCurrency",
@@ -33,8 +51,8 @@
     function GetCurrencyFrom() {
         var Data = {
             ExchangeAmount: $("#tbExchangeTo").val(),
-            ExchangeFrom: $("#selExchangeTo").val(),
-            ExchangeTo: $("#selExchangeFrom").val()
+            ExchangeFrom: $("#btnExchangeTo").text().trim(),
+            ExchangeTo: $("#btnExchangeFrom").text().trim()
         }
         $.ajax({
             url: window.location.href + "/Home/GetCurrency",
@@ -49,18 +67,28 @@
         });
     }
     //Home Page(Graph)////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    function GetGraph() {
+    GetGraph($("#btnExchangeFrom").text().trim(), $("#btnExchangeTo").text().trim());
+    function GetGraph(exchangeFrom, exchangeTo) {
+        $("#loading").show();
+        $("#myChart").remove();
+        $("#chartContainer").append('<canvas id="myChart"><canvas>');        
+        var Data = {
+            ExchangeFrom: exchangeFrom,
+            ExchangeTo: exchangeTo 
+        }
         $.ajax({
-            url: window.location.href + "/Home/GetGraph",  
+            url: window.location.href + "/Home/GetGraph", 
+            data: Data,
             typr: "GET",
             contentType: "application/json;charset=UTF-8",
             dataType: "json",
             success: function (result){
                 GenerateGraph(result.Title, result.ShortDate, result.RegressionY, result.Amount);
+                $("#loading").hide();
             }
         });
     }
-    GetGraph();
+   
     function GenerateGraph(Title, ShortDates, RegressionY , Amounts) {
         var ctx = document.getElementById('myChart').getContext('2d');
         var red = Math.floor((Math.random() * 255) + 0);

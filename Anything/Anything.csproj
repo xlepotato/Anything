@@ -372,6 +372,7 @@
     <Content Include="Assets\Images\ZAR.png" />
     <Content Include="Assets\Images\ZMW.png" />
     <Content Include="Assets\Js\bootstrap.min.js" />
+    <Content Include="Assets\Js\Chart.min.js" />
     <Content Include="Assets\Js\jquery.min.js" />
     <Content Include="Assets\Js\qr-scanner-worker.min.js" />
     <Content Include="Assets\Js\qr-scanner.js" />

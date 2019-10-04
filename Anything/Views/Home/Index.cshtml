@@ -8,14 +8,14 @@
 <div class="currencyInfoContainer form-group col-md-4" id="leftContainer">
     <div class="drawBorder">
         <input class="currencyInputTF" id="tbExchangeFrom" type="number" min="0.00" max="9999" value="1.00">
-        <button type="button" class="btn btn-default dropdown-toggle exchangeDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img class="dispFlag" src="~/Assets/Images/SGD.png" /> <label id="lblExchangeFrom">SGD</label> <span class="glyphicon glyphicon-menu-down"></span>
+        <button type="button" id ="btnExchangeFrom" class="btn btn-default dropdown-toggle exchangeDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img class="dispFlag" src="~/Assets/Images/SGD.png">SGD<span class="glyphicon glyphicon-menu-down"></span>
         </button>
-        <ul class="dropdown-menu scrollable-menu">
+        <ul class="dropdown-menu scrollable-menu" id="ddlExchangeFrom">
             @foreach (var x in Model)
             {
-                <li>
-                    <label class="drop" href="#" title="Exchanging to"><img class="scrollbarDispFlag" src="@x.Flag">@x.Name</label>
+                <li class="drop">
+                    <a  href="JavaScript:void(0)"><img class="scrollbarDispFlag" src="@x.Flag">@x.Name</a>
                 </li>
             }
         </ul>
@@ -29,14 +29,14 @@
 <div class="currencyInfoContainer form-group col-md-4" id="rightContainer" ;">
     <div class="drawBorder">
         <input class="currencyInputTF" id="tbExchangeTo" type="number" min="0.00" max="9999" value="1.00">
-        <button type="button" class="btn btn-default dropdown-toggle exchangeDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img class="dispFlag" src="~/Assets/Images/USD.png" /> <label id="lblExchangeTo">USD</label> <span class="glyphicon glyphicon-menu-down"></span>
+        <button type="button" id ="btnExchangeTo" class="btn btn-default dropdown-toggle exchangeDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img class="dispFlag" src="~/Assets/Images/MYR.png" />MYR<span class="glyphicon glyphicon-menu-down"></span>
         </button>
-        <ul class="dropdown-menu scrollable-menu">
+        <ul class="dropdown-menu scrollable-menu" id="ddlExchangeTo">
             @foreach (var x in Model)
             {
-                <li>
-                    <label class="drop" href="#" title="Exchanging to"><img class="scrollbarDispFlag" src="@x.Flag">@x.Name</label>
+                <li class="drop">
+                    <a href="JavaScript:void(0)"><img class="scrollbarDispFlag" src="@x.Flag">@x.Name</a>
                 </li>
             }
         </ul>
@@ -53,7 +53,10 @@
         <button type="button" class="btn btn-primary btn-lg" id="btnViewMoneyChangers">View Money Changers</button>
     </div>
 </div>
-<canvas id="myChart"></canvas>
+<div class="col-md-12" id="chartContainer">
+    <img id="loading" src="assets/images/loadingcat.gif" style="display:none;" />
+    <canvas id="myChart"></canvas>
+</div>
 <!--Display and Filter Section-->
 
 <!--Filter: Search Money Changers-->
