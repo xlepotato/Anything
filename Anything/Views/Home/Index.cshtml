@@ -6,12 +6,12 @@
 
 <!--Left Container-->
 <div class="currencyInfoContainer form-group col-md-4" id="leftContainer">
-    <div class="drawBorder">
+    <div class="drawBorder btn" id="drawBorder1">
         <input class="currencyInputTF" id="tbExchangeFrom" type="number" min="0.00" max="9999" value="1.00">
         <button type="button" class="btn btn-default dropdown-toggle exchangeDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img class="dispFlag" src="~/Assets/Images/SGD.png" /> <label id="lblExchangeFrom">SGD</label> <span class="glyphicon glyphicon-menu-down"></span>
+            <img class="dispFlag" src="~/Assets/Images/SGD.png" /> <label id="lblExchangeFrom">SGD</label>&nbsp;&nbsp;<img src="~/Assets/Images/chevron-bottom-2x.png" />
         </button>
-        <ul class="dropdown-menu scrollable-menu">
+        <ul class="dropdown-menu scrollable-menu" id="exchangeFromDropdown">
             @foreach (var x in Model)
             {
                 <li>
@@ -27,12 +27,12 @@
 </div>
 <!--Right Container-->
 <div class="currencyInfoContainer form-group col-md-4" id="rightContainer" ;">
-    <div class="drawBorder">
+    <div class="drawBorder btn" id="drawBorder2">
         <input class="currencyInputTF" id="tbExchangeTo" type="number" min="0.00" max="9999" value="1.00">
         <button type="button" class="btn btn-default dropdown-toggle exchangeDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img class="dispFlag" src="~/Assets/Images/USD.png" /> <label id="lblExchangeTo">USD</label> <span class="glyphicon glyphicon-menu-down"></span>
+            <img class="dispFlag" src="~/Assets/Images/USD.png" /> <label id="lblExchangeTo">USD</label>&nbsp;&nbsp;<img src="~/Assets/Images/chevron-bottom-2x.png" />
         </button>
-        <ul class="dropdown-menu scrollable-menu">
+        <ul class="dropdown-menu scrollable-menu" id="exchangeToDropdown">
             @foreach (var x in Model)
             {
                 <li>

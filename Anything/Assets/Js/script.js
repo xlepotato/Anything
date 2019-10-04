@@ -1,5 +1,23 @@
 ﻿$(document).ready(function () {
     //Home Page(Exchange)////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    $("#drawBorder1").click(function () {
+        $(this).toggleClass('selected');
+
+        if ($(this).hasClass('selected')) {
+            $('#exchangeFromDropdown').show();
+        } else {
+            $('#exchangeFromDropdown').hide();
+        }
+    });
+    $("#drawBorder2").click(function () {
+        $(this).toggleClass('selected');
+
+        if ($(this).hasClass('selected')) {
+            $('#exchangeToDropdown').show();
+        } else {
+            $('#exchangeToDropdown').hide();
+        }
+    });
     $("#tbExchangeFrom").on('input', function () {
         GetCurrencyTo();
     });
