@@ -30,7 +30,7 @@ namespace Anything.Controllers
             //    string textResult = await response.Content.ReadAsStringAsync();
             //    JavaScriptSerializer j = new JavaScriptSerializer();
             //    MarketRate a = (MarketRate)j.Deserialize(textResult, typeof(MarketRate));
-            //    rates = a.rates;
+            //   rates = a.rates;
             //}
             using (cz2006anythingEntities model = new cz2006anythingEntities())
             {
