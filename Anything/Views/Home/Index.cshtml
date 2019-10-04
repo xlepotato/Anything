@@ -9,9 +9,9 @@
     <div class="drawBorder btn" id="drawBorder1">
         <input class="currencyInputTF" id="tbExchangeFrom" type="number" min="0.00" max="9999" value="1.00">
         <button type="button" id ="btnExchangeFrom" class="btn btn-default dropdown-toggle exchangeDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img class="dispFlag" src="~/Assets/Images/SGD.png" />SGD&nbsp;&nbsp;<img src="~/Assets/Images/chevron-bottom-2x.png" />
+            <img class="dispFlag" src="~/Assets/Images/SGD.png" />SGD<img src="~/Assets/Images/chevron-bottom-2x.png" />
         </button>
-        <ul class="dropdown-menu scrollable-menu" id="exchangeFromDropdown ddlExchangeFrom">
+        <ul class="dropdown-menu scrollable-menu" id="ddlExchangeFrom">
             @foreach (var x in Model)
             {
                 <li class="drop">
@@ -30,9 +30,9 @@
     <div class="drawBorder btn" id="drawBorder2">
         <input class="currencyInputTF" id="tbExchangeTo" type="number" min="0.00" max="9999" value="1.00">
         <button type="button" id ="btnExchangeTo" class="btn btn-default dropdown-toggle exchangeDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img class="dispFlag" src="~/Assets/Images/MYR.png" />MYR&nbsp;&nbsp;<img src="~/Assets/Images/chevron-bottom-2x.png" />
+            <img class="dispFlag" src="~/Assets/Images/MYR.png" />MYR<img src="~/Assets/Images/chevron-bottom-2x.png" />
         </button>
-        <ul class="dropdown-menu scrollable-menu" id="exchangeToDropdown ddlExchangeTo">
+        <ul class="dropdown-menu scrollable-menu" id="ddlExchangeTo">
             @foreach (var x in Model)
             {
                 <li class="drop">

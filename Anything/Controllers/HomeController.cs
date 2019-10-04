@@ -19,19 +19,19 @@ namespace Anything.Controllers
 
         public async System.Threading.Tasks.Task<ActionResult> Index()
         {
-            string apiUrl = "http://data.fixer.io/api/latest?access_key=" + Key + "&base=eur";
+            //string apiUrl = "http://data.fixer.io/api/latest?access_key=" + Key + "&base=eur";
 
-            using (var client = new HttpClient())
-            {
-                var uri = new Uri(apiUrl);
+            //using (var client = new HttpClient())
+            //{
+            //    var uri = new Uri(apiUrl);
 
-                var response = await client.GetAsync(uri);
+            //    var response = await client.GetAsync(uri);
 
-                string textResult = await response.Content.ReadAsStringAsync();
-                JavaScriptSerializer j = new JavaScriptSerializer();
-                MarketRate a = (MarketRate)j.Deserialize(textResult, typeof(MarketRate));
-                rates = a.rates;
-            }
+            //    string textResult = await response.Content.ReadAsStringAsync();
+            //    JavaScriptSerializer j = new JavaScriptSerializer();
+            //    MarketRate a = (MarketRate)j.Deserialize(textResult, typeof(MarketRate));
+            //    rates = a.rates;
+            //}
             using (cz2006anythingEntities model = new cz2006anythingEntities())
             {
                 return View(model.Currencies.ToList());

@@ -5,18 +5,18 @@
         $(this).toggleClass('selected');
 
         if ($(this).hasClass('selected')) {
-            $('#exchangeFromDropdown').show();
+            $('#ddlExchangeFrom').show();
         } else {
-            $('#exchangeFromDropdown').hide();
+            $('#ddlExchangeFrom').hide();
         }
     });
     $("#drawBorder2").click(function () {
         $(this).toggleClass('selected');
 
         if ($(this).hasClass('selected')) {
-            $('#exchangeToDropdown').show();
+            $('#btnExchangeTo').show();
         } else {
-            $('#exchangeToDropdown').hide();
+            $('#btnExchangeTo').hide();
         }
     });
     $("#tbExchangeFrom").on('input', function () {
@@ -29,21 +29,22 @@
     });
 
     $("#ddlExchangeFrom li a").click(function () {
-        var spanHtml = $("#btnExchangeFrom span")[0].outerHTML;
+        console.log($(this).html());
+        var imgHtml = $("#btnExchangeFrom img")[1].outerHTML;
         $("#btnExchangeFrom").html("");
         $("#btnExchangeFrom").append($(this).html());
         $("#btnExchangeFrom img").removeClass("scrollbarDispFlag").addClass("dispFlag");
-        $("#btnExchangeFrom").append(spanHtml);
+        $("#btnExchangeFrom").append(imgHtml);
         
         GetCurrencyTo();
         GetGraph($("#btnExchangeFrom").text().trim(), $("#btnExchangeTo").text().trim());
     });
     $("#ddlExchangeTo li a").click(function () {
-        var spanHtml = $("#btnExchangeTo span")[0].outerHTML;
+        var imgHtml = $("#btnExchangeTo img")[1].outerHTML;
         $("#btnExchangeTo").html("");
         $("#btnExchangeTo").append($(this).html());
         $("#btnExchangeTo img").removeClass("scrollbarDispFlag").addClass("dispFlag");
-        $("#btnExchangeTo").append(spanHtml);
+        $("#btnExchangeTo").append(imgHtml);
 
         GetCurrencyFrom();
         GetGraph($("#btnExchangeTo").text().trim(), $("#btnExchangeFrom").text().trim());
