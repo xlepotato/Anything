@@ -59,15 +59,38 @@ namespace Anything.Controllers
                                                  .Where(z => z.MoneyChanger.Name.Contains(Search) || z.MoneyChanger.Location.Contains(Search))
                                                  .OrderByDescending(z=>z.Rate);
 
+
                 return Json(
-                    exchangeRates.Select(z => new {
+                    exchangeRates.AsEnumerable().Select(z => new {
                         z.Rate,
                         z.MoneyChanger.Name,
-                        z.MoneyChanger.Location
+                        z.MoneyChanger.Location,
+                        LastUpdated = CalculateDate(z.LastUpdated)
                     }).ToList()
                     , JsonRequestBehavior.AllowGet);
             }
                
+        }
+        public string CalculateDate(DateTime date)
+        {
+            var timeDiff = DateTime.Now - date;
+            if(timeDiff.Days!=0)
+            {
+                return timeDiff.Days+" days ago";
+            }
+            else if (timeDiff.Hours!=0)
+            {
+                return timeDiff.Hours + " hours ago";
+            }
+            else if(timeDiff.Minutes!=0)
+            {
+                return timeDiff.Minutes + " minutes ago";
+            }
+            else if(timeDiff.Seconds!=0)
+            {
+                return timeDiff.Seconds + " seconds ago";
+            }
+            return "timespan error";
         }
         public async System.Threading.Tasks.Task<ActionResult> GetGraph(string ExchangeFrom, string ExchangeTo)
         {

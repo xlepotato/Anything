@@ -74,11 +74,11 @@
                     <label class="moneyChangerNameStyle"><strong>{{Name}}</strong><br /></label>
                     <label class="mcLocationStyle">{{Location}}</label>
                 </td>
-                <td class="col-md-3">@*{{Rate}}*@</td>
+                <td class="col-md-3"></td>
                 <td class="col-md-3">
-                    <label><strong>100 SGD = 330 MYR</strong></label><br/>
-                    <div class="lastUpdatedTimeStyle">10 hours ago</div>
-                    <button type="button" class="btn btn-default btnStyle" id="btnDetails">View Details</button>
+                    <label><strong>1 {{ExchangeFrom}} = {{Rate}} {{ExchangeTo}}</strong></label><br/>
+                    <div class="lastUpdatedTimeStyle">{{LastUpdated}}</div>
+                    <a href="/{{Name}}" class="btn btn-default btnStyle">Details</a>
                 </td>
             </tr>
         </tbody>

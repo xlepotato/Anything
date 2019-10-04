@@ -146,10 +146,12 @@
     var trMoneyChangerHtml = $("#trMoneyChanger").parent().html();
     $("#trMoneyChanger").html("");
     function Filter() {
+        var exchangeFrom = $("#btnExchangeFrom").text().trim();
+        var exchangeTo = $("#btnExchangeTo").text().trim();
         var Data = {
             Search: $("#tbSearch").val(),
-            ExchangeFrom: $("#btnExchangeFrom").text().trim(),
-            ExchangeTo: $("#btnExchangeTo").text().trim()
+            ExchangeFrom: exchangeFrom,
+            ExchangeTo: exchangeTo
         }
         $.ajax({
             url: window.location.href + "/Home/Filter",
@@ -159,10 +161,14 @@
             dataType: "json",
             success: function (result) {
                 $("#tbMoneyChanger").html("");
-                $.each(result, function () {               
+                $.each(result, function () {
                     $("#tbMoneyChanger").append(trMoneyChangerHtml.replace("{{Name}}", this.Name)
                                                     .replace("{{Location}}", this.Location)
-                                                    .replace("{{Rate}}", this.Rate));
+                                                    .replace("{{ExchangeFrom}}", exchangeFrom)
+                                                    .replace("{{Rate}}", this.Rate)
+                                                    .replace("{{ExchangeTo}}", exchangeTo)
+                                                    .replace("{{LastUpdated}}", this.LastUpdated)
+                                                    .replace("{{Name}}", this.Name));
                 });
             }
         });

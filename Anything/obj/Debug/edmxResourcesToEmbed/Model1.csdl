@@ -24,7 +24,7 @@
     <Property Name="ExchangeToId" Type="Int32" Nullable="false" />
     <Property Name="Rate" Type="Double" Nullable="false" />
     <Property Name="MoneyChangerId" Type="Int32" Nullable="false" />
-    <Property Name="LastUpdated" Type="DateTime" Precision="3" />
+    <Property Name="LastUpdated" Type="DateTime" Precision="3" Nullable="false" />
     <NavigationProperty Name="Currency" Relationship="Self.FK_ExchangeRate_Currency" FromRole="ExchangeRate" ToRole="Currency" />
     <NavigationProperty Name="Currency1" Relationship="Self.FK_ExchangeRate_Currency1" FromRole="ExchangeRate" ToRole="Currency" />
     <NavigationProperty Name="MoneyChanger" Relationship="Self.FK_ExchangeRate_MoneyChanger" FromRole="ExchangeRate" ToRole="MoneyChanger" />

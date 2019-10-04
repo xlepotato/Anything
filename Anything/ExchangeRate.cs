@@ -19,7 +19,7 @@ namespace Anything
         public int ExchangeToId { get; set; }
         public double Rate { get; set; }
         public int MoneyChangerId { get; set; }
-        public Nullable<System.DateTime> LastUpdated { get; set; }
+        public System.DateTime LastUpdated { get; set; }
     
         public virtual Currency Currency { get; set; }
         public virtual Currency Currency1 { get; set; }

@@ -18,7 +18,7 @@
     <Property Name="ExchangeToId" Type="int" Nullable="false" />
     <Property Name="Rate" Type="float" Nullable="false" />
     <Property Name="MoneyChangerId" Type="int" Nullable="false" />
-    <Property Name="LastUpdated" Type="datetime" />
+    <Property Name="LastUpdated" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="HistoricalRate">
     <Key>
