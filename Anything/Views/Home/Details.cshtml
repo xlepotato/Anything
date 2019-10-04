@@ -16,14 +16,15 @@
                     <img src="/Assets/Images/TakaMC.png" class="rounded" alt="Cinque Terre" width="800" height="500" frameborder="0" style="border:0"></img>
                 </a>
             </div>
-            <h2 class"moneyChangerName">@Model.Name</h2>
-            <img src="/Assets/Images/clock.png" width="20" height="20"></img>
-            <label class="moneyChangerDetails">@Model.OpeningHours</label><br />
-            <img src="/Assets/Images/phone.png" width="20" height="20"></img>
-            <label class="moneyChangerDetails">@Model.ContactNumber</label><br />
-            <img src="/Assets/Images/location.png" width="20" height="20"></img>
-            <label class="moneyChangerDetails">@Model.Location</label>
-
+            <div class="mcDetailDiv">
+                <h3 id="moneyChangerName">@Model.Name</h3>
+                <img src="/Assets/Images/clock.png" class="detailIcon">
+                <label class="moneyChangerDetails mcDetailLbl">@Model.OpeningHours</label><br />
+                <img src="/Assets/Images/phone.png" class="detailIcon">
+                <label class="moneyChangerDetails mcDetailLbl">@Model.ContactNumber</label><br />
+                <img src="/Assets/Images/location.png" class="detailIcon" id="locationIcon">
+                <label class="moneyChangerDetails mcDetailLbl" id="detailLocationLbl">@Model.Location</label>
+            </div>
             <!--Map display-->
             @if (Model.PostalCode != null)
             {
@@ -46,35 +47,35 @@
             <tbody>
                 <tr>
                     <td>
-                        <img src="/Assets/Images/VND.png" width="20" height="20" />Vietnamese Dong
+                        <img src="/Assets/Images/VND.png" class="tableCtyIcon" /><a class="tableFlagIcon">Vietnamese Dong</a>
                     </td>
                     <td><input type="text" class="currencyInput" size="2" placeholder="1"/> VND <br />= 0.333 SGD</td>
                     <td><input type="text" class="currencyInput" size="2" placeholder="1"/> SGD <br />= 3.21 VND</td>
                 </tr>
                 <tr>
                     <td>
-                        <img src="/Assets/Images/AUD.png" width="20" height="20" />Australian Dollars
+                        <img src="/Assets/Images/AUD.png" class="tableCtyIcon" /><a class="tableFlagIcon">Australian Dollars</a>
                     </td>
                     <td>1.01</td>
                     <td>0.93</td>
                 </tr>
                 <tr>
                     <td>
-                        <img src="/Assets/Images/MYR.png" width="20" height="20" />Malaysia Ringgit
+                        <img src="/Assets/Images/MYR.png" class="tableCtyIcon" /><a class="tableFlagIcon">Malaysia Ringgit</a>
                     </td>
                     <td>1.63</td>
                     <td>1.83</td>
                 </tr>
                 <tr>
                     <td>
-                        <img src="/Assets/Images/USD.png" width="20" height="20" />United States Dollars
+                        <img src="/Assets/Images/USD.png" class="tableCtyIcon" /><a class="tableFlagIcon">United States Dollars</a>
                     </td>
                     <td>1.03</td>
                     <td>0.83</td>
                 </tr>
                 <tr>
                     <td>
-                        <img src="/Assets/Images/INR.png" width="20" height="20" />Indian Rupee
+                        <img src="/Assets/Images/INR.png" class="tableCtyIcon" /><a class="tableFlagIcon">Indian Rupee</a>
                     </td>
                     <td>120.2</td>
                     <td>119.4</td>

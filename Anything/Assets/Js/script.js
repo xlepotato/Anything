@@ -148,8 +148,8 @@
     function Filter() {
         var Data = {
             Search: $("#tbSearch").val(),
-            ExchangeFrom: $("#selExchangeFrom").val(),
-            ExchangeTo: $("#selExchangeTo").val()
+            ExchangeFrom: $("#btnExchangeFrom").text().trim(),
+            ExchangeTo: $("#btnExchangeTo").text().trim()
         }
         $.ajax({
             url: window.location.href + "/Home/Filter",
@@ -168,13 +168,12 @@
         });
     }
     $("#tbSearch").on('input', function () {
-        console.log(window.location.href);
         Filter();
     });
-    $("#selExchangeFrom").change(function () {
+    $("#ddlExchangeFrom li a").click(function () {
         Filter();
     });
-    $("#selExchangeTo").change(function () {
+    $("#ddlExchangeTo li a").click(function () {
         Filter();
     });
     Filter();

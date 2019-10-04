@@ -37,18 +37,18 @@ namespace Anything.Controllers
                 return View(model.Currencies.ToList());
             }
         }
-        [HttpGet]
-        public ActionResult GetCurrency(float ExchangeAmount, string ExchangeFrom, string ExchangeTo)
-        {
-            float exchangeFrom = rates.Where(z => z.Key == ExchangeFrom).FirstOrDefault().Value;
-            float exchangeTo = rates.Where(z => z.Key == ExchangeTo).FirstOrDefault().Value;
-            double amount = ConvertCurrency(ExchangeAmount, exchangeFrom, exchangeTo);         
-            double baseRate = ConvertCurrency(1, exchangeFrom, exchangeTo);
-            var result = new { Amount = amount, Rate = baseRate };
-            return Json(result
-           , JsonRequestBehavior.AllowGet);
+        //[HttpGet]
+        //public ActionResult GetCurrency(float ExchangeAmount, string ExchangeFrom, string ExchangeTo)
+        //{
+        //    float exchangeFrom = rates.Where(z => z.Key == ExchangeFrom).FirstOrDefault().Value;
+        //    float exchangeTo = rates.Where(z => z.Key == ExchangeTo).FirstOrDefault().Value;
+        //    double amount = ConvertCurrency(ExchangeAmount, exchangeFrom, exchangeTo);         
+        //    double baseRate = ConvertCurrency(1, exchangeFrom, exchangeTo);
+        //    var result = new { Amount = amount, Rate = baseRate };
+        //    return Json(result
+        //   , JsonRequestBehavior.AllowGet);
 
-        }
+        //}
 
         public ActionResult Filter(string Search,string ExchangeFrom, string ExchangeTo)
         {
