@@ -1,5 +1,21 @@
-﻿.container{
+﻿@import url('https://fonts.googleapis.com/css?family=Almarai|Open+Sans&display=swap');
+
+.container{
     width:100%;
+}
+
+.mainContainer {
+    background-color: white;
+    background-image: url('../Images/w8.gif');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#outerContainer .rowContainer {
+    background: rgba(255, 255, 255, 0.9);
+    overflow: scroll;
+    height: 100%;
 }
 
 .switchTab{
@@ -47,6 +63,7 @@
 }
 
 .drawBorder {
+    background: white;
     border: 2px solid black;
     width: 100%;
     border-radius: 15px;
@@ -139,35 +156,69 @@ input[type=number]::-webkit-outer-spin-button {
     /*padding:0px;*/
 }
 
-.moneyChangerContainer{
-    padding:10px 0px;
-    margin:0px;
-    background-color:whitesmoke;
+.moneyChangerContainer {
+    padding: 10px 0px;
+    margin: 0px;
+    background-color: whitesmoke;
+    border: #e1e1e1 solid 2px;
 }
-.moneyChangerName {
-    padding:10px 0px;
-    margin:0px;
-    font-family:Arial
-    font-size: 20px;
-    font-weight: bolder;
+
+.mcDetailDiv{
+    padding-left: 0.5em;
+    padding-bottom: 2em;
+}
+
+.detailIcon {
+    width: 22px;
+    height: 22px;
+}
+
+#locationIcon {
+    width: 18px;
+    height: 24px;
+}
+
+#detailLocationLbl {
+    padding-left: 0.3em;
+}
+
+.mcDetailLbl{
+    margin-left: 0.5em;
+}
+
+#moneyChangerName {
+    font-family: 'Almarai', sans-serif;
+    font-size: 20pt;
+    font-weight: bold;
 }
 
 .moneyChangerDetails {
-    padding: 10px 0px;
-    margin: 0px;
-    font-size: 15px;
+    padding-top: 0.5em;
+    font-size: 11pt;
+    color: #616161;
+    font-weight: lighter;
+    font-family: 'Almarai', sans-serif;
+}
+
+.tableCtyIcon {
+    width: 20px;
+    height: 20px;
+}
+
+.tableFlagIcon {
+    padding-left: 0.5em;
+    white-space: nowrap;
 }
 
 .tableHeader {
-    background-color:black; 
-    color:white;
+    background-color: black;
+    color: white;
 }
 
 .mapModel{
     width:300px;
     height:300px;
 }
-
 
 .currencyExchangeContainer {
     margin-top: 3%;
@@ -178,3 +229,4 @@ input[type=number]::-webkit-outer-spin-button {
     border:thick 5px;
     border-radius:5px;
 }
+
