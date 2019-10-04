@@ -60,9 +60,9 @@
 <!--Display and Filter Section-->
 
 <!--Filter: Search Money Changers-->
-<div style="font-size:20px; padding-top:50px;">
+<div class="searchMCStyle">
     Search:
-    <input type="text" class="form-control " id="tbSearch">
+    <input type="text" class="form-control searchBoxStyle" id="tbSearch">
 </div>
 
 <!--Display Money Changers-->
@@ -70,12 +70,16 @@
     <table class="table table-striped table-hover">
         <tbody id="tbMoneyChanger">
             <tr id="trMoneyChanger">
-                <td>
-                    <strong>{{Name}}</strong><br />
-                    {{Location}}
+                <td class="col-md-6">
+                    <label class="moneyChangerNameStyle"><strong>{{Name}}</strong><br /></label>
+                    <label class="mcLocationStyle">{{Location}}</label>
                 </td>
-                <td>{{Rate}}</td>
-                <td><button type="button" class="btn btn-default" id="btnDetails">View Details</button></td>
+                <td class="col-md-3">@*{{Rate}}*@</td>
+                <td class="col-md-3">
+                    <label><strong>100 SGD = 330 MYR</strong></label><br/>
+                    <div class="lastUpdatedTimeStyle">10 hours ago</div>
+                    <button type="button" class="btn btn-default btnStyle" id="btnDetails">View Details</button>
+                </td>
             </tr>
         </tbody>
     </table>

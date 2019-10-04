@@ -237,3 +237,44 @@ input[type=number]::-webkit-outer-spin-button {
     box-sizing: border-box;
 }
 
+.lastUpdatedTimeStyle {
+    margin-left:30px;
+    font-size:12px;
+    text-align: center;
+    opacity: 0.5;
+    margin-bottom:5px;
+    width: 45%;
+    border: 1px solid #ccc;
+    border-radius: 32px;
+}
+
+.btnStyle{
+    margin-left:23px;
+    background-color:black;
+    color:white;
+}
+
+.moneyChangerNameStyle{
+    padding-left:5px;
+    font-size:22px;
+}
+
+.mcLocationStyle {
+    font-style:italic;
+    padding-left: 5px;
+    color:darkgray
+}
+
+.searchMCStyle {
+    display: inline;
+    font-size: 20px;
+    padding-top: 15px;
+    margin-left: 1%;
+}
+
+.searchBoxStyle {
+    width: 35%;
+    display: inline;
+    margin-bottom: 10px;
+}
+
