@@ -14,9 +14,9 @@
         $(this).toggleClass('selected');
 
         if ($(this).hasClass('selected')) {
-            $('#btnExchangeTo').show();
+            $('#ddlExchangeTo').show();
         } else {
-            $('#btnExchangeTo').hide();
+            $('#ddlExchangeTo').hide();
         }
     });
     $("#tbExchangeFrom").on('input', function () {

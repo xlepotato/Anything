@@ -2,6 +2,9 @@
 
 .container{
     width:100%;
+    height:100%;
+    overflow: hidden;
+    padding: 0;
 }
 
 .mainContainer {
@@ -14,8 +17,15 @@
 
 #outerContainer .rowContainer {
     background: rgba(255, 255, 255, 0.9);
-    overflow: scroll;
     height: 100%;
+}
+
+#outerContainer {
+    overflow-y: hidden
+}
+
+.rowContainer {
+    overflow: scroll;
 }
 
 .switchTab{
@@ -35,10 +45,6 @@
     font-size: 18pt;
 }
 
-#outerContainer{    
-    padding-top: 2em;
-}
-
 .currencyInfoContainer{
     margin-top: 2em;
 }
@@ -50,6 +56,11 @@
 .dispFlag{
     width: 55px;
     height: 55px;
+    margin-right: 0.2em;
+}
+
+.dropdownChevron {
+    padding-left: 0.5em;
 }
 
 .scrollbarDispFlag {
