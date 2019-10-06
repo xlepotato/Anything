@@ -181,6 +181,11 @@
             }
         });
     }
+    $("#btnViewMoneyChangers").click(function () {
+        $('html, .rowContainer').animate({
+            scrollTop: ($('#moneyChangerContainer').offset().top)
+        }, 500);
+    });
     $("#tbSearch").on('input', function () {
         Filter();
     });

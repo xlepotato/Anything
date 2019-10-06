@@ -60,27 +60,29 @@
 <!--Display and Filter Section-->
 
 <!--Filter: Search Money Changers-->
-<div id="moneyChangerContainer">
-    <div class="searchMCStyle">
-        Search:
-        <input type="text" class="form-control searchBoxStyle" id="tbSearch">
-    </div>
+<div class="col-md-12">
+    <div id="moneyChangerContainer">
+        <div class="searchMCStyle">
+            Search:
+            <input type="text" class="form-control searchBoxStyle" id="tbSearch">
+        </div>
 
-    <!--Display Money Changers-->
-    <table class="table table-striped table-hover">
-        <tbody id="tbMoneyChanger">
-            <tr id="trMoneyChanger">
-                <td class="col-md-6">
-                    <label class="moneyChangerNameStyle"><strong>{{Name}}</strong><br /></label>
-                    <label class="mcLocationStyle">{{Location}}</label>
-                </td>
-                <td class="col-md-3"></td>
-                <td class="col-md-3">
-                    <label><strong>1 {{ExchangeFrom}} = {{Rate}} {{ExchangeTo}}</strong></label><br/>
-                    <div class="lastUpdatedTimeStyle">{{LastUpdated}}</div>
-                    <a href="/{{Name}}" class="btn btn-default btnStyle">Details</a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+        <!--Display Money Changers-->
+        <table class="table table-striped table-hover">
+            <tbody id="tbMoneyChanger">
+                <tr id="trMoneyChanger">
+                    <td class="col-md-6">
+                        <label class="moneyChangerNameStyle"><strong>{{Name}}</strong><br /></label>
+                        <label class="mcLocationStyle">{{Location}}</label>
+                    </td>
+                    <td class="col-md-3"></td>
+                    <td class="col-md-3">
+                        <label><strong>1 {{ExchangeFrom}} = {{Rate}} {{ExchangeTo}}</strong></label><br />
+                        <div class="lastUpdatedTimeStyle">{{LastUpdated}}</div>
+                        <a href="/{{Name}}" class="btn btn-default btnStyle">Details</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
