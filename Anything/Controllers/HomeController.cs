@@ -14,41 +14,41 @@ namespace Anything.Controllers
     public class HomeController : Controller
     {
         public static Dictionary<string, float> rates;
-        public static string Key = "88e5742380260e37cd085046a10c3e68";
+        public static string Key = "8bd5338c9b5589de70fe9aa036b0167f";
         // GET: Home
 
         public async System.Threading.Tasks.Task<ActionResult> Index()
         {
-            //string apiUrl = "http://data.fixer.io/api/latest?access_key=" + Key + "&base=eur";
+            string apiUrl = "http://data.fixer.io/api/latest?access_key=" + Key + "&base=eur";
 
-            //using (var client = new HttpClient())
-            //{
-            //    var uri = new Uri(apiUrl);
+            using (var client = new HttpClient())
+            {
+                var uri = new Uri(apiUrl);
 
-            //    var response = await client.GetAsync(uri);
+                var response = await client.GetAsync(uri);
 
-            //    string textResult = await response.Content.ReadAsStringAsync();
-            //    JavaScriptSerializer j = new JavaScriptSerializer();
-            //    MarketRate a = (MarketRate)j.Deserialize(textResult, typeof(MarketRate));
-            //   rates = a.rates;
-            //}
+                string textResult = await response.Content.ReadAsStringAsync();
+                JavaScriptSerializer j = new JavaScriptSerializer();
+                MarketRate a = (MarketRate)j.Deserialize(textResult, typeof(MarketRate));
+                rates = a.rates;
+            }
             using (cz2006anythingEntities model = new cz2006anythingEntities())
             {
                 return View(model.Currencies.ToList());
             }
         }
-        //[HttpGet]
-        //public ActionResult GetCurrency(float ExchangeAmount, string ExchangeFrom, string ExchangeTo)
-        //{
-        //    float exchangeFrom = rates.Where(z => z.Key == ExchangeFrom).FirstOrDefault().Value;
-        //    float exchangeTo = rates.Where(z => z.Key == ExchangeTo).FirstOrDefault().Value;
-        //    double amount = ConvertCurrency(ExchangeAmount, exchangeFrom, exchangeTo);         
-        //    double baseRate = ConvertCurrency(1, exchangeFrom, exchangeTo);
-        //    var result = new { Amount = amount, Rate = baseRate };
-        //    return Json(result
-        //   , JsonRequestBehavior.AllowGet);
+        [HttpGet]
+        public ActionResult GetCurrency(float ExchangeAmount, string ExchangeFrom, string ExchangeTo)
+        {
+            float exchangeFrom = rates.Where(z => z.Key == ExchangeFrom).FirstOrDefault().Value;
+            float exchangeTo = rates.Where(z => z.Key == ExchangeTo).FirstOrDefault().Value;
+            double amount = ConvertCurrency(ExchangeAmount, exchangeFrom, exchangeTo);
+            double baseRate = ConvertCurrency(1, exchangeFrom, exchangeTo);
+            var result = new { Amount = amount, Rate = baseRate };
+            return Json(result
+           , JsonRequestBehavior.AllowGet);
 
-        //}
+        }
 
         public ActionResult Filter(string Search,string ExchangeFrom, string ExchangeTo)
         {

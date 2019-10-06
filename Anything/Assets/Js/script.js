@@ -21,11 +21,9 @@
     });
     $("#tbExchangeFrom").on('input', function () {
         GetCurrencyTo();
-        GetGraph($("#btnExchangeFrom").text().trim(), $("#btnExchangeTo").text().trim());
     });
     $("#tbExchangeTo").on('input', function () {
         GetCurrencyFrom();
-        GetGraph($("#btnExchangeTo").text().trim(), $("#btnExchangeFrom").text().trim());
     });
 
     $("#ddlExchangeFrom li a").click(function () {
@@ -62,7 +60,7 @@
             contentType: "application/json;charset=UTF-8",
             dataType: "json",
             success: function (result) {
-                $("#tbExchangeTo").val(result.Amount);
+                $("#tbExchangeTo").val(result.Amount.toFixed(2));
                 $("#lblResult").text(result.Rate);
             }
         });
@@ -80,7 +78,7 @@
             contentType: "application/json;charset=UTF-8",
             dataType: "json",
             success: function (result) {
-                $("#tbExchangeFrom").val(result.Amount);
+                $("#tbExchangeFrom").val(result.Amount.toFixed(2));
                 $("#lblResult").text(result.Rate);
             }
         });
@@ -121,7 +119,7 @@
             data: {
                 labels: ShortDates,
                 datasets: [{
-                    label: 'Linear Regression',
+                    label: 'Prediction',
                     
                     borderColor: 'rgb(' + red + ', ' + green + ', ' + blue + ')',
                     fill: false,
@@ -161,11 +159,21 @@
             dataType: "json",
             success: function (result) {
                 $("#tbMoneyChanger").html("");
+                if (result.length > 0)
+                {
+                    $("#moneyChangerContainer").show();
+                    $("#btnViewMoneyChangers").show();
+                }
+                else
+                {
+                    $("#moneyChangerContainer").hide();
+                    $("#btnViewMoneyChangers").hide();
+                }
                 $.each(result, function () {
                     $("#tbMoneyChanger").append(trMoneyChangerHtml.replace("{{Name}}", this.Name)
                                                     .replace("{{Location}}", this.Location)
                                                     .replace("{{ExchangeFrom}}", exchangeFrom)
-                                                    .replace("{{Rate}}", this.Rate)
+                                                    .replace("{{Rate}}", this.Rate.toFixed(4))
                                                     .replace("{{ExchangeTo}}", exchangeTo)
                                                     .replace("{{LastUpdated}}", this.LastUpdated)
                                                     .replace("{{Name}}", this.Name));

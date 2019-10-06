@@ -214,6 +214,7 @@
     <Content Include="Assets\Images\AUD.png" />
     <Content Include="Assets\Images\AWG.png" />
     <Content Include="Assets\Images\AZN.png" />
+    <Content Include="Assets\Images\background.gif" />
     <Content Include="Assets\Images\BAM.png" />
     <Content Include="Assets\Images\BBD.png" />
     <Content Include="Assets\Images\BDT.png" />
@@ -231,8 +232,8 @@
     <Content Include="Assets\Images\BYN.png" />
     <Content Include="Assets\Images\BZD.png" />
     <Content Include="Assets\Images\CAD.png" />
-    <Content Include="Assets\Images\cat.jpg" />
     <Content Include="Assets\Images\CDF.png" />
+    <Content Include="Assets\Images\chevron-bottom-2x.png" />
     <Content Include="Assets\Images\CHF.png" />
     <Content Include="Assets\Images\CLF.png" />
     <Content Include="Assets\Images\clock.png" />
@@ -291,6 +292,7 @@
     <Content Include="Assets\Images\LAK.png" />
     <Content Include="Assets\Images\LBP.png" />
     <Content Include="Assets\Images\LKR.png" />
+    <Content Include="Assets\Images\loadingcat.gif" />
     <Content Include="Assets\Images\location.png" />
     <Content Include="Assets\Images\logo.png" />
     <Content Include="Assets\Images\LRD.png" />
