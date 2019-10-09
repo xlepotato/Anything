@@ -296,10 +296,21 @@ input[type=number]::-webkit-outer-spin-button {
     border-radius: 32px;
 }
 
-.btnStyle{
-    margin-left:23px;
-    background-color:black;
-    color:white;
+.lastUpdatedTimeStyleDetails {
+    font-size: 12px;
+    text-align: center;
+    opacity: 0.5;
+    margin-bottom: 5px;
+    width: 95%;
+    font-style:italic;
+    border: 1px solid #ccc;
+    border-radius: 32px;
+}
+
+.btnStyle {
+    margin-left: 20%;
+    background-color: white;
+    color: black;
 }
 
 .moneyChangerNameStyle{
