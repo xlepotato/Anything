@@ -19,6 +19,9 @@
             $('#ddlExchangeTo').hide();
         }
     });
+    $(".exchangeDropdown").click(function () {
+        $(this).find(".dropdown-menu").hide();
+    });
     $("#tbExchangeFrom").on('input', function () {
         GetCurrencyTo();
     });
