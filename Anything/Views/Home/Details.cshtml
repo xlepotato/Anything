@@ -1,7 +1,8 @@
 ﻿@model MoneyChanger
+
 @{
     /**/
-
+    
     Layout = "/Views/Shared/HeaderLogoOnly.cshtml";
 }
 
@@ -56,7 +57,7 @@
                             <tr>
                                 <td>
                                     <img src="@sellingExchangeTo.Flag" class="tableCtyIcon" /><label class="tableFlagIcon">@sellingExchangeTo.Name</label>
-                                    <div class="lastUpdatedTimeStyleDetails">4 days ago</div>
+                                    <div class="lastUpdatedTimeStyleDetails">@(((Anything.Controllers.HomeController)this.ViewContext.Controller).CalculateDate(sellingRateExchangeFrom.LastUpdated))</div>
                                 </td>
                                 <td><input type="text" class="currencyInput" value="1" id="@(sellingExchangeTo.Name+"SGD")" /> @sellingExchangeTo.Name <br />= @Math.Round(buyingRateExchangeFrom.Rate,4) SGD</td>
                                 <td><input type="text" class="currencyInput" value="1" id="@("SGD"+sellingExchangeTo.Name)" /> SGD <br />= @Math.Round(sellingRateExchangeFrom.Rate,4) @sellingExchangeTo.Name</td>
