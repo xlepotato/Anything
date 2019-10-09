@@ -38,7 +38,7 @@
         $("#btnExchangeFrom").append(imgHtml);
         
         GetCurrencyTo();
-        GetGraph($("#btnExchangeFrom").text().trim(), $("#btnExchangeTo").text().trim());
+        GetGraph();
     });
     $("#ddlExchangeTo li a").click(function () {
         var imgHtml = $("#btnExchangeTo img")[1].outerHTML;
@@ -48,7 +48,7 @@
         $("#btnExchangeTo").append(imgHtml);
 
         GetCurrencyFrom();
-        GetGraph($("#btnExchangeTo").text().trim(), $("#btnExchangeFrom").text().trim());
+        GetGraph();
     });
     function GetCurrencyTo() {
         var Data = {
@@ -87,14 +87,14 @@
         });
     }
     //Home Page(Graph)////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    GetGraph($("#btnExchangeFrom").text().trim(), $("#btnExchangeTo").text().trim());
-    function GetGraph(exchangeFrom, exchangeTo) {
+    GetGraph();
+    function GetGraph() {
         $("#loading").show();
         $("#myChart").remove();
         $("#chartContainer").append('<canvas id="myChart"><canvas>');        
         var Data = {
-            ExchangeFrom: exchangeFrom,
-            ExchangeTo: exchangeTo 
+            ExchangeFrom: $("#btnExchangeFrom").text().trim(),
+            ExchangeTo: $("#btnExchangeTo").text().trim() 
         }
         $.ajax({
             url: window.location.href + "/Home/GetGraph", 
