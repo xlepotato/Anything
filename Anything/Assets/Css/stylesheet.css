@@ -25,7 +25,7 @@
 }
 
 .rowContainer {
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
 .switchTab{
@@ -168,10 +168,11 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .moneyChangerContainer {
-    padding: 10px 0px;
+    padding: 0px 0px;
     margin: 0px;
     background-color: whitesmoke;
     border: #e1e1e1 solid 2px;
+    border-radius:8px;
 }
 
 .mcDetailDiv{
@@ -222,8 +223,8 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .tableHeader {
-    background-color: black;
-    color: white;
+    background-color: oldlace;
+    color: black;
 }
 
 .mapModel{
@@ -235,14 +236,50 @@ input[type=number]::-webkit-outer-spin-button {
     margin-top: 3%;
 }
 
-.tableConfig {
-    margin-top:10px;
-    border:thick 5px;
-    border-radius:5px;
+.detailsTableContainer{
+    padding:0px 15px 0px 0px;
 }
 
+.table-curved {
+    background-color:white;
+    border-collapse: separate;
+    border: #e1e1e1 solid 2px;
+    border-radius: 8px;
+    border-left: 0px;
+    padding: 0px;
+}
+
+    /*.table-curved td, .table-curved th {
+        border-left: 1px solid #ccc;
+        border-top: 1px solid #ccc;
+    }*/
+
+    .table-curved th {
+        border-top: none;
+    }
+
+        .table-curved th:first-child {
+            border-radius: 6px 0 0 0;
+        }
+
+        .table-curved th:last-child {
+            border-radius: 0 6px 0 0;
+        }
+
+        .table-curved th:only-child {
+            border-radius: 6px 6px 0 0;
+        }
+
+    .table-curved tr:last-child td:first-child {
+        border-radius: 0 0 0 6px;
+    }
+
+    .table-curved tr:last-child td:last-child {
+        border-radius: 0 0 6px 0;
+    }
+
 .currencyInput, select {
-    width: 50%;
+    width: 30%;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
@@ -287,5 +324,10 @@ input[type=number]::-webkit-outer-spin-button {
     width: 35%;
     display: inline;
     margin-bottom: 10px;
+}
+
+#detailsTable{
+    margin:0px;
+    padding:0px
 }
 

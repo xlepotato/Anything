@@ -35,16 +35,17 @@
         </div>
     </div>
 
-    <div class="col-md-7">
-        <table class="table tableConfig">
-            <thead>
-                <tr class="tableHeader" style =" border-radius: 5px;">
-                    <th>Currency</th>
-                    <th align="center">We Buy&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-                    <th align="center">We Sell</th>
-                </tr>
-            </thead>
-            <tbody>
+    <div class="col-md-7" id="detailsTable">
+        <div class="col-md-12 detailsTableContainer">
+            <table class="table col-md-11 table-curved table-striped tableConfig">
+                <thead>
+                    <tr class="tableHeader">
+                        <th>Currency</th>
+                        <th>We Buy</th>
+                        <th>We Sell</th>
+                    </tr>
+                </thead>
+                <tbody>
                     @if (Model.ExchangeRates.Count() > 0)
                     {
                         cz2006anythingEntities entities = new cz2006anythingEntities();
@@ -54,10 +55,10 @@
                             var buyingRateExchangeFrom = entities.ExchangeRates.Where(z => z.ExchangeFromId == sellingExchangeTo.Id).FirstOrDefault();
                             <tr>
                                 <td>
-                                    <img src="@sellingExchangeTo.Flag" class="tableCtyIcon" /><a class="tableFlagIcon">@sellingExchangeTo.Name</a>
+                                    <img src="@sellingExchangeTo.Flag" class="tableCtyIcon" /><label class="tableFlagIcon">@sellingExchangeTo.Name</label>
                                 </td>
-                                <td ><input type="text" class="currencyInput" size="2" value="1" id="@(sellingExchangeTo.Name+"SGD")"/> @sellingExchangeTo.Name <br />= @Math.Round(buyingRateExchangeFrom.Rate,4) SGD</td>
-                                <td><input type="text" class="currencyInput" size="2" value="1"   id="@("SGD"+sellingExchangeTo.Name)" /> SGD <br />= @Math.Round(sellingRateExchangeFrom.Rate,4) @sellingExchangeTo.Name</td>
+                                <td><input type="text" class="currencyInput" value="1" id="@(sellingExchangeTo.Name+"SGD")" /> @sellingExchangeTo.Name <br />= @Math.Round(buyingRateExchangeFrom.Rate,4) SGD</td>
+                                <td><input type="text" class="currencyInput" value="1" id="@("SGD"+sellingExchangeTo.Name)" /> SGD <br />= @Math.Round(sellingRateExchangeFrom.Rate,4) @sellingExchangeTo.Name</td>
                             </tr>
                             <script>
                                 $("#@(sellingExchangeTo.Name+"SGD")").on('input', function () {
@@ -88,8 +89,10 @@
 
                         }
                     }
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+            <div class="col-md-1"></div>
+        </div>
     </div>
 }
 else

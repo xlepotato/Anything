@@ -19,6 +19,9 @@
             $('#ddlExchangeTo').hide();
         }
     });
+    $(".exchangeDropdown").click(function () {
+        $(this).find(".dropdown-menu").hide();
+    });
     $("#tbExchangeFrom").on('input', function () {
         GetCurrencyTo();
     });
@@ -196,6 +199,16 @@
         Filter();
     });
     Filter();
+
+    //Home Page (Drop-down clear)//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    $(document).on("click", function (event) {
+        var $trigger = $(".dropdown");
+        if ($trigger !== event.target && !$trigger.has(event.target).length) {
+            $(".dropdown-menu").slideUp("fast");
+        }
+    });
+
+
     //Login Page
     $("#btnLogin").click(function () {
         Login();
