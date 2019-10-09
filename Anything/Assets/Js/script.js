@@ -199,6 +199,15 @@
         Filter();
     });
     Filter();
+
+    //Home Page (Drop-down clear)//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    $("btnExchangeFrom").on("click", function (event) {
+        var $trigger = $(".dropdown");
+        if ($trigger !== event.target && !$trigger.has(event.target).length) {
+            $(".dropdown-menu").slideUp("fast");
+        }  
+
+
     //Login Page
     $("#btnLogin").click(function () {
         Login();
