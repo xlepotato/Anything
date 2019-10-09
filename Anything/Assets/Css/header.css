@@ -1,9 +1,16 @@
 ﻿#logo{
-    margin-left: 10%;
+    width: 100px;
+    height: 100px;
+    margin-left: 5%;
+    padding: 10px;
 }
 
 #header {
-    background-color: #F6F6F6;
+    background-image: linear-gradient(to bottom,#03adfc,#0952b3,#0d0ac2);
+    border-radius: 0 !important;
+    -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
 }
 
 .buttons{
