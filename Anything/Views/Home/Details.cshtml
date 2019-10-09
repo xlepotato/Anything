@@ -56,8 +56,8 @@
                                 <td>
                                     <img src="@sellingExchangeTo.Flag" class="tableCtyIcon" /><a class="tableFlagIcon">@sellingExchangeTo.Name</a>
                                 </td>
-                                <td ><input type="text" class="currencyInput" size="2" value="1" id="@(sellingExchangeTo.Name+"SGD")"/> @sellingExchangeTo.Name <br />= @buyingRateExchangeFrom.Rate SGD</td>
-                                <td><input type="text" class="currencyInput" size="2" value="1"   id="@("SGD"+sellingExchangeTo.Name)" /> SGD <br />= @sellingRateExchangeFrom.Rate @sellingExchangeTo.Name</td>
+                                <td ><input type="text" class="currencyInput" size="2" value="1" id="@(sellingExchangeTo.Name+"SGD")"/> @sellingExchangeTo.Name <br />= @Math.Round(buyingRateExchangeFrom.Rate,4) SGD</td>
+                                <td><input type="text" class="currencyInput" size="2" value="1"   id="@("SGD"+sellingExchangeTo.Name)" /> SGD <br />= @Math.Round(sellingRateExchangeFrom.Rate,4) @sellingExchangeTo.Name</td>
                             </tr>
                             <script>
                                 $("#@(sellingExchangeTo.Name+"SGD")").on('input', function () {
