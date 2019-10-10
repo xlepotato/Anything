@@ -114,10 +114,10 @@
         var red = Math.floor((Math.random() * 255) + 0);
         var green = Math.floor((Math.random() * 255) + 0);
         var blue = Math.floor((Math.random() * 255) + 0);
+       
         var chart = new Chart(ctx, {
             // The type of chart we want to create
             type: 'line',
-
             // The data for our dataset
             data: {
                 labels: ShortDates,
@@ -140,8 +140,16 @@
             },
 
             // Configuration options go here
-            options: {}
+            options: {
+                legend: {
+                    labels: {
+                        // This more specific font property overrides the global property
+                        defaultFontColor: '#FFF'
+                    }
+                }
+            }
         });
+      
     }
     //Home Page(Money Changer)////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     var trMoneyChangerHtml = $("#trMoneyChanger").parent().html();
