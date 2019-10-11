@@ -28,8 +28,18 @@
     overflow-y: hidden
 }
 
+.navbar {
+    margin-bottom: 0;
+}
+
+.subContainer {
+    margin-top: 20px;
+}
+
 .rowContainer {
     overflow-y: scroll;
+    height: 100%;
+    top: 0;
 }
 
 .switchTab{
