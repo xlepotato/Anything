@@ -101,24 +101,3 @@ else
 {
     <h1> Money Changer Not Found </h1>
 }
-
-
-@*<div class="container">
-        Offered Exchange Rates
-        <div class="col-sm-6 col-md-6"></div>
-        @if (Model.ExchangeRates.Count() > 0)
-        {
-            cz2006anythingEntities entities = new cz2006anythingEntities();
-            foreach (var exchangeRates in Model.ExchangeRates)
-
-            {
-                var exchangeFrom = entities.Currencies.Where(z => z.Id == exchangeRates.ExchangeFromId).FirstOrDefault();
-                var exchangeTo = entities.Currencies.Where(z => z.Id == exchangeRates.ExchangeToId).FirstOrDefault();
-                <div class="col-sm-6 col-md-6">
-                    <h4><img src="@exchangeFrom.Flag" />@exchangeFrom.Name</h4>
-                    <h4><img src="@exchangeTo.Flag" />@exchangeTo.Name</h4>
-                    <h4>@exchangeRates.Rate</h4>
-                </div>
-            }
-        }
-    </div>*@
