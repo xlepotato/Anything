@@ -1,0 +1,35 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace Anything.Controllers
+{
+    public class FilterController
+    {
+        public static object Filter(string Search, string ExchangeFrom, string ExchangeTo)
+        {
+            using (cz2006anythingEntities model = new cz2006anythingEntities())
+            {
+                var exchangeRates = model.ExchangeRates.Where(z => z.ExchangeFromId == model.Currencies.Where(y => y.Name == ExchangeFrom).FirstOrDefault().Id
+                                                 && z.ExchangeToId == model.Currencies.Where(y => y.Name == ExchangeTo).FirstOrDefault().Id)
+                                                 .Where(z => z.MoneyChanger.Name.Contains(Search) || z.MoneyChanger.Location.Contains(Search))
+                                                 .OrderByDescending(z => z.Rate);
+
+
+
+               var x= exchangeRates.AsEnumerable().Select(z => new
+                {
+                    z.Rate,
+                    z.MoneyChanger.Name,
+                    z.MoneyChanger.Location,
+                    LastUpdated = CalculationController.CalculateDate(z.LastUpdated)
+                }).ToList();
+
+                return x;
+            }
+
+        }
+    }
+}

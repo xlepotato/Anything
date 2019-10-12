@@ -63,7 +63,7 @@ namespace Anything.Controllers
                                 HistoricalRate newHistoricalRate = new HistoricalRate();
                                 newHistoricalRate.ExchangeFromId = exchangeFromCurrId;
                                 newHistoricalRate.ExchangeToId = exchangeToCurrId;
-                                newHistoricalRate.Rate = HomeController.ConvertCurrency(1, exchangeFrom, exchangeTo);
+                                newHistoricalRate.Rate = CalculationController.ConvertCurrency(1, exchangeFrom, exchangeTo);
                                 newHistoricalRate.Date = thisDate;
 
                                 model.HistoricalRates.Add(newHistoricalRate);
@@ -76,7 +76,7 @@ namespace Anything.Controllers
 
                     float exchangeFromToday = HomeController.rates.Where(z => z.Key == ExchangeFrom).FirstOrDefault().Value;
                     float exchangeToToday = HomeController.rates.Where(z => z.Key == ExchangeTo).FirstOrDefault().Value;
-                    double baseRate = HomeController.ConvertCurrency(1, exchangeFromToday, exchangeToToday);
+                    double baseRate = CalculationController.ConvertCurrency(1, exchangeFromToday, exchangeToToday);
 
                     List<int> RegressionX = new List<int>();
                     int n = storedHistoricalRates.Count() + 1;
