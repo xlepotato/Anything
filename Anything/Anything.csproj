@@ -181,7 +181,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\HistoricalRate.cs" />
+    <Compile Include="Models\HomeHistoricalRates.cs" />
     <Compile Include="Models\MarketRate.cs" />
     <Compile Include="MoneyChanger.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -446,7 +446,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Graph\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
