@@ -46,36 +46,28 @@ namespace Anything.Controllers
                     for (int i = 1; i <= numOfDays; i++)
                     {
                         DateTime thisDate = historicalDate.AddDays(i);
-                        string apiUrl = " http://data.fixer.io/api/" + thisDate.ToString("yyyy-MM-dd") + "?access_key=" + HomeController.Key + "&base=EUR";
-
-                        using (var client = new HttpClient())
+                        MarketRate marketRate =await ApiController.GetHistoryRateAsync(thisDate);
+                        if (marketRate.success == true)
                         {
-                            var uri = new Uri(apiUrl);
-                            var response = await client.GetAsync(uri);
-                            string textResult = await response.Content.ReadAsStringAsync();
-                            JavaScriptSerializer j = new JavaScriptSerializer();
-                            MarketRate marketRate = (MarketRate)j.Deserialize(textResult, typeof(MarketRate));
-                            if (marketRate.success == true)
-                            {
-                                double exchangeFrom = marketRate.rates.Where(z => z.Key == ExchangeFrom).FirstOrDefault().Value;
-                                double exchangeTo = marketRate.rates.Where(z => z.Key == ExchangeTo).FirstOrDefault().Value;
+                            double exchangeFrom = marketRate.rates.Where(z => z.Key == ExchangeFrom).FirstOrDefault().Value;
+                            double exchangeTo = marketRate.rates.Where(z => z.Key == ExchangeTo).FirstOrDefault().Value;
 
-                                HistoricalRate newHistoricalRate = new HistoricalRate();
-                                newHistoricalRate.ExchangeFromId = exchangeFromCurrId;
-                                newHistoricalRate.ExchangeToId = exchangeToCurrId;
-                                newHistoricalRate.Rate = CalculationController.ConvertCurrency(1, exchangeFrom, exchangeTo);
-                                newHistoricalRate.Date = thisDate;
+                            HistoricalRate newHistoricalRate = new HistoricalRate();
+                            newHistoricalRate.ExchangeFromId = exchangeFromCurrId;
+                            newHistoricalRate.ExchangeToId = exchangeToCurrId;
+                            newHistoricalRate.Rate = CalculationController.ConvertCurrency(1, exchangeFrom, exchangeTo);
+                            newHistoricalRate.Date = thisDate;
 
-                                model.HistoricalRates.Add(newHistoricalRate);
-                            }
-
+                            model.HistoricalRates.Add(newHistoricalRate);
                         }
+
+                       
                     }
 
                     model.SaveChanges();
 
-                    float exchangeFromToday = HomeController.rates.Where(z => z.Key == ExchangeFrom).FirstOrDefault().Value;
-                    float exchangeToToday = HomeController.rates.Where(z => z.Key == ExchangeTo).FirstOrDefault().Value;
+                    float exchangeFromToday = ApiController.rates.Where(z => z.Key == ExchangeFrom).FirstOrDefault().Value;
+                    float exchangeToToday = ApiController.rates.Where(z => z.Key == ExchangeTo).FirstOrDefault().Value;
                     double baseRate = CalculationController.ConvertCurrency(1, exchangeFromToday, exchangeToToday);
 
                     List<int> RegressionX = new List<int>();

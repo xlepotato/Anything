@@ -103,7 +103,7 @@
             contentType: "application/json;charset=UTF-8",
             dataType: "json",
             success: function (result) {
-                GenerateGraph(result.Result.Title, result.Result.ShortDate, result.Result.RegressionY, result.Result.Amount);
+                GenerateGraph(result.Title, result.ShortDate, result.RegressionY, result.Amount);
                 $("#loading").hide();
             }
         });
