@@ -54,41 +54,63 @@
                         {
                             var sellingExchangeTo = entities.Currencies.Where(z => z.Id == sellingRateExchangeFrom.ExchangeToId).FirstOrDefault();
                             var buyingRateExchangeFrom = Model.ExchangeRates.Where(z => z.ExchangeFromId == sellingExchangeTo.Id).FirstOrDefault();
+
                             <tr>
                                 <td>
                                     <img src="@sellingExchangeTo.Flag" class="tableCtyIcon" /><label class="tableFlagIcon">@sellingExchangeTo.Name</label>
                                     <div class="lastUpdatedTimeStyleDetails">@(Anything.Controllers.CalculationController.CalculateDate(sellingRateExchangeFrom.LastUpdated))</div>
                                 </td>
-                                <td><input type="text" class="currencyInput" value="1" id="@(sellingExchangeTo.Name+"SGD")" /> @sellingExchangeTo.Name <br />= @Math.Round(buyingRateExchangeFrom.Rate,4) SGD</td>
-                                <td><input type="text" class="currencyInput" value="1" id="@("SGD"+sellingExchangeTo.Name)" /> SGD <br />= @Math.Round(sellingRateExchangeFrom.Rate,4) @sellingExchangeTo.Name</td>
+                                @if (sellingExchangeTo != null && buyingRateExchangeFrom != null)
+                                {
+                                    <td><input type="text" class="currencyInput" value="1" id="@(sellingExchangeTo.Name + "SGD")" /> @sellingExchangeTo.Name <br />= @Math.Round(buyingRateExchangeFrom.Rate, 4) SGD</td>
+                                }
+                                else
+                                {
+                                    <td>Not Available</td>
+                                }
+                                 @if (sellingExchangeTo != null)
+                                 {
+                                     <td><input type="text" class="currencyInput" value="1" id="@("SGD" + sellingExchangeTo.Name)" /> SGD <br />= @Math.Round(sellingRateExchangeFrom.Rate, 4) @sellingExchangeTo.Name</td>
+                                 }
+                                 else
+                                 {
+                                    <td>Not Available</td>
+                                 }
                             </tr>
-                            <script>
-                                $("#@(sellingExchangeTo.Name+"SGD")").on('input', function () {
+                            if (sellingExchangeTo != null && buyingRateExchangeFrom != null)
+                            {
+                                <script>
+                                    $("#@(sellingExchangeTo.Name + "SGD")").on('input', function () {
 
-                                    $(this).parent().contents().filter(function () {
-                                        return this.nodeType === 3;
-                                    }).remove();
-                                    $(this).parent().find("br").remove();
-                                    $(this).parent().append(" @sellingExchangeTo.Name ");
-                                    $(this).parent().append("<br />= ");
-                                    var amount = ($(this).val() * @buyingRateExchangeFrom.Rate).toFixed(4);
-                                    $(this).parent().append(amount);
-                                    $(this).parent().append(" SGD");
-                                });
-                                $("#@("SGD"+sellingExchangeTo.Name)").on('input', function () {
+                                        $(this).parent().contents().filter(function () {
+                                            return this.nodeType === 3;
+                                        }).remove();
+                                        $(this).parent().find("br").remove();
+                                        $(this).parent().append(" @sellingExchangeTo.Name ");
+                                        $(this).parent().append("<br />= ");
+                                        var amount = ($(this).val() * @buyingRateExchangeFrom.Rate).toFixed(4);
+                                        $(this).parent().append(amount);
+                                        $(this).parent().append(" SGD");
+                                    });
+                                </script>
+                            }
+                            if (sellingExchangeTo != null)
+                            {
+                                <script>
+                                    $("#@("SGD"+sellingExchangeTo.Name)").on('input', function () {
 
-                                    $(this).parent().contents().filter(function () {
-                                        return this.nodeType === 3;
-                                    }).remove();
-                                    $(this).parent().find("br").remove();
-                                    $(this).parent().append(" SGD ");
-                                    $(this).parent().append("<br />= ");
-                                    var amount = ($(this).val() * @sellingRateExchangeFrom.Rate).toFixed(4);
-                                    $(this).parent().append(amount);
-                                    $(this).parent().append(" @sellingExchangeTo.Name");
-                                });
+                                        $(this).parent().contents().filter(function () {
+                                            return this.nodeType === 3;
+                                        }).remove();
+                                        $(this).parent().find("br").remove();
+                                        $(this).parent().append(" SGD ");
+                                        $(this).parent().append("<br />= ");
+                                        var amount = ($(this).val() * @sellingRateExchangeFrom.Rate).toFixed(4);
+                                        $(this).parent().append(amount);
+                                        $(this).parent().append(" @sellingExchangeTo.Name");
+                                    });
                             </script>
-
+                            }
                         }
                     }
                 </tbody>
