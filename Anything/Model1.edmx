@@ -45,6 +45,7 @@
           <Property Name="Location" Type="nvarchar(max)" />
           <Property Name="ContactNumber" Type="int" />
           <Property Name="PostalCode" Type="nvarchar(max)" />
+          <Property Name="Photo" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -289,6 +290,7 @@
           <NavigationProperty Name="ExchangeRates" Relationship="Self.FK_ExchangeRate_MoneyChanger" FromRole="MoneyChanger" ToRole="ExchangeRate" />
           <NavigationProperty Name="Transactions" Relationship="Self.FK_Transaction_MoneyChanger" FromRole="MoneyChanger" ToRole="Transaction" />
           <NavigationProperty Name="Users" Relationship="Self.FK_User_MoneyChanger" FromRole="MoneyChanger" ToRole="User" />
+          <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -521,6 +523,7 @@
           <EntitySetMapping Name="MoneyChangers">
             <EntityTypeMapping TypeName="cz2006anythingModel.MoneyChanger">
               <MappingFragment StoreEntitySet="MoneyChanger">
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="OpeningHours" ColumnName="OpeningHours" />

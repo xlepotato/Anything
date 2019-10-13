@@ -170,7 +170,7 @@
             dataType: "json",
             success: function (result) {
                 $("#tbMoneyChanger").html("");
-                if (result.length > 0)
+                if (result.MoneyChangers> 0)
                 {
                     $("#moneyChangerContainer").show();
                     $("#btnViewMoneyChangers").show();
@@ -180,7 +180,7 @@
                     $("#moneyChangerContainer").hide();
                     $("#btnViewMoneyChangers").hide();
                 }
-                $.each(result, function () {
+                $.each(result.ExchangeRates, function () {
                     $("#tbMoneyChanger").append(trMoneyChangerHtml.replace("{{Name}}", this.Name)
                                                     .replace("{{Location}}", this.Location)
                                                     .replace("{{ExchangeFrom}}", exchangeFrom)
