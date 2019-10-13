@@ -111,9 +111,9 @@
    
     function GenerateGraph(Title, ShortDates, RegressionY, Amounts) {
         var ctx = document.getElementById('myChart').getContext('2d');
-        var red = Math.floor((Math.random() * 255) + 0);
-        var green = Math.floor((Math.random() * 255) + 0);
-        var blue = Math.floor((Math.random() * 255) + 0);
+        var red = 235;
+        var green = 156;
+        var blue = 21;
        
         var chart = new Chart(ctx, {
             // The type of chart we want to create
