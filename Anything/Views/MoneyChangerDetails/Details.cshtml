@@ -53,7 +53,7 @@
                         foreach (var sellingRateExchangeFrom in Model.ExchangeRates.Where(z => z.ExchangeFromId == entities.Currencies.Where(x => x.Name == "SGD").FirstOrDefault().Id))
                         {
                             var sellingExchangeTo = entities.Currencies.Where(z => z.Id == sellingRateExchangeFrom.ExchangeToId).FirstOrDefault();
-                            var buyingRateExchangeFrom = entities.ExchangeRates.Where(z => z.ExchangeFromId == sellingExchangeTo.Id).FirstOrDefault();
+                            var buyingRateExchangeFrom = Model.ExchangeRates.Where(z => z.ExchangeFromId == sellingExchangeTo.Id).FirstOrDefault();
                             <tr>
                                 <td>
                                     <img src="@sellingExchangeTo.Flag" class="tableCtyIcon" /><label class="tableFlagIcon">@sellingExchangeTo.Name</label>
