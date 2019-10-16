@@ -203,7 +203,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Css\bootstrap.min.css" />
-    <Content Include="Assets\Css\header.css" />
     <Content Include="Assets\Css\stylesheet.css" />
     <Content Include="Assets\Images\AED.png" />
     <Content Include="Assets\Images\AFN.png" />
