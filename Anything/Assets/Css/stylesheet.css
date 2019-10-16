@@ -59,23 +59,6 @@
     top: 0;
 }
 
-.switchTab{
-    padding-top: 2em;
-    padding-bottom:2em;
-}
-
-.tabs{
-    padding: 0px;
-}
-
-.activeNow{
-    font-size: 18pt;
-}
-
-.inactiveNow{
-    font-size: 18pt;
-}
-
 .currencyInfoContainer{
     margin-top: 2em;
 }
@@ -99,9 +82,9 @@
     height: 30px;
 }
 
-#exchangeIcon{
-    width: 35%;
-    height: 20%;
+#exchangeIcon {
+    width: 180px;
+    height: 140px;
 }
 
 .drawBorder {
@@ -141,7 +124,7 @@
 
 #btnViewMoneyChangers:hover {
         background-color: #e8860e;
-    }
+}
 
 .boxLabel {
     text-align: center;
@@ -213,7 +196,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 #loading {
-    margin-left: 25%;
+    margin-left: 28%;
 }
 
 .homeSearch { 
@@ -304,40 +287,41 @@ input[type=number]::-webkit-outer-spin-button {
     padding: 0px;
 }
 
-    /*.table-curved td, .table-curved th {
-        border-left: 1px solid #ccc;
-        border-top: 1px solid #ccc;
-    }*/
+.table-curved th {
+     border-top: none;
+}
 
-    .table-curved th {
-        border-top: none;
-    }
+.table-curved th:first-child {
+     border-radius: 6px 0 0 0;
+}
 
-        .table-curved th:first-child {
-            border-radius: 6px 0 0 0;
-        }
+.table-curved th:last-child {
+     border-radius: 0 6px 0 0;
+}
 
-        .table-curved th:last-child {
-            border-radius: 0 6px 0 0;
-        }
+.table-curved th:only-child {
+    border-radius: 6px 6px 0 0;
+}
 
-        .table-curved th:only-child {
-            border-radius: 6px 6px 0 0;
-        }
+.table-curved tr:last-child td:first-child {
+    border-radius: 0 0 0 6px;
+}
 
-    .table-curved tr:last-child td:first-child {
-        border-radius: 0 0 0 6px;
-    }
-
-    .table-curved tr:last-child td:last-child {
-        border-radius: 0 0 6px 0;
-    }
+.table-curved tr:last-child td:last-child {
+    border-radius: 0 0 6px 0;
+}
 
 .currencyInput, select {
     width: 30%;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+}
+
+.tbCol {
+    width: 33%;
+    font-weight: bold;
+    font-size: 14pt;
 }
 
 .lastUpdatedTimeStyle {
@@ -356,7 +340,7 @@ input[type=number]::-webkit-outer-spin-button {
     text-align: center;
     opacity: 0.5;
     margin-bottom: 5px;
-    width: 105%;
+    width: 60%;
     font-style:italic;
     border: 1px solid #ccc;
     border-radius: 32px;
@@ -371,9 +355,8 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .btnStyle:hover {
-        background-color: #e8860e;
-        color: white;
-
+    background-color: #e8860e;
+    color: white;
 }
 
 #moneyChangerContainer{
@@ -407,5 +390,58 @@ input[type=number]::-webkit-outer-spin-button {
 #detailsTable{
     margin:0px;
     padding:0px
+}
+
+/*Adjustment for smaller screen*/
+@media screen and (max-width: 1000px) {
+    .thumbnail {
+        width: 70%;
+    }
+
+    .moneyChangerContainer{
+        width: 50%;
+        float: left;
+    }
+
+    #detailsTable{
+        width: 50%;
+        float: right;
+    }
+
+    #loading {
+       width: 60%;
+       height: 50%;
+       margin-left: 22%;
+    }
+
+    #MarketRateDiv{
+        width: 50%;
+        font-size: 16pt;
+    }
+
+    #btnViewMoneyChangers{
+        position: absolute;
+        width: 50%;
+        margin-left: -20%;
+        font-size: 14pt;
+    }
+
+    .searchBoxStyle{
+        width: 50%;
+    }
+}
+
+/*Adjustment for normal screen*/
+@media screen and (min-width: 1000px) {
+    #loading {
+        margin-left: 20%;
+    }
+}
+
+/*Adjustment for large screen*/
+@media screen and (min-width: 1300px) {
+    #loading{
+        margin-left: 28%;
+    }
 }
 
