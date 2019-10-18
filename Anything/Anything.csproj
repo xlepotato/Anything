@@ -254,6 +254,7 @@
     <Content Include="Assets\Images\ETB.png" />
     <Content Include="Assets\Images\EUR.png" />
     <Content Include="Assets\Images\exchangeicon.jpg" />
+    <Content Include="Assets\Images\exchangeicon_white.png" />
     <Content Include="Assets\Images\FJD.png" />
     <Content Include="Assets\Images\FKP.png" />
     <Content Include="Assets\Images\GBP.png" />
@@ -268,9 +269,11 @@
     <Content Include="Assets\Images\header-background.png" />
     <Content Include="Assets\Images\HKD.png" />
     <Content Include="Assets\Images\HNL.png" />
+    <Content Include="Assets\Images\Holdingmoney.gif" />
     <Content Include="Assets\Images\HRK.png" />
     <Content Include="Assets\Images\HTG.png" />
     <Content Include="Assets\Images\HUF.png" />
+    <Content Include="Assets\Images\HuggingMoney.gif" />
     <Content Include="Assets\Images\IDR.png" />
     <Content Include="Assets\Images\ILS.png" />
     <Content Include="Assets\Images\IMP.png" />
@@ -297,6 +300,8 @@
     <Content Include="Assets\Images\location.png" />
     <Content Include="Assets\Images\logo.png" />
     <Content Include="Assets\Images\Logo2.png" />
+    <Content Include="Assets\Images\Logo3.png" />
+    <Content Include="Assets\Images\Logo4.png" />
     <Content Include="Assets\Images\LRD.png" />
     <Content Include="Assets\Images\LSL.png" />
     <Content Include="Assets\Images\LYD.png" />
@@ -329,6 +334,7 @@
     <Content Include="Assets\Images\PLN.png" />
     <Content Include="Assets\Images\PYG.png" />
     <Content Include="Assets\Images\QAR.png" />
+    <Content Include="Assets\Images\rainingMoney.gif" />
     <Content Include="Assets\Images\RON.png" />
     <Content Include="Assets\Images\RSD.png" />
     <Content Include="Assets\Images\RUB.png" />
@@ -341,6 +347,7 @@
     <Content Include="Assets\Images\SGD.png" />
     <Content Include="Assets\Images\SHP.png" />
     <Content Include="Assets\Images\SLL.png" />
+    <Content Include="Assets\Images\snow.gif" />
     <Content Include="Assets\Images\SOS.png" />
     <Content Include="Assets\Images\SRD.png" />
     <Content Include="Assets\Images\SVC.png" />
@@ -372,6 +379,9 @@
     <Content Include="Assets\Images\XDR.png" />
     <Content Include="Assets\Images\XOF.png" />
     <Content Include="Assets\Images\XPF.png" />
+    <Content Include="Assets\Images\yellowStar.png" />
+    <Content Include="Assets\Images\yellowStar_transparent.png" />
+    <Content Include="Assets\Images\yellowStar_white.png" />
     <Content Include="Assets\Images\YER.png" />
     <Content Include="Assets\Images\ZAR.png" />
     <Content Include="Assets\Images\ZMW.png" />
