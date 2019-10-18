@@ -9,7 +9,7 @@
 
 @if (Model != null)
 {
-    <div class="col-md-5">
+    <div class="col-md-5" style="margin-bottom:20px;">
         <div class="col-md-12 moneyChangerContainer">
             <!--Money Changer Details-->
             <div class="thumbnail">
@@ -38,7 +38,7 @@
 
     <div class="col-md-7" id="detailsTable">
         <div class="col-md-12 detailsTableContainer">
-            <table class="table col-md-11 table-curved table-striped tableConfig">
+            <table class="table col-md-11 table-curved">
                 <thead>
                     <tr class="tableHeader">
                         <th class="tbCol">Currency</th>
@@ -55,7 +55,7 @@
                             var sellingExchangeTo = entities.Currencies.Where(z => z.Id == sellingRateExchangeFrom.ExchangeToId).FirstOrDefault();
                             var buyingRateExchangeFrom = Model.ExchangeRates.Where(z => z.ExchangeFromId == sellingExchangeTo.Id).FirstOrDefault();
 
-                            <tr>
+                            <tr class="evenRow">
                                 <td>
                                     <img src="@sellingExchangeTo.Flag" class="tableCtyIcon" /><label class="tableFlagIcon">@sellingExchangeTo.Name</label>
                                     <div class="lastUpdatedTimeStyleDetails">@(Anything.Controllers.CalculationController.CalculateDate(sellingRateExchangeFrom.LastUpdated))</div>
@@ -119,7 +119,7 @@
                             var sellingExchangeTo = entities.Currencies.Where(z => z.Id == sellingRateExchangeFrom.ExchangeFromId).FirstOrDefault();
                             var buyingRateExchangeFrom = Model.ExchangeRates.Where(z => z.ExchangeToId == sellingExchangeTo.Id).FirstOrDefault();
 
-                            <tr>
+                            <tr class="oddRow">
                                 <td>
                                     <img src="@sellingExchangeTo.Flag" class="tableCtyIcon" /><label class="tableFlagIcon">@sellingExchangeTo.Name</label>
                                     <div class="lastUpdatedTimeStyleDetails">@(Anything.Controllers.CalculationController.CalculateDate(sellingRateExchangeFrom.LastUpdated))</div>

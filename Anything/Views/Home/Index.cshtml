@@ -3,85 +3,106 @@
     Layout = "/Views/Shared/HeaderLogoOnly.cshtml";
 }
 
-
-<!--Left Container-->
-<div class="currencyInfoContainer form-group col-md-4" id="leftContainer">
-    <div class="drawBorder btn" id="drawBorder1">
-        <input class="currencyInputTF" id="tbExchangeFrom" type="number" min="0.00" max="9999" value="1.00">
-        <button type="button" id ="btnExchangeFrom" class="btn btn-default dropdown-toggle exchangeDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img class="dispFlag" src="~/Assets/Images/SGD.png" />SGD<img class="dropdownChevron" src="~/Assets/Images/chevron-bottom-2x.png" />
-        </button>
-        <ul class="dropdown-menu scrollable-menu" id="ddlExchangeFrom">
-            @foreach (var x in Model)
-            {
-                <li class="drop">
-                    <a  href="JavaScript:void(0)"><img class="scrollbarDispFlag" src="@x.Flag">&nbsp;&nbsp;@x.Name</a>
-                </li>
-            }
-        </ul>
-    </div>
-</div>
-<!--Mid Container-->
-<div class="currencyInfoContainer form-group col-md-4" id="midContainer">
-    <img src="~/Assets/Images/exchangeicon.jpg" id="exchangeIcon" />
-</div>
-<!--Right Container-->
-<div class="currencyInfoContainer form-group col-md-4" id="rightContainer" ;">
-    <div class="drawBorder btn" id="drawBorder2">
-        <input class="currencyInputTF" id="tbExchangeTo" type="number" min="0.00" max="9999" value="1.00">
-        <button type="button" id ="btnExchangeTo" class="btn btn-default dropdown-toggle exchangeDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img class="dispFlag" src="~/Assets/Images/MYR.png" />MYR<img class="dropdownChevron" src="~/Assets/Images/chevron-bottom-2x.png" />
-        </button>
-        <ul class="dropdown-menu scrollable-menu" id="ddlExchangeTo">
-            @foreach (var x in Model)
-            {
-                <li class="drop">
-                    <a href="JavaScript:void(0)"><img class="scrollbarDispFlag" src="@x.Flag">&nbsp;&nbsp;@x.Name</a>
-                </li>
-            }
-        </ul>
-    </div>
-</div>
-
-
-<div class="col-md-12" id="marketRateContainer">
-    <div class="putCenter" id="MarketRateDiv">Market Rate: <label id="lblResult">1.00</label></div>
-</div>
-
+<!-- Main Currency Exchange Container-->
 <div class="col-md-12">
-    <div class="putCenter">
-        <button type="button" class="btn btn-primary btn-lg" id="btnViewMoneyChangers">View Money Changers</button>
+    <div class="col-md-12" style="background-color:white; border-radius:8px; background:rgba(10, 0, 0, .5)">
+        <!--Left Container-->
+        <div class="currencyInfoContainer form-group col-md-4" id="leftContainer">
+            <div class="drawBorder btn" id="drawBorder1">
+                <input class="currencyInputTF" id="tbExchangeFrom" type="number" min="0.00" max="9999" value="1.00">
+                <button type="button" id="btnExchangeFrom" class="btn btn-default dropdown-toggle exchangeDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img class="dispFlag" src="~/Assets/Images/SGD.png" />SGD<img class="dropdownChevron" src="~/Assets/Images/chevron-bottom-2x.png" />
+                </button>
+                <ul class="dropdown-menu scrollable-menu" id="ddlExchangeFrom">
+                    @foreach (var x in Model)
+                    {
+                        <li class="drop">
+                            <a href="JavaScript:void(0)"><img class="scrollbarDispFlag" src="@x.Flag">&nbsp;&nbsp;@x.Name</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+        <!--Mid Container-->
+        <div class="currencyInfoContainer form-group col-md-4" id="midContainer">
+            <img src="~/Assets/Images/exchangeicon_white.png" id="exchangeIcon" />
+        </div>
+        <!--Right Container-->
+        <div class="currencyInfoContainer form-group col-md-4" id="rightContainer" ;">
+            <div class="drawBorder btn" id="drawBorder2">
+                <input class="currencyInputTF" id="tbExchangeTo" type="number" min="0.00" max="9999" value="1.00">
+                <button type="button" id="btnExchangeTo" class="btn btn-default dropdown-toggle exchangeDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img class="dispFlag" src="~/Assets/Images/MYR.png" />MYR<img class="dropdownChevron" src="~/Assets/Images/chevron-bottom-2x.png" />
+                </button>
+                <ul class="dropdown-menu scrollable-menu" id="ddlExchangeTo">
+                    @foreach (var x in Model)
+                    {
+                        <li class="drop">
+                            <a href="JavaScript:void(0)"><img class="scrollbarDispFlag" src="@x.Flag">&nbsp;&nbsp;@x.Name</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="col-md-12" id="marketRateContainer">
+            <div class="putCenter" id="MarketRateDiv">Market Rate: <label id="lblResult">1.00</label></div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="putCenter">
+                <button type="button" class="btn btn-primary btn-lg" id="btnViewMoneyChangers">View Money Changers</button>
+            </div>
+        </div>
     </div>
 </div>
-<div class="col-md-12" id="chartContainer">
-    <img id="loading" src="assets/images/loadingcat.gif" style="display:none;" />
-    <canvas id="myChart"></canvas>
+<div class="col-md-12">
+    <div class="col-md-12" id="chartContainer">
+        <img id="loading" src="assets/images/snow.gif" style="display:none;" />
+        <canvas id="myChart"></canvas>
+    </div>
 </div>
+
 <!--Display and Filter Section-->
 
 <!--Filter: Search Money Changers-->
 <div class="col-md-12">
     <div id="moneyChangerContainer">
-        <div class="searchMCStyle">
-            Search:
-            <input type="text" class="form-control searchBoxStyle" id="tbSearch">
+        <div class="col-md-12">
+            <div class="searchMCStyle col-md-6">
+                Search:
+                <input type="text" class="form-control searchBoxStyle" id="tbSearch">
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-4 btnSortStyle">
+                <label style="padding-top:5px;"><strong>Sort By:</strong></label>
+                <a href="#" class="btn btn-default btnStyleLowest"><strong>Lowest rate</strong></a>
+                <a href="#" class="btn btn-default btnStyleBest"><strong>Best rate</strong></a>
+            </div>
         </div>
-
         <!--Display Money Changers-->
-        <table class="table table-striped table-hover">
+        <table class="table">
             <tbody id="tbMoneyChanger">
-                <tr id="trMoneyChanger">
-                    <td class="col-md-6">
-                        <label class="moneyChangerNameStyle"><strong>{{Name}}</strong><br /></label>
+                <tr id="trMoneyChanger" class="trStyle">
+                    <td class="col-md-6 tdStyleLeft">
+                        <label class="moneyChangerNameStyle">
+                            <strong>{{Name}}</strong>
+                        </label>
+                        <a href="#">
+                            <img src="~/Assets/Images/yellowStar.png" class="favIcon" />
+                        </a>
+                        <br />
                         <label class="mcLocationStyle">{{Location}}</label>
                     </td>
                     <td class="col-md-3"></td>
-                    <td class="col-md-3">
+                    <td class="col-md-3 tdStyleRight">
                         <label><strong>1 {{ExchangeFrom}} = {{Rate}} {{ExchangeTo}}</strong></label><br />
                         <div class="lastUpdatedTimeStyle">{{LastUpdated}}</div>
                         <a href="/{{Name}}" class="btn btn-default btnStyle"><strong>Details</strong></a>
                     </td>
                 </tr>
+                <tr class="trStyleSpacer"></tr>
             </tbody>
         </table>
     </div>

@@ -32,7 +32,7 @@ namespace Anything.Controllers
         }
         //public async System.Threading.Tasks.Task<ActionResult> GetGraph(string ExchangeFrom, string ExchangeTo)
         //{
-        //    return Json(await GraphController.GetGraph(ExchangeFrom,ExchangeTo), JsonRequestBehavior.AllowGet);
+        //   return Json(await GraphController.GetGraph(ExchangeFrom,ExchangeTo), JsonRequestBehavior.AllowGet);
         //}              
     }
 }

@@ -20,8 +20,8 @@
 }
 
 #outerContainer .rowContainer {
-    background: rgba(255, 255, 255, 0.9);
-    height: 100%;
+    /*background: rgba(255, 255, 255, 0.9);*/
+    height: 85%;
 }
 
 #outerContainer {
@@ -57,6 +57,12 @@
     padding: 10px;
 }
 
+#logoNew {
+    width: 320px;
+    height: 100px;
+    padding: 10px 0px;
+}
+
 #header {
     /*background-color: whitesmoke; */
     background-image: url('../Images/header-background.png');
@@ -87,7 +93,8 @@ a.userBtn:hover, a.userBtn:active {
 
 /*---------------Containers CSS------------*/
 .subContainer {
-    margin-top: 20px;
+    /*margin-top: 20px;*/
+    margin-top: 10px;
 }
 
 .rowContainer {
@@ -96,8 +103,13 @@ a.userBtn:hover, a.userBtn:active {
     top: 0;
 }
 
-.currencyInfoContainer{
-    margin-top: 2em;
+.rowContainer ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
+
+.currencyInfoContainer {
+    margin-top: 10px;
 }
 
 #midContainer{
@@ -137,12 +149,13 @@ a.userBtn:hover, a.userBtn:active {
 
 #marketRateContainer {
     padding-top: 2em;
-    padding-bottom: 2em;
+    /*padding-bottom: 2em;*/
 }
 
 #MarketRateDiv {
-    border: black solid 3px;
+    border: black solid 2px;
     font-size: 20pt;
+    background-color: white;
 }
 
 .putcenter {
@@ -159,7 +172,7 @@ a.userBtn:hover, a.userBtn:active {
     color: white;
     background-color: #eb9c15;
     border: none;
-    box-shadow: 2px 3px #888888;
+    box-shadow: 2px 3px #fff;
 }
 
 #btnViewMoneyChangers:hover {
@@ -231,8 +244,12 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 #chartContainer {
-    padding-top: 3em;
-    padding-bottom: 2em;
+    margin-top: 10px;
+    background-color: beige;
+    background: rgba(10, 0, 0, .5)
+    /*border-radius:8px;*/
+    /*padding-top: 2em;*/
+    /*padding-bottom: 2em;*/
 }
 
 #loading {
@@ -318,37 +335,37 @@ input[type=number]::-webkit-outer-spin-button {
     padding:0px 15px 0px 0px;
 }
 
-.table-curved {
+.table-curved tr.evenRow {
     background-color:white;
-    border-collapse: separate;
-    border: #e1e1e1 solid 2px;
-    border-radius: 8px;
+}
+
+.table .table-curved tr {
+    background-color: white;
+    border-collapse: collapse;
+    /*border-radius: 8px;*/
     border-left: 0px;
     padding: 0px;
+    border-radius: 1em;
 }
 
-.table-curved th {
-     border-top: none;
+.table-curved tr.tableHeader th:first-child {
+    border-top-left-radius: 8px;
 }
 
-.table-curved th:first-child {
-     border-radius: 6px 0 0 0;
+.table-curved tr.tableHeader th:last-child {
+    border-top-right-radius: 8px;
 }
 
-.table-curved th:last-child {
-     border-radius: 0 6px 0 0;
+.table-curved tr.oddRow {
+    background-color: whitesmoke;
 }
 
-.table-curved th:only-child {
-    border-radius: 6px 6px 0 0;
+.table-curved tr.oddRow td:first-child {
+    border-bottom-left-radius: 8px;
 }
 
-.table-curved tr:last-child td:first-child {
-    border-radius: 0 0 0 6px;
-}
-
-.table-curved tr:last-child td:last-child {
-    border-radius: 0 0 6px 0;
+.table-curved tr.oddRow td:last-child {
+    border-bottom-right-radius: 8px;
 }
 
 .currencyInput, select {
@@ -386,6 +403,28 @@ input[type=number]::-webkit-outer-spin-button {
     border-radius: 32px;
 }
 
+.table .trStyle{
+    background-color: white;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.46);
+    border-style: hidden;
+    border-radius: 8px;
+}
+
+.trStyleSpacer {
+    height:6px;
+}
+
+.tdStyleLeft {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    margin-bottom: 1px;
+}
+
+.tdStyleRight {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
 .btnStyle {
     margin-left: 20%;
     color: white;
@@ -394,13 +433,106 @@ input[type=number]::-webkit-outer-spin-button {
     box-shadow: 1px 2px #888888;
 }
 
+.btnSortStyle {
+    padding: 17px 0px 0px 83px;
+    margin-left: 5%;
+    float: right;
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
+    font-size: 18px;
+}
+.btnStyleBest {
+    color: white;
+    background-color: #eb9c15;
+    border: none;
+    border: 1px solid #eb9c15;
+    margin-top: 10px;
+    padding-bottom: 2px;
+}
+.btnStyleBest:focus {
+    color: white;
+    background-color: #eb9c15;
+    border: none;
+    border: 1px solid #eb9c15;
+}
+
+.btnStyleBest:hover {
+    color: white;
+    background-color: #eb9c15;
+    border: none;
+    border: 1px solid #eb9c15;
+}
+
+.btnStyleBest:focus .btnStyleLowest {
+    color: #eb9c15;
+    border: 1px solid #eb9c15;
+    background-color: transparent;
+}
+
+.btnStyleLowest {
+    color: white;
+    border: 1px solid black;
+    margin-top: 10px;
+    padding-bottom: 2px;
+    background:rgba(10,0,0,0.7);
+}
+
+.btnStyleLowest:focus {
+    color: white;
+    background-color: #eb9c15;
+    border: none;
+    border: 1px solid #eb9c15;
+}
+
+.btnStyleLowest:hover {
+    color: white;
+    background-color: #eb9c15;
+    border: none;
+    border: 1px solid #eb9c15;
+}
+
+.btnStyleLowest:focus .btnStyleBest {
+    color: #eb9c15;
+    border: 1px solid #eb9c15;
+    background-color: transparent;
+}
+
 .btnStyle:hover {
     background-color: #e8860e;
     color: white;
 }
 
+.trStyle:hover {
+    background-color: #eb9c15
+}
+
+.trStyle:hover .moneyChangerNameStyle{
+    color:white;
+}
+
+.trStyle:hover .mcLocationStyle {
+    color:white;
+}
+
+.trStyle:hover .btnStyle {
+    color: black;
+    background-color: white;
+    box-shadow:rgba(0,0,0,0);
+}
+
+.trStyle:hover .lastUpdatedTimeStyle{
+    color:white;
+    border:2px solid white;
+    font-weight:bold;
+}
+
+.trStyle:hover .tdStyleRight label {
+    color: white;
+}
+
 #moneyChangerContainer{
-    padding-top: 2em;
+    /*padding-top: 2em;*/
+    margin-bottom:20px;
 }
 
 .moneyChangerNameStyle{
@@ -410,20 +542,23 @@ input[type=number]::-webkit-outer-spin-button {
 
 .mcLocationStyle {
     font-style:italic;
+    font-size:small;
     padding-left: 5px;
     color:darkgray
 }
 
 .searchMCStyle {
     display: inline;
-    font-size: 16pt;
+    font-size: 18pt;
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
     padding: 0.5em 0 0.5em 0;
 }
 
 .searchBoxStyle {
-    width: 35%;
+    width: 50%;
     display: inline;
-    margin-bottom: 10px;
+    margin-top: 10px;
     padding-bottom: 2px;
 }
 
@@ -457,9 +592,10 @@ input[type=number]::-webkit-outer-spin-button {
     #MarketRateDiv{
         width: 50%;
         font-size: 16pt;
+
     }
 
-    #btnViewMoneyChangers{
+    #btnViewMoneyChangers {
         position: absolute;
         width: 50%;
         margin-left: -20%;
@@ -469,6 +605,13 @@ input[type=number]::-webkit-outer-spin-button {
     .searchBoxStyle{
         width: 50%;
     }
+}
+
+.favIcon{
+    width:30px;
+    height:25px;
+    padding-left:5px;
+    padding-bottom:8px;
 }
 
 /*Adjustment for normal screen*/

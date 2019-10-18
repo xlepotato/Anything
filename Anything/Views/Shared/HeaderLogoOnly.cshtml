@@ -11,23 +11,25 @@
 
 
     <div class="container mainContainer">
-        
         <div class="row rowContainer" id="outerContainer">
             @*currency conversion section*@
-
-            <div class="col-md-1"></div>
-            <div class="row col-md-10">
-                
-                <div class="row rowContainer">
-                    <div class="navbar navbar-expand-lg" id="header">
-                        <a href="/"><img id="logo" src="~/Assets/Images/Logo2.png" /></a>
-                    </div>
-                    <div class="subContainer">
-                        @RenderBody()
+            <div class="col-md-12" @*style="background-color:black"*@ >
+                <a href="/"><img id="logoNew" src="/Assets/Images/Logo4.png"></a>
+            </div>
+            <div class="col-md-12">
+                <div class="col-md-1"></div>
+                <div class="row col-md-10">
+                    <div class="row rowContainer">
+                        @*<div class="navbar navbar-expand-lg" id="header">
+                    <a href="/"><img id="logo" src="~/Assets/Images/Logo2.png" /></a>
+                </div>*@
+                        <div class="subContainer">
+                            @RenderBody()
+                        </div>
                     </div>
                 </div>
+                <div class="col-md-1"></div>
             </div>
-            <div class="col-md-1"></div>
         </div>
     </div> @*end container*@
 
