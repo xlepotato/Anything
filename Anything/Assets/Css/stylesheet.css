@@ -449,24 +449,12 @@ input[type=number]::-webkit-outer-spin-button {
     margin-top: 10px;
     padding-bottom: 2px;
 }
-.btnStyleBest:focus {
-    color: white;
-    background-color: #eb9c15;
-    border: none;
-    border: 1px solid #eb9c15;
-}
 
 .btnStyleBest:hover {
     color: white;
     background-color: #eb9c15;
     border: none;
     border: 1px solid #eb9c15;
-}
-
-.btnStyleBest:focus .btnStyleLowest {
-    color: #eb9c15;
-    border: 1px solid #eb9c15;
-    background-color: transparent;
 }
 
 .btnStyleLowest {
@@ -477,24 +465,11 @@ input[type=number]::-webkit-outer-spin-button {
     background:rgba(10,0,0,0.7);
 }
 
-.btnStyleLowest:focus {
-    color: white;
-    background-color: #eb9c15;
-    border: none;
-    border: 1px solid #eb9c15;
-}
-
 .btnStyleLowest:hover {
     color: white;
     background-color: #eb9c15;
     border: none;
     border: 1px solid #eb9c15;
-}
-
-.btnStyleLowest:focus .btnStyleBest {
-    color: #eb9c15;
-    border: 1px solid #eb9c15;
-    background-color: transparent;
 }
 
 .btnStyle:hover {
