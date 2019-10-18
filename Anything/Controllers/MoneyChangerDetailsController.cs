@@ -8,7 +8,7 @@ namespace Anything.Controllers
 {
     public class MoneyChangerDetailsController : Controller
     { 
-        [Route("{MoneyChangerName}")]
+        [Route("MoneyChangers/{MoneyChangerName}")]
         public ActionResult Details(string MoneyChangerName)
         {
             using (cz2006anythingEntities model = new cz2006anythingEntities())
