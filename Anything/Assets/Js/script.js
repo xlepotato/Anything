@@ -153,6 +153,7 @@
     }
     //Home Page(Money Changer)////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     var trMoneyChangerHtml = $("#trMoneyChanger").parent().html();
+    var sortBy = "Best";
     $("#trMoneyChanger").html("");
     function Filter() {
         var exchangeFrom = $("#btnExchangeFrom").text().trim();
@@ -160,7 +161,8 @@
         var Data = {
             Search: $("#tbSearch").val(),
             ExchangeFrom: exchangeFrom,
-            ExchangeTo: exchangeTo
+            ExchangeTo: exchangeTo,
+            SortBy: sortBy
         }
         $.ajax({
             url: window.location.href + "/Home/Filter",
@@ -192,10 +194,23 @@
             }
         });
     }
+   
     $("#btnViewMoneyChangers").click(function () {
         $('html, .rowContainer').animate({
             scrollTop: ($('#moneyChangerContainer').offset().top)
         }, 500);
+    });
+    $("#btnStyleLowest").click(function () {
+        sortBy = "Lowest";
+        $("#btnStyleLowest").removeClass("btnStyleLowest").addClass("btnStyleBest");
+        $("#btnStyleBest").removeClass("btnStyleBest").addClass("btnStyleLowest");
+        Filter();
+    });
+    $("#btnStyleBest").click(function () {
+        sortBy = "Best";
+        $("#btnStyleBest").removeClass("btnStyleLowest").addClass("btnStyleBest");
+        $("#btnStyleLowest").removeClass("btnStyleBest").addClass("btnStyleLowest");
+        Filter();
     });
     $("#tbSearch").on('input', function () {
         Filter();
@@ -216,7 +231,7 @@
         }
     });
 
-    //Login Page
+    //Login Page//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     $("#btnLogin").click(function () {
         Login();
     });
@@ -237,7 +252,7 @@
             }
         });
     }
-    //Register Page
+    //Register Page//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     function validateUsername() {
         var name = document.getElementById("username").value;
 
