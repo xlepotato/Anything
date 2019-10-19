@@ -85,7 +85,7 @@ fieldset
 }
 
 a.userBtn:hover, a.userBtn:active {
-    background-color: #0fa9d6 !important;
+    /*background-color: #0fa9d6 !important;*/
 }
 
 /*-----------------------------------------*/
@@ -546,10 +546,66 @@ input[type=number]::-webkit-outer-spin-button {
     padding:0px
 }
 
+/* Register Page */
+#regContainer, .switchTab {
+    background-color: white;
+    width: 50%;
+    height: 95%;
+    border-radius: 15px;
+}
+
+.nav {
+    font-size: 16pt;
+}
+
+.nav-link{
+    color: black;
+}
+
+#signup:hover {
+    background-color: white;
+    cursor: default;
+    color: black;
+}
+
+.inactive {
+    border-left: solid gray 1px;
+    border-bottom: solid gray 5px; 
+}
+
+#regForm{
+    padding: 1em 2em 2em 2em;
+}
+
+.errormsg {
+    color: red;
+    visibility: hidden;
+}
+
+#btnRegister {
+    font-size: 12pt;
+    color: white;
+    background-color: #eb9c15;
+    border: none;
+    box-shadow: 2px 3px #fff;
+}
+
+#btnRegister:hover {
+        background-color: #e8860e;
+}
+
 /*Adjustment for smaller screen*/
 @media screen and (max-width: 1000px) {
     .thumbnail {
         width: 70%;
+    }
+
+    .nav{
+        font-size: 12pt;
+    }
+
+    .inactive {
+        border-left: none;
     }
 
     .moneyChangerContainer{
