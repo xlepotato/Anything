@@ -26,9 +26,9 @@ namespace Anything.Controllers
         //    return Json(ApiController.GetCurrency(ExchangeAmount,ExchangeFrom,ExchangeTo), JsonRequestBehavior.AllowGet);
         //}
 
-        public ActionResult Filter(string Search,string ExchangeFrom, string ExchangeTo, string SortBy)
+        public ActionResult Filter(string Search,string ExchangeFrom, string ExchangeTo, string SortBy, bool IsFavourite)
         {
-            return Json(FilterController.Filter(Search, ExchangeFrom, ExchangeTo, SortBy), JsonRequestBehavior.AllowGet);          
+            return Json(FilterController.Filter(Search, ExchangeFrom, ExchangeTo, SortBy, IsFavourite), JsonRequestBehavior.AllowGet);          
         }
         //public async System.Threading.Tasks.Task<ActionResult> GetGraph(string ExchangeFrom, string ExchangeTo)
         //{

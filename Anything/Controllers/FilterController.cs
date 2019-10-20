@@ -7,7 +7,7 @@ namespace Anything.Controllers
 {
     public class FilterController
     {
-        public static object Filter(string Search, string ExchangeFrom, string ExchangeTo, string SortBy)
+        public static object Filter(string Search, string ExchangeFrom, string ExchangeTo, string SortBy, bool IsFavourite)
         {
             string username = HttpContext.Current.Session["Username"]== null? "" : HttpContext.Current.Session["Username"].ToString();
             using (cz2006anythingEntities model = new cz2006anythingEntities())
@@ -15,6 +15,10 @@ namespace Anything.Controllers
                 var moneyChangers = model.ExchangeRates.Where(z => z.ExchangeFromId == model.Currencies.Where(y => y.Name == ExchangeFrom).FirstOrDefault().Id
                                                 && z.ExchangeToId == model.Currencies.Where(y => y.Name == ExchangeTo).FirstOrDefault().Id);
                 var exchangeRates = moneyChangers.Where(z => z.MoneyChanger.Name.Contains(Search) || z.MoneyChanger.Location.Contains(Search));
+                if(IsFavourite)
+                {
+                    exchangeRates = exchangeRates.Where(z => z.MoneyChanger.Favourites.Where(a => a.Username == username).FirstOrDefault() != null);
+                }
                 if(SortBy == "Best")
                 {
                     exchangeRates = exchangeRates.OrderByDescending(z => z.Rate);

@@ -77,7 +77,10 @@
             <div class="col-md-1"></div>
             <div class="col-md-5 btnSortStyle">
                 Sort By:
-                <button class="btn btnStyleFav"><strong>Favourites</strong></button>
+                @if (Session["Username"] != null)
+                {
+                <button id="btnStyleFav" class="btn btnStyleFav"><strong>Favourites</strong></button>
+                }
                 <button id="btnStyleLowest" class="btn btnStyleLowest"><strong>Lowest rate</strong></button>
                 <button id="btnStyleBest" class="btn btnStyleBest"><strong>Best rate</strong></button>
             </div>

@@ -154,6 +154,7 @@
     //Home Page(Money Changer)////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     var trMoneyChangerHtml = $("#trMoneyChanger").parent().html();
     var sortBy = "Best";
+    var isFavourite = false;
     $("#trMoneyChanger").html("");
     function Filter() {
         var exchangeFrom = $("#btnExchangeFrom").text().trim();
@@ -162,7 +163,8 @@
             Search: $("#tbSearch").val(),
             ExchangeFrom: exchangeFrom,
             ExchangeTo: exchangeTo,
-            SortBy: sortBy
+            SortBy: sortBy,
+            IsFavourite : isFavourite
         }
         $.ajax({
             url: window.location.href + "/Home/Filter",
@@ -198,7 +200,6 @@
                                                     .replace("{{ExchangeTo}}", exchangeTo)
                                                     .replace("{{LastUpdated}}", this.LastUpdated)
                                                     .replace("{{Name}}", this.Name));
-                    console.log(this.HasFavourite);
                 });
                 $(".btnFav").click(function () {
                     var src = ($(this).find("img").attr('src'));
@@ -232,6 +233,20 @@
             }
         });
     }
+    $("#btnStyleFav").click(function () {
+        if ($("#btnStyleFav").hasClass("btnStyleFav"))
+        {
+            $("#btnStyleFav").removeClass("btnStyleFav").addClass("btnStyleBest");
+            isFavourite = true;
+            Filter();
+        }
+        else
+        {
+            $("#btnStyleFav").removeClass("btnStyleBest").addClass("btnStyleFav");
+            isFavourite = false;
+            Filter();
+        }
+    });
     $("#btnViewMoneyChangers").click(function () {
         $('html, .rowContainer').animate({
             scrollTop: ($('#moneyChangerContainer').offset().top)
