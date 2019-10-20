@@ -20,6 +20,14 @@
     <Property Name="MoneyChangerId" Type="int" Nullable="false" />
     <Property Name="LastUpdated" Type="datetime" Nullable="false" />
   </EntityType>
+  <EntityType Name="Favourites">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MoneyChangerId" Type="int" Nullable="false" />
+    <Property Name="Username" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
   <EntityType Name="HistoricalRate">
     <Key>
       <PropertyRef Name="Id" />
@@ -110,6 +118,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Favourites_MoneyChanger">
+    <End Role="MoneyChanger" Type="Self.MoneyChanger" Multiplicity="1" />
+    <End Role="Favourites" Type="Self.Favourites" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MoneyChanger">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Favourites">
+        <PropertyRef Name="MoneyChangerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Favourites_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Favourites" Type="Self.Favourites" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Username" />
+      </Principal>
+      <Dependent Role="Favourites">
+        <PropertyRef Name="Username" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_HistoricalRate_Currency">
     <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
     <End Role="HistoricalRate" Type="Self.HistoricalRate" Multiplicity="*" />
@@ -182,9 +214,41 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <EntityContainer Name="cz2006anythingModelStoreContainer">
     <EntitySet Name="Currency" EntityType="Self.Currency" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ExchangeRate" EntityType="Self.ExchangeRate" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Favourites" EntityType="Self.Favourites" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HistoricalRate" EntityType="Self.HistoricalRate" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MoneyChanger" EntityType="Self.MoneyChanger" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
@@ -201,6 +265,14 @@
     <AssociationSet Name="FK_ExchangeRate_MoneyChanger" Association="Self.FK_ExchangeRate_MoneyChanger">
       <End Role="MoneyChanger" EntitySet="MoneyChanger" />
       <End Role="ExchangeRate" EntitySet="ExchangeRate" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Favourites_MoneyChanger" Association="Self.FK_Favourites_MoneyChanger">
+      <End Role="MoneyChanger" EntitySet="MoneyChanger" />
+      <End Role="Favourites" EntitySet="Favourites" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Favourites_User" Association="Self.FK_Favourites_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Favourites" EntitySet="Favourites" />
     </AssociationSet>
     <AssociationSet Name="FK_HistoricalRate_Currency" Association="Self.FK_HistoricalRate_Currency">
       <End Role="Currency" EntitySet="Currency" />

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.Mvc;
 
 namespace Anything.Controllers
 {
@@ -10,6 +9,7 @@ namespace Anything.Controllers
     {
         public static object Filter(string Search, string ExchangeFrom, string ExchangeTo, string SortBy)
         {
+            string username = HttpContext.Current.Session["Username"]== null? "" : HttpContext.Current.Session["Username"].ToString();
             using (cz2006anythingEntities model = new cz2006anythingEntities())
             {
                 var moneyChangers = model.ExchangeRates.Where(z => z.ExchangeFromId == model.Currencies.Where(y => y.Name == ExchangeFrom).FirstOrDefault().Id
@@ -22,12 +22,14 @@ namespace Anything.Controllers
                 else if(SortBy == "Lowest")
                 {
                     exchangeRates = exchangeRates.OrderBy(z => z.Rate);
-                }                                               
+                }
+                var userFavourites = model.Favourites.Where(a => a.Username == username);
                 var x = exchangeRates.AsEnumerable().Select(z => new
                 {
                     z.Rate,
                     z.MoneyChanger.Name,
                     z.MoneyChanger.Location,
+                    HasFavourite = userFavourites.AsEnumerable().Where(a=> a.MoneyChanger == z.MoneyChanger).FirstOrDefault() != null?true:false,
                     LastUpdated = CalculationController.CalculateDate(z.LastUpdated),
                 }).ToList();
                 var zxc = new

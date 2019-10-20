@@ -183,6 +183,14 @@
                     $("#btnViewMoneyChangers").hide();
                 }
                 $.each(result.ExchangeRates, function () {
+                    if (this.HasFavourite)
+                    {
+                        trMoneyChangerHtml = trMoneyChangerHtml.replace('/Assets/Images/yellowStar_white.png','/Assets/Images/yellowStar.png');
+                    }
+                    else
+                    {
+                        trMoneyChangerHtml = trMoneyChangerHtml.replace('/Assets/Images/yellowStar.png', '/Assets/Images/yellowStar_white.png');
+                    }
                     $("#tbMoneyChanger").append(trMoneyChangerHtml.replace("{{Name}}", this.Name)
                                                     .replace("{{Location}}", this.Location)
                                                     .replace("{{ExchangeFrom}}", exchangeFrom)
@@ -190,11 +198,40 @@
                                                     .replace("{{ExchangeTo}}", exchangeTo)
                                                     .replace("{{LastUpdated}}", this.LastUpdated)
                                                     .replace("{{Name}}", this.Name));
+                    console.log(this.HasFavourite);
+                });
+                $(".btnFav").click(function () {
+                    var src = ($(this).find("img").attr('src'));
+                    if (src == '/Assets/Images/yellowStar_white.png')
+                    {
+                        src = '/Assets/Images/yellowStar.png';
+                    }
+                    else
+                    {
+                        src = '/Assets/Images/yellowStar_white.png';
+                    }                   
+                    $(this).find("img").attr('src', src);
+                    SetFavourite($(this).parent().next().children().children().text().trim());
                 });
             }
         });
     }
-   
+    function SetFavourite(moneyChangerName)
+    {
+        var Data = {
+            MoneyChangerName: moneyChangerName
+        }
+        $.ajax({
+            url: window.location.href + "Home/SetFavourite",
+            data: Data,
+            typr: "GET",
+            contentType: "application/json;charset=UTF-8",
+            dataType: "json",
+            success: function (result) {
+                console.log(result);
+            }
+        });
+    }
     $("#btnViewMoneyChangers").click(function () {
         $('html, .rowContainer').animate({
             scrollTop: ($('#moneyChangerContainer').offset().top)

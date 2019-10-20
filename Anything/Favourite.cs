@@ -12,21 +12,13 @@ namespace Anything
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class Favourite
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
-        {
-            this.Favourites = new HashSet<Favourite>();
-        }
-    
+        public int Id { get; set; }
+        public int MoneyChangerId { get; set; }
         public string Username { get; set; }
-        public string Password { get; set; }
-        public int MobileNumber { get; set; }
-        public Nullable<int> MoneyChangerId { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Favourite> Favourites { get; set; }
         public virtual MoneyChanger MoneyChanger { get; set; }
+        public virtual User User { get; set; }
     }
 }

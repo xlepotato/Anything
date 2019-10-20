@@ -4,14 +4,15 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="8a1a59844b0c494f869b8d66c5f20e87" Name="Diagram1">
-        <EntityTypeShape EntityType="cz2006anythingModel.Currency" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="cz2006anythingModel.ExchangeRate" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="cz2006anythingModel.HistoricalRate" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
+      <Diagram DiagramId="3ad35cce8fda4680ad57a8afd6d5bc9e" Name="Diagram1">
+        <EntityTypeShape EntityType="cz2006anythingModel.Currency" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="cz2006anythingModel.ExchangeRate" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="cz2006anythingModel.Favourite" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="cz2006anythingModel.HistoricalRate" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
         <EntityTypeShape EntityType="cz2006anythingModel.MoneyChanger" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="cz2006anythingModel.sysdiagram" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="cz2006anythingModel.Transaction" Width="1.5" PointX="6" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="cz2006anythingModel.User" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="cz2006anythingModel.sysdiagram" Width="1.5" PointX="7.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="cz2006anythingModel.Transaction" Width="1.5" PointX="6" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cz2006anythingModel.User" Width="1.5" PointX="3" PointY="2" IsExpanded="true" />
         <AssociationConnector Association="cz2006anythingModel.FK_ExchangeRate_Currency" ManuallyRouted="false" />
         <AssociationConnector Association="cz2006anythingModel.FK_ExchangeRate_Currency1" ManuallyRouted="false" />
         <AssociationConnector Association="cz2006anythingModel.FK_HistoricalRate_Currency" ManuallyRouted="false" />
@@ -19,6 +20,8 @@
         <AssociationConnector Association="cz2006anythingModel.FK_Transaction_Currency" ManuallyRouted="false" />
         <AssociationConnector Association="cz2006anythingModel.FK_Transaction_Currency1" ManuallyRouted="false" />
         <AssociationConnector Association="cz2006anythingModel.FK_ExchangeRate_MoneyChanger" ManuallyRouted="false" />
+        <AssociationConnector Association="cz2006anythingModel.FK_Favourites_MoneyChanger" ManuallyRouted="false" />
+        <AssociationConnector Association="cz2006anythingModel.FK_Favourites_User" ManuallyRouted="false" />
         <AssociationConnector Association="cz2006anythingModel.FK_Transaction_MoneyChanger" ManuallyRouted="false" />
         <AssociationConnector Association="cz2006anythingModel.FK_User_MoneyChanger" ManuallyRouted="false" />
       </Diagram>

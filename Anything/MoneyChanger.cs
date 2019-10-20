@@ -18,6 +18,7 @@ namespace Anything
         public MoneyChanger()
         {
             this.ExchangeRates = new HashSet<ExchangeRate>();
+            this.Favourites = new HashSet<Favourite>();
             this.Transactions = new HashSet<Transaction>();
             this.Users = new HashSet<User>();
         }
@@ -32,6 +33,8 @@ namespace Anything
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ExchangeRate> ExchangeRates { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Favourite> Favourites { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Transaction> Transactions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

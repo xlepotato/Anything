@@ -86,9 +86,11 @@
         <table class="table">
             <tbody id="tbMoneyChanger">
                 <tr id="trMoneyChanger" class="trStyle">
+                    @if (Session["Username"] != null)
+                    {
                     <td class="col-md-1 tdStyleLeft">
-                        <a href="#">
-                            <img src="~/Assets/Images/yellowStar_white.png" class="favIcon" />
+                        <a href="JavaScript:void(0)" class="btnFav">
+                            <img src="/Assets/Images/yellowStar_white.png" class="favIcon" />
                         </a>
                     </td>
                     <td class="col-md-5">
@@ -99,6 +101,18 @@
                         <br />
                         <label class="mcLocationStyle">{{Location}}</label>
                     </td>
+                    }
+                    else
+                    {
+                    <td class="col-md-6 tdStyleLeft">
+                        <label class="moneyChangerNameStyle">
+                            <strong>{{Name}}</strong>
+                        </label>
+
+                        <br />
+                        <label class="mcLocationStyle">{{Location}}</label>
+                    </td>
+                    }
                     <td class="col-md-3"></td>
                     <td class="col-md-3 tdStyleRight">
                         <label><strong>1 {{ExchangeFrom}} = {{Rate}} {{ExchangeTo}}</strong></label><br />
