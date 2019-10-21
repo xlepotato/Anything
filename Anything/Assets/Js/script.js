@@ -309,23 +309,73 @@
     if (window.location.pathname === '/signup' || window.location.pathname === '/SignUp' || window.location.pathname === '/SignUp/Index' || window.location.pathname === '/login' || window.location.pathname === '/Login' || window.location.pathname === '/Login/Index' ) { //hide scrollbar
         $(".rowContainer").css({ 'overflow': 'hidden' });
     }
-
-    function validateUsername() {
-        var name = document.getElementById("username").value;
-
-        if (name.length == 0) {
-            producePrompt("This field is Required.", "usernamePrompt", "red");
-            return false;
+    function ValidateUsername() {
+        var reg = /[a-zA-Z0-9]{6,}$/;
+        if (reg.test($("#username").val())) {
+            return true
+        }
+        else
+        {
+            $("#usernameError").text("Please enter at least 6 alpha numeric characters.");
+            $("#usernameError").show();
+            return false
+        }
+    }
+    function ValidatePassword() {
+        var reg = /[\w]{8,}$/;
+        if (reg.test($("#password").val())) {
+            return true
+        }
+        else {
+            $("#passwordError").text("Please enter at least 8 characters.");
+            $("#passwordError").show();
+            return false
+        }
+    }
+    function ValidateConfirmPassword() {
+      
+        if ($("#password").val() == $("#confirmPassword").val()) {
+            return true
+        }
+        else {
+            $("#confirmPWError").text("Password does not match!");
+            $("#confirmPWError").show();
+            return false
+        }
+    }
+    function ValidateMobileNumber() {
+        var reg = /^[0-9]{8}$/;
+        if (reg.test($("#mobilenumber").val())) {
+            return true
+        }
+        else {
+            $("#mobileNoError").text("Please enter your 8 digit singapore number.");
+            $("#mobileNoError").show();
+            return false
         }
     }
 
-    function producePrompt(message, promptLocation, color) {
-        document.getElementById(promptLocation).innerHTML = message;
-        document.getElementById(promptLocation).style.color = color;
-    }
-
     $("#btnRegister").click(function () {
-        Register();
+        ValidateUsername();
+        ValidatePassword();
+        ValidateConfirmPassword();
+        ValidateMobileNumber();
+        if (ValidateUsername() && ValidatePassword() && ValidateConfirmPassword() && ValidateMobileNumber()) {
+            Register();
+        }
+    });
+    $("#username").on('input', function () {
+        $("#usernameError").text("");
+    });
+    $("#password").on('input', function () {
+        $("#passwordError").text("");
+        $("#confirmPWError").text("");
+    });
+    $("#confirmPassword").on('input', function () {
+        $("#confirmPWError").text("");
+    });
+    $("#mobilenumber").on('input', function () {
+        $("#mobileNoError").text("");
     });
     function Register() {
         var Data = {
@@ -340,8 +390,18 @@
             contentType: "application/json;charset=UTF-8",
             dataType: "json",
             success: function (result) {
-                $("#lblSuccess").html("");
-                $("#lblSuccess").append(result);
+                if (result == "Success") {
+                    $("#lblSuccess").html("");
+                    $("#lblSuccess").append(result);
+                }
+                else if (result == "Mobile")
+                {
+                    $("#mobileNoError").text("Mobile number already exists");
+                }
+                else if (result == "Username")
+                {
+                    $("#usernameError").text("Username already exists");
+                }
             }
         });
     }

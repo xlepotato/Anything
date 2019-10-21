@@ -620,7 +620,6 @@ input[type=number]::-webkit-outer-spin-button {
 
 .errormsg {
     color: red;
-    visibility: hidden;
 }
 
 #btnRegister {

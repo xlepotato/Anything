@@ -32,11 +32,11 @@ namespace Anything.Controllers
                 }
                 else if(username != null)
                 {
-                    message = "Username already exists";
+                    message = "Username";
                 }
                 else if (mobilenumber != null)
                 {
-                    message = "Mobile Number already exists";
+                    message = "Mobile";
                 }
                 return Json(message
                 , JsonRequestBehavior.AllowGet);
