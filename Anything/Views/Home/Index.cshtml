@@ -57,9 +57,17 @@
         </div>
     </div>
 </div>
+
 <div class="col-md-12">
-    <div class="col-md-12" id="chartContainer">
-        <img id="loading" src="assets/images/snow.gif" style="display:none;" />
+    <div class="col-md-12 loadingContainer">
+        <img class="loading" src="assets/images/snow.gif"/>
+        <img class="loading" src="assets/images/snow.gif"/>
+        <img class="loading" src="assets/images/snow.gif"/>
+    </div>
+</div>
+
+<div class="col-md-12">
+    <div class="col-md-12 chartContainer">
         <canvas id="myChart"></canvas>
     </div>
 </div>
@@ -70,12 +78,12 @@
 <div class="col-md-12">
     <div id="moneyChangerContainer">
         <div class="col-md-12" style="padding-right:0;padding-left:0.5em">
-            <div class="searchMCStyle col-md-6">
+            <div class="searchMCStyle @*col-md-6*@">
                 Search:
                 <input type="text" class="form-control searchBoxStyle" id="tbSearch">
             </div>
-            <div class="col-md-1"></div>
-            <div class="col-md-5 btnSortStyle">
+            @*<div class="col-md-1"></div>*@
+            <div class="@*col-md-5*@ btnSortStyle">
                 Sort By:
                 @if (Session["Username"] != null)
                 {
@@ -116,10 +124,13 @@
                         <label class="mcLocationStyle">{{Location}}</label>
                     </td>
                     }
-                    <td class="col-md-3"></td>
-                    <td class="col-md-3 tdStyleRight">
-                        <label><strong>1 {{ExchangeFrom}} = {{Rate}} {{ExchangeTo}}</strong></label><br />
-                        <div class="lastUpdatedTimeStyle">{{LastUpdated}}</div>
+                    <td class="col-md-4">
+                        <div style="float:right; padding-top:0.5em">
+                            <label><strong>1 {{ExchangeFrom}} = {{Rate}} {{ExchangeTo}}</strong></label><br />
+                            <div class="lastUpdatedTimeStyle">{{LastUpdated}}</div>
+                        </div>
+                    </td>
+                    <td class="col-md-2 tdStyleRight">
                         <a href="/MoneyChangers/{{Name}}" class="btn btn-default btnStyle"><strong>Details</strong></a>
                     </td>
                 </tr>
