@@ -89,9 +89,9 @@
     //Home Page(Graph)////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     GetGraph();
     function GetGraph() {
-        $("#loading").show();
+        $(".loadingContainer").show();
         $("#myChart").remove();
-        $("#chartContainer").append('<canvas id="myChart"><canvas>');        
+        $(".chartContainer").append('<canvas id="myChart"><canvas>');        
         var Data = {
             ExchangeFrom: $("#btnExchangeFrom").text().trim(),
             ExchangeTo: $("#btnExchangeTo").text().trim() 
@@ -104,7 +104,7 @@
             dataType: "json",
             success: function (result) {
                 GenerateGraph(result.Title, result.ShortDate, result.RegressionY, result.Amount);
-                $("#loading").hide();
+                $(".loadingContainer").hide();
             }
         });
     }

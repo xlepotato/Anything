@@ -243,7 +243,7 @@ input[type=number]::-webkit-outer-spin-button {
     margin: 0;
 }
 
-#chartContainer {
+.chartContainer {
     margin-top: 10px;
     background-color: beige;
     background: rgba(10, 0, 0, .5)
@@ -252,8 +252,17 @@ input[type=number]::-webkit-outer-spin-button {
     /*padding-bottom: 2em;*/
 }
 
-#loading {
-    margin-left: 28%;
+.loadingContainer {
+    margin-top: 10px;
+    background: rgba(10, 0, 0, .5)
+    /*border-radius:8px;*/
+    /*padding-top: 2em;*/
+    /*padding-bottom: 2em;*/
+}
+
+.loading {
+    width: 33%;
+    height: 100%;
 }
 
 .homeSearch { 
@@ -382,12 +391,12 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .lastUpdatedTimeStyle {
-    margin-left:30px;
+    margin-left:2em;
     font-size:12px;
     text-align: center;
     opacity: 0.5;
     margin-bottom:5px;
-    width: 45%;
+    width: 70%;
     border: 1px solid #ccc;
     border-radius: 32px;
 }
@@ -426,14 +435,15 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .btnStyle {
-    margin-left: 14%;
     color: white;
     background-color: #eb9c15;
     border: none;
     box-shadow: 1px 2px #888888;
-    height:24px;
-    width:44%;
-    padding-top:3px
+    height:35px;
+    width:60%;
+    padding-top:8px;
+    margin-top:10%;
+    margin-left:28%;
 }
 
 .btnSortStyle {
@@ -551,10 +561,12 @@ input[type=number]::-webkit-outer-spin-button {
     color: white;
     text-shadow: 2px 2px 4px #000000;
     padding: 0.65em 0 0 0;
+    float:left;
+    width:40%;
 }
 
 .searchBoxStyle {
-    width: 50%;
+    width: 65%;
     display: inline;
     margin-top: 10px;
     padding-bottom: 2px;
