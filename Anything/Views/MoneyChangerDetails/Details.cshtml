@@ -18,19 +18,30 @@
                 </a>
             </div>
             <div class="mcDetailDiv">
-                <h3 id="moneyChangerName">@Model.Name</h3>
-                <img src="/Assets/Images/clock.png" class="detailIcon">
-                <label class="moneyChangerDetails mcDetailLbl">@Model.OpeningHours</label><br />
-                <img src="/Assets/Images/phone.png" class="detailIcon">
-                <label class="moneyChangerDetails mcDetailLbl">@Model.ContactNumber</label><br />
-                <img src="/Assets/Images/location.png" class="detailIcon" id="locationIcon">
-                <label class="moneyChangerDetails mcDetailLbl" id="detailLocationLbl">@Model.Location</label>
-            </div>
+                <div>
+                    <div style="padding-top: 2px; float:left;  margin-right: 5px;">
+                        <a href="#" class="btnFav">
+                            <img src="/Assets/Images/yellowStar_white.png" class="detailsFavIcon">
+                        </a>
+                    </div>
+                    <div style="">
+                        <label id="moneyChangerName">Convenient Money</label>
+                    </div>
+                </div>
+                <div style="margin-left:2%;">
+                    <img src="/Assets/Images/clock.png" class="detailIcon">
+                    <label class="moneyChangerDetails mcDetailLbl">@Model.OpeningHours</label><br />
+                    <img src="/Assets/Images/phone.png" class="detailIcon">
+                    <label class="moneyChangerDetails mcDetailLbl">@Model.ContactNumber</label><br />
+                    <img src="/Assets/Images/location.png" class="detailIcon" id="locationIcon">
+                    <label class="moneyChangerDetails mcDetailLbl" id="detailLocationLbl">@Model.Location</label>
+                </div>
+                </div>
             <!--Map display-->
             @if (Model.PostalCode != null)
             {
                 string postalCode = "https://www.google.com/maps/embed/v1/place?q=" + Model.PostalCode + "&key=AIzaSyDORpCcy-EEX3CVLnhMK0Pi2l5v0r56KkY";
-                <iframe class="col-md-12"frameborder="0" style="border:0; padding:0px; height:50%" src="@postalCode" ></iframe>
+                <iframe class="col-md-12 mapDisplay" frameborder="0" src="@postalCode" ></iframe>
             }
 
         </div>
@@ -55,7 +66,7 @@
                             var sellingExchangeTo = entities.Currencies.Where(z => z.Id == sellingRateExchangeFrom.ExchangeToId).FirstOrDefault();
                             var buyingRateExchangeFrom = Model.ExchangeRates.Where(z => z.ExchangeFromId == sellingExchangeTo.Id).FirstOrDefault();
 
-                            <tr class="evenRow">
+                            <tr>
                                 <td>
                                     <img src="@sellingExchangeTo.Flag" class="tableCtyIcon" /><label class="tableFlagIcon">@sellingExchangeTo.Name</label>
                                     <div class="lastUpdatedTimeStyleDetails">@(Anything.Controllers.CalculationController.CalculateDate(sellingRateExchangeFrom.LastUpdated))</div>

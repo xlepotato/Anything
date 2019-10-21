@@ -5,7 +5,7 @@
 
 <!-- Main Currency Exchange Container-->
 <div class="col-md-12">
-    <div class="col-md-12" style="background-color:white; border-radius:8px; background:rgba(10, 0, 0, .5)">
+    <div class="col-md-12 exchangeContainer">
         <!--Left Container-->
         <div class="currencyInfoContainer form-group col-md-4" id="leftContainer">
             <div class="drawBorder btn" id="drawBorder1">
@@ -66,11 +66,11 @@
     </div>
 </div>
 
-<div class="col-md-12">
+@*<div class="col-md-12">
     <div class="col-md-12 chartContainer">
         <canvas id="myChart"></canvas>
     </div>
-</div>
+</div>*@
 
 <!--Display and Filter Section-->
 
@@ -125,7 +125,7 @@
                     </td>
                     }
                     <td class="col-md-4">
-                        <div style="float:right; padding-top:0.5em">
+                        <div class="exchangeInfo">
                             <label><strong>1 {{ExchangeFrom}} = {{Rate}} {{ExchangeTo}}</strong></label><br />
                             <div class="lastUpdatedTimeStyle">{{LastUpdated}}</div>
                         </div>

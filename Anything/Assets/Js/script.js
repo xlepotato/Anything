@@ -345,4 +345,16 @@
             }
         });
     }
+
+
+
+
+    $('.table-curved tr:last').addClass("lastRow");
+    $(".table-curved tr:even").addClass("evenRow");
+    $(".table-curved tr:odd").addClass("oddRow");
+    $('.table-curved tr:first').removeClass("evenRow");
+
+
+
+
 });
