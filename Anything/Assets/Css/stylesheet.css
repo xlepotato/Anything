@@ -628,7 +628,7 @@ input[type=number]::-webkit-outer-spin-button {
 #loginContainer {
     background-color: white;
     width: 50%;
-    height: 60%;
+    height: 55%;
     border-radius: 15px;
 }
 
@@ -660,8 +660,9 @@ input[type=number]::-webkit-outer-spin-button {
         font-size: 12pt;
     }
 
-    .inactive {
+    .inactiveTab {
         border-left: none;
+        border-right: none;
     }
 
     .moneyChangerContainer{
