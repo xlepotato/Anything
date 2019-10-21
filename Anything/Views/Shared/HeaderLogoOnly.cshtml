@@ -7,6 +7,17 @@
     <script src="assets/js/Chart.min.js"></script>
     <link href="/Assets/Css/stylesheet.css" rel="stylesheet" />    
 </head>
+
+    
+
+@if ((bool)Session["Locked"] == true)
+{
+    <body style="display:none;">     
+          @RenderBody()                     
+    </body>
+}
+else
+{
 <body>
 
 
@@ -34,6 +45,7 @@
     </div> @*end container*@
 
 </body>
+}
 </html>
 
 

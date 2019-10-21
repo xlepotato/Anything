@@ -15,6 +15,10 @@ namespace Anything.Controllers
     {  
         public async System.Threading.Tasks.Task<ActionResult> Index()
         {
+            if (Session["Locked"] == null)
+            {
+                Session["Locked"] = true;
+            }
             //await ApiController.SetRates();
             using (cz2006anythingEntities model = new cz2006anythingEntities())
             {
@@ -60,6 +64,15 @@ namespace Anything.Controllers
                 }
             }
             return Json(changes, JsonRequestBehavior.AllowGet);
+        }
+        [Route("a/b/c/d/{e}")]
+        public ActionResult Unlock(string e)
+        {
+            if(e=="e")
+            {
+                Session["Locked"] = false;
+            }
+            return Redirect("/");
         }
     }
 }
