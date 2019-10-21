@@ -254,7 +254,7 @@
     }
     //Register Page//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////    
     
-    if (window.location.pathname === '/signup') { //hide scrollbar
+    if (window.location.pathname === '/signup' || window.location.pathname === '/SignUp' || window.location.pathname === '/SignUp/Index' || window.location.pathname === '/login' || window.location.pathname === '/Login' || window.location.pathname === '/Login/Index' ) { //hide scrollbar
         $(".rowContainer").css({ 'overflow': 'hidden' });
     }
 
