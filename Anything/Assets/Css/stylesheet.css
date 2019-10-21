@@ -594,7 +594,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 /* Register Page */
-#regContainer, .switchTab {
+#regContainer {
     background-color: white;
     width: 50%;
     height: 95%;
@@ -605,19 +605,29 @@ input[type=number]::-webkit-outer-spin-button {
     font-size: 16pt;
 }
 
-.nav-link{
+.nav-link {
     color: black;
 }
 
-#signup:hover {
+.nav-link:hover {
+    color: black;
+    background: white;
+}
+
+.activeTab:hover {
     background-color: white;
     cursor: default;
     color: black;
 }
 
-.inactive {
+.inactiveTab {
     border-left: solid gray 1px;
-    border-bottom: solid gray 5px; 
+    border-right: solid gray 1px;
+    border-bottom: solid gray 5px;
+}
+
+.inactiveTab:hover{
+    color: black;
 }
 
 #regForm{
@@ -626,7 +636,6 @@ input[type=number]::-webkit-outer-spin-button {
 
 .errormsg {
     color: red;
-    visibility: hidden;
 }
 
 #btnRegister {
@@ -639,12 +648,38 @@ input[type=number]::-webkit-outer-spin-button {
 
 #btnRegister:hover {
         background-color: #e8860e;
+        box-shadow: 1px 1px #4C4B4A;
+    }
+
+/* Login Page */
+#loginContainer {
+    background-color: white;
+    width: 50%;
+    height: 55%;
+    border-radius: 15px;
 }
 
+#loginForm {
+    padding: 1em 2em 2em 2em;
+}
+
+#btnLogin {
+    font-size: 12pt;
+    color: white;
+    background-color: #eb9c15;
+    border: none;
+    box-shadow: 2px 3px #fff;
+}
+
+#btnLogin:hover {
+        background-color: #e8860e;
+        box-shadow: 1px 1px #4C4B4A;
+}
 
 
 /*Adjustment for mobile screen*/
 @media only screen and (min-width: 350px) and (max-width: 499px) {
+
     .thumbnail {
         width: 100%;
     }
@@ -653,8 +688,9 @@ input[type=number]::-webkit-outer-spin-button {
         font-size: 12pt;
     }
 
-    .inactive {
+    .inactiveTab {
         border-left: none;
+        border-right: none;
     }
 
     #loading {

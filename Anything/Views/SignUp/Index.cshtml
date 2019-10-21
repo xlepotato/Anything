@@ -6,91 +6,41 @@
 
 <div class="container" id="regContainer">
     <ul class="nav nav-pills nav-justified">
-        <li class="nav-item">
-            <a class="nav-link" id="signup">Sign Up</a>
+        <li class="nav-item activeTab">
+            <a class="nav-link" id="signupTab">Sign Up</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link inactive" href="/Login">Log In</a>
+        <li class="nav-item inactiveTab">
+            <a class="nav-link" id="loginTab" href="/Login">Log In</a>
         </li>
     </ul>
 
     <form id="regForm">
         <div class="form-group">
             <label for="username">Username</label>
-            <input type="text" class="form-control" id="username" placeholder="Enter Username">
-            <small for="username" class="errormsg" id="usernameError">Username already exist!</small>
+            <input type="text" class="form-control" id="username" placeholder="Username">
+            <small for="username" class="errormsg" id="usernameError"></small>
         </div>
         <div class="form-group">
             <label for="password">Password</label>
             <input type="password" class="form-control" id="password" placeholder="Password">
+            <small class="errormsg" id="passwordError"></small>
+            </br >
         </div>
         <div class="form-group">
             <label for="confirmpassword">Confirm Password</label>
-            <input type="password" class="form-control" id="confirmpassword" placeholder="Confirm Password">
-            <small for="username" class="errormsg">Password does not match!</small>
+            <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password">
+            <small  class="errormsg" id="confirmPWError"></small>
         </div>
         <div class="form-group">
             <label for="mobilenumber">Mobile Number</label>
             <input type="number" class="form-control" id="mobilenumber" placeholder="e.g. 8765 4321">
-            <small for="username" class="errormsg">Mobile number already registered!</small>
+            <small for="username" class="errormsg" id="mobileNoError"></small>
         </div>
         <button type="button" class="btn btn-primary" id="btnRegister">Create Account</button>
         <label id="lblSuccess"></label>
     </form>
     
 </div>
-
-@*<div class="container switchTab">
-    <div class="col-md-3"></div>
-    <div class="col-md-3 tabs">
-        <button type="button" id="btnSignUp" class="btn btn-block activeNow">Sign Up</button>
-    </div>
-    <div class="col-md-3 tabs">
-        <button type="button" id="btnLogIn" class="btn btn-default btn-block inactiveNow"><a href="/login">Log In</a></button>
-    </div>
-    <div class="col-md-3"></div>
-</div>*@
-
-<!--start register body-->
-@*<div class="container" id="regContainer">
-    <form class="form-horizontal">
-        <div class="form-group">
-            <label class="control-label col-sm-3 col-md-4" for="username">Username:</label>
-            <div class="col-sm-6 col-md-4">
-                <input type="text" class="form-control" id="username" name="username">
-            </div>
-            <div class="col-sm-3 col-md-4"></div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-sm-3 col-md-4" for="password">Password:</label>
-            <div class="col-sm-6 col-md-4">
-                <input type="password" class="form-control" id="password" name="password">
-            </div>
-            <div class="col-sm-3 col-md-4"></div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-sm-3 col-md-4" for="confirmpassword">Confirm Password:</label>
-            <div class="col-sm-6 col-md-4">
-                <input type="password" class="form-control" name="confirmpassword">
-            </div>
-            <div class="col-sm-3 col-md-4"></div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-sm-3 col-md-4" for="mobilenumber">Mobile Number:</label>
-            <div class="col-sm-6 col-md-4">
-                <input type="text" class="form-control" id="mobilenumber" name="mobilenumber">
-            </div>
-            <div class="col-sm-3 col-md-4"></div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-offset-3 col-sm-10 col-md-offset-4 col-md-4">
-                <button type="button" class="btn btn-default" id="btnRegister">Create Account</button>
-            </div>
-        </div>
-    </form>
-</div>
-
-<label id="lblSuccess"></label>*@
 
 
 
