@@ -497,7 +497,9 @@ input[type=number]::-webkit-outer-spin-button {
     background-color: #e8860e;
     color: white;
 }
-
+.btnStyleFav:focus {
+    color: white;
+}
 .trStyle:hover {
     background-color: #eb9c15
 }
