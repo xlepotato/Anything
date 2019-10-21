@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="cz2006anythingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="cz2006anythingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Currency">
           <Key>
             <PropertyRef Name="Id" />
@@ -24,6 +24,14 @@
           <Property Name="Rate" Type="float" Nullable="false" />
           <Property Name="MoneyChangerId" Type="int" Nullable="false" />
           <Property Name="LastUpdated" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Favourites">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MoneyChangerId" Type="int" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="HistoricalRate">
           <Key>
@@ -115,6 +123,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Favourites_MoneyChanger">
+          <End Role="MoneyChanger" Type="Self.MoneyChanger" Multiplicity="1" />
+          <End Role="Favourites" Type="Self.Favourites" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MoneyChanger">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Favourites">
+              <PropertyRef Name="MoneyChangerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Favourites_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Favourites" Type="Self.Favourites" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="Favourites">
+              <PropertyRef Name="Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_HistoricalRate_Currency">
           <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
           <End Role="HistoricalRate" Type="Self.HistoricalRate" Multiplicity="*" />
@@ -187,9 +219,41 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="cz2006anythingModelStoreContainer">
           <EntitySet Name="Currency" EntityType="Self.Currency" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ExchangeRate" EntityType="Self.ExchangeRate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Favourites" EntityType="Self.Favourites" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HistoricalRate" EntityType="Self.HistoricalRate" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MoneyChanger" EntityType="Self.MoneyChanger" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
@@ -206,6 +270,14 @@
           <AssociationSet Name="FK_ExchangeRate_MoneyChanger" Association="Self.FK_ExchangeRate_MoneyChanger">
             <End Role="MoneyChanger" EntitySet="MoneyChanger" />
             <End Role="ExchangeRate" EntitySet="ExchangeRate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Favourites_MoneyChanger" Association="Self.FK_Favourites_MoneyChanger">
+            <End Role="MoneyChanger" EntitySet="MoneyChanger" />
+            <End Role="Favourites" EntitySet="Favourites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Favourites_User" Association="Self.FK_Favourites_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Favourites" EntitySet="Favourites" />
           </AssociationSet>
           <AssociationSet Name="FK_HistoricalRate_Currency" Association="Self.FK_HistoricalRate_Currency">
             <End Role="Currency" EntitySet="Currency" />
@@ -232,7 +304,8 @@
             <End Role="User" EntitySet="User" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="cz2006anythingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -260,10 +333,20 @@
           <Property Name="ExchangeToId" Type="Int32" Nullable="false" />
           <Property Name="Rate" Type="Double" Nullable="false" />
           <Property Name="MoneyChangerId" Type="Int32" Nullable="false" />
-          <Property Name="LastUpdated" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="LastUpdated" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Currency" Relationship="Self.FK_ExchangeRate_Currency" FromRole="ExchangeRate" ToRole="Currency" />
           <NavigationProperty Name="Currency1" Relationship="Self.FK_ExchangeRate_Currency1" FromRole="ExchangeRate" ToRole="Currency" />
           <NavigationProperty Name="MoneyChanger" Relationship="Self.FK_ExchangeRate_MoneyChanger" FromRole="ExchangeRate" ToRole="MoneyChanger" />
+        </EntityType>
+        <EntityType Name="Favourite">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MoneyChangerId" Type="Int32" Nullable="false" />
+          <Property Name="Username" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="MoneyChanger" Relationship="Self.FK_Favourites_MoneyChanger" FromRole="Favourites" ToRole="MoneyChanger" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Favourites_User" FromRole="Favourites" ToRole="User" />
         </EntityType>
         <EntityType Name="HistoricalRate">
           <Key>
@@ -273,7 +356,7 @@
           <Property Name="ExchangeFromId" Type="Int32" />
           <Property Name="ExchangeToId" Type="Int32" />
           <Property Name="Rate" Type="Double" Nullable="false" />
-          <Property Name="Date" Type="DateTime" Precision="0" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="Currency" Relationship="Self.FK_HistoricalRate_Currency" FromRole="HistoricalRate" ToRole="Currency" />
           <NavigationProperty Name="Currency1" Relationship="Self.FK_HistoricalRate_Currency1" FromRole="HistoricalRate" ToRole="Currency" />
         </EntityType>
@@ -287,10 +370,11 @@
           <Property Name="Location" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ContactNumber" Type="Int32" />
           <Property Name="PostalCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ExchangeRates" Relationship="Self.FK_ExchangeRate_MoneyChanger" FromRole="MoneyChanger" ToRole="ExchangeRate" />
+          <NavigationProperty Name="Favourites" Relationship="Self.FK_Favourites_MoneyChanger" FromRole="MoneyChanger" ToRole="Favourites" />
           <NavigationProperty Name="Transactions" Relationship="Self.FK_Transaction_MoneyChanger" FromRole="MoneyChanger" ToRole="Transaction" />
           <NavigationProperty Name="Users" Relationship="Self.FK_User_MoneyChanger" FromRole="MoneyChanger" ToRole="User" />
-          <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -326,6 +410,7 @@
           <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="MobileNumber" Type="Int32" Nullable="false" />
           <Property Name="MoneyChangerId" Type="Int32" />
+          <NavigationProperty Name="Favourites" Relationship="Self.FK_Favourites_User" FromRole="User" ToRole="Favourites" />
           <NavigationProperty Name="MoneyChanger" Relationship="Self.FK_User_MoneyChanger" FromRole="User" ToRole="MoneyChanger" />
         </EntityType>
         <Association Name="FK_ExchangeRate_Currency">
@@ -412,6 +497,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Favourites_MoneyChanger">
+          <End Role="MoneyChanger" Type="Self.MoneyChanger" Multiplicity="1" />
+          <End Role="Favourites" Type="Self.Favourite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MoneyChanger">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Favourites">
+              <PropertyRef Name="MoneyChangerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Favourites_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Favourites" Type="Self.Favourite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="Favourites">
+              <PropertyRef Name="Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Transaction_MoneyChanger">
           <End Role="MoneyChanger" Type="Self.MoneyChanger" Multiplicity="1" />
           <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
@@ -439,6 +548,7 @@
         <EntityContainer Name="cz2006anythingEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Currencies" EntityType="Self.Currency" />
           <EntitySet Name="ExchangeRates" EntityType="Self.ExchangeRate" />
+          <EntitySet Name="Favourites" EntityType="Self.Favourite" />
           <EntitySet Name="HistoricalRates" EntityType="Self.HistoricalRate" />
           <EntitySet Name="MoneyChangers" EntityType="Self.MoneyChanger" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
@@ -472,6 +582,14 @@
             <End Role="MoneyChanger" EntitySet="MoneyChangers" />
             <End Role="ExchangeRate" EntitySet="ExchangeRates" />
           </AssociationSet>
+          <AssociationSet Name="FK_Favourites_MoneyChanger" Association="Self.FK_Favourites_MoneyChanger">
+            <End Role="MoneyChanger" EntitySet="MoneyChangers" />
+            <End Role="Favourites" EntitySet="Favourites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Favourites_User" Association="Self.FK_Favourites_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Favourites" EntitySet="Favourites" />
+          </AssociationSet>
           <AssociationSet Name="FK_Transaction_MoneyChanger" Association="Self.FK_Transaction_MoneyChanger">
             <End Role="MoneyChanger" EntitySet="MoneyChangers" />
             <End Role="Transaction" EntitySet="Transactions" />
@@ -480,7 +598,48 @@
             <End Role="MoneyChanger" EntitySet="MoneyChangers" />
             <End Role="User" EntitySet="Users" />
           </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(cz2006anythingModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(cz2006anythingModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
         </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -509,6 +668,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Favourites">
+            <EntityTypeMapping TypeName="cz2006anythingModel.Favourite">
+              <MappingFragment StoreEntitySet="Favourites">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MoneyChangerId" ColumnName="MoneyChangerId" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="HistoricalRates">
             <EntityTypeMapping TypeName="cz2006anythingModel.HistoricalRate">
               <MappingFragment StoreEntitySet="HistoricalRate">
@@ -523,13 +691,13 @@
           <EntitySetMapping Name="MoneyChangers">
             <EntityTypeMapping TypeName="cz2006anythingModel.MoneyChanger">
               <MappingFragment StoreEntitySet="MoneyChanger">
-                <ScalarProperty Name="Photo" ColumnName="Photo" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="OpeningHours" ColumnName="OpeningHours" />
                 <ScalarProperty Name="Location" ColumnName="Location" />
                 <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
                 <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -568,6 +736,30 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="cz2006anythingModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="cz2006anythingModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="cz2006anythingModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="cz2006anythingModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="cz2006anythingModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="cz2006anythingModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="cz2006anythingModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="cz2006anythingModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="cz2006anythingModel.Store.sp_upgraddiagrams" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

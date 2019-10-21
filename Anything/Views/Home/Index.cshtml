@@ -69,14 +69,18 @@
 <!--Filter: Search Money Changers-->
 <div class="col-md-12">
     <div id="moneyChangerContainer">
-        <div class="col-md-12">
+        <div class="col-md-12" style="padding-right:0;padding-left:0.5em">
             <div class="searchMCStyle col-md-6">
                 Search:
                 <input type="text" class="form-control searchBoxStyle" id="tbSearch">
             </div>
-            <div class="col-md-2"></div>
-            <div class="col-md-4 btnSortStyle">
-                <label style="padding-top:5px;"><strong>Sort By:</strong></label>
+            <div class="col-md-1"></div>
+            <div class="col-md-5 btnSortStyle">
+                Sort By:
+                @if (Session["Username"] != null)
+                {
+                <button id="btnStyleFav" class="btn btnStyleFav"><strong>Favourites</strong></button>
+                }
                 <button id="btnStyleLowest" class="btn btnStyleLowest"><strong>Lowest rate</strong></button>
                 <button id="btnStyleBest" class="btn btnStyleBest"><strong>Best rate</strong></button>
             </div>
@@ -85,16 +89,33 @@
         <table class="table">
             <tbody id="tbMoneyChanger">
                 <tr id="trMoneyChanger" class="trStyle">
+                    @if (Session["Username"] != null)
+                    {
+                    <td class="col-md-1 tdStyleLeft">
+                        <a href="JavaScript:void(0)" class="btnFav">
+                            <img src="/Assets/Images/yellowStar_white.png" class="favIcon" />
+                        </a>
+                    </td>
+                    <td class="col-md-5">
+                        <label class="moneyChangerNameStyle">
+                            <strong>{{Name}}</strong>
+                        </label>
+
+                        <br />
+                        <label class="mcLocationStyle">{{Location}}</label>
+                    </td>
+                    }
+                    else
+                    {
                     <td class="col-md-6 tdStyleLeft">
                         <label class="moneyChangerNameStyle">
                             <strong>{{Name}}</strong>
                         </label>
-                        <a href="#">
-                            <img src="~/Assets/Images/yellowStar.png" class="favIcon" />
-                        </a>
+
                         <br />
                         <label class="mcLocationStyle">{{Location}}</label>
                     </td>
+                    }
                     <td class="col-md-3"></td>
                     <td class="col-md-3 tdStyleRight">
                         <label><strong>1 {{ExchangeFrom}} = {{Rate}} {{ExchangeTo}}</strong></label><br />

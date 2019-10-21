@@ -154,6 +154,7 @@
     //Home Page(Money Changer)////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     var trMoneyChangerHtml = $("#trMoneyChanger").parent().html();
     var sortBy = "Best";
+    var isFavourite = false;
     $("#trMoneyChanger").html("");
     function Filter() {
         var exchangeFrom = $("#btnExchangeFrom").text().trim();
@@ -162,7 +163,8 @@
             Search: $("#tbSearch").val(),
             ExchangeFrom: exchangeFrom,
             ExchangeTo: exchangeTo,
-            SortBy: sortBy
+            SortBy: sortBy,
+            IsFavourite : isFavourite
         }
         $.ajax({
             url: window.location.href + "/Home/Filter",
@@ -183,6 +185,14 @@
                     $("#btnViewMoneyChangers").hide();
                 }
                 $.each(result.ExchangeRates, function () {
+                    if (this.HasFavourite)
+                    {
+                        trMoneyChangerHtml = trMoneyChangerHtml.replace('/Assets/Images/yellowStar_white.png','/Assets/Images/yellowStar.png');
+                    }
+                    else
+                    {
+                        trMoneyChangerHtml = trMoneyChangerHtml.replace('/Assets/Images/yellowStar.png', '/Assets/Images/yellowStar_white.png');
+                    }
                     $("#tbMoneyChanger").append(trMoneyChangerHtml.replace("{{Name}}", this.Name)
                                                     .replace("{{Location}}", this.Location)
                                                     .replace("{{ExchangeFrom}}", exchangeFrom)
@@ -191,10 +201,52 @@
                                                     .replace("{{LastUpdated}}", this.LastUpdated)
                                                     .replace("{{Name}}", this.Name));
                 });
+                $(".btnFav").click(function () {
+                    var src = ($(this).find("img").attr('src'));
+                    if (src == '/Assets/Images/yellowStar_white.png')
+                    {
+                        src = '/Assets/Images/yellowStar.png';
+                    }
+                    else
+                    {
+                        src = '/Assets/Images/yellowStar_white.png';
+                    }                   
+                    $(this).find("img").attr('src', src);
+                    SetFavourite($(this).parent().next().children().children().text().trim());
+                });
             }
         });
     }
-   
+    function SetFavourite(moneyChangerName)
+    {
+        var Data = {
+            MoneyChangerName: moneyChangerName
+        }
+        $.ajax({
+            url: window.location.href + "Home/SetFavourite",
+            data: Data,
+            typr: "GET",
+            contentType: "application/json;charset=UTF-8",
+            dataType: "json",
+            success: function (result) {
+                console.log(result);
+            }
+        });
+    }
+    $("#btnStyleFav").click(function () {
+        if ($("#btnStyleFav").hasClass("btnStyleFav"))
+        {
+            $("#btnStyleFav").removeClass("btnStyleFav").addClass("btnStyleBest");
+            isFavourite = true;
+            Filter();
+        }
+        else
+        {
+            $("#btnStyleFav").removeClass("btnStyleBest").addClass("btnStyleFav");
+            isFavourite = false;
+            Filter();
+        }
+    });
     $("#btnViewMoneyChangers").click(function () {
         $('html, .rowContainer').animate({
             scrollTop: ($('#moneyChangerContainer').offset().top)

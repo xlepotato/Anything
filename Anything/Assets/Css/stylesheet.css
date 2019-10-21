@@ -426,27 +426,31 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .btnStyle {
-    margin-left: 20%;
+    margin-left: 14%;
     color: white;
     background-color: #eb9c15;
     border: none;
     box-shadow: 1px 2px #888888;
+    height:24px;
+    width:44%;
+    padding-top:3px
 }
 
 .btnSortStyle {
-    padding: 17px 0px 0px 83px;
-    margin-left: 5%;
+    padding: 1em 0 0 2em;
     float: right;
     color: white;
     text-shadow: 2px 2px 4px #000000;
     font-size: 18px;
 }
+
 .btnStyleBest {
     color: white;
     background-color: #eb9c15;
     border: none;
     border: 1px solid #eb9c15;
     margin-top: 10px;
+    margin-bottom: 1em;
     padding-bottom: 2px;
 }
 
@@ -461,6 +465,7 @@ input[type=number]::-webkit-outer-spin-button {
     color: white;
     border: 1px solid black;
     margin-top: 10px;
+    margin-bottom:1em;
     padding-bottom: 2px;
     background:rgba(10,0,0,0.7);
 }
@@ -472,11 +477,29 @@ input[type=number]::-webkit-outer-spin-button {
     border: 1px solid #eb9c15;
 }
 
+.btnStyleFav {
+    color: white;
+    border: 1px solid black;
+    margin-top: 10px;
+    margin-bottom: 1em;
+    padding-bottom: 2px;
+    background: rgba(10,0,0,0.7);
+}
+
+.btnStyleFav:hover {
+    color: white;
+    background-color: #eb9c15;
+    border: none;
+    border: 1px solid #eb9c15;
+}
+
 .btnStyle:hover {
     background-color: #e8860e;
     color: white;
 }
-
+.btnStyleFav:focus {
+    color: white;
+}
 .trStyle:hover {
     background-color: #eb9c15
 }
@@ -506,13 +529,13 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 #moneyChangerContainer{
-    /*padding-top: 2em;*/
     margin-bottom:20px;
 }
 
 .moneyChangerNameStyle{
     padding-left:5px;
     font-size:22px;
+    margin-top:0.35em;
 }
 
 .mcLocationStyle {
@@ -527,7 +550,7 @@ input[type=number]::-webkit-outer-spin-button {
     font-size: 18pt;
     color: white;
     text-shadow: 2px 2px 4px #000000;
-    padding: 0.5em 0 0.5em 0;
+    padding: 0.65em 0 0 0;
 }
 
 .searchBoxStyle {
@@ -676,11 +699,24 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .favIcon{
-    width:30px;
-    height:25px;
-    padding-left:5px;
-    padding-bottom:8px;
+    width:50px;
+    height:40px;
+    padding:0;
+    margin-top:0.8em;
+    margin-left:1em;
+    margin-right:0;
 }
+
+.favIcon:hover {
+    width: 50px;
+    height: 40px;
+    padding: 0;
+    margin-top: 0.8em;
+    margin-left: 1em;
+    margin-right: 0;
+    content: url("/Assets/Images/yellowStar.png");
+}
+
 
 /*Adjustment for normal screen*/
 @media screen and (min-width: 1000px) {
