@@ -593,11 +593,12 @@ input[type=number]::-webkit-outer-spin-button {
     padding:0px
 }
 
+
 /* Register Page */
 #regContainer {
     background-color: white;
     width: 50%;
-    height: 95%;
+    height: 100%;
     border-radius: 15px;
 }
 
@@ -647,15 +648,27 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 #btnRegister:hover {
-        background-color: #e8860e;
-        box-shadow: 1px 1px #4C4B4A;
-    }
+    background-color: #e8860e;
+    box-shadow: 1px 1px #4C4B4A;
+}
+
+.lblSuccessMsg {
+    visibility: visible;
+    color: forestgreen;
+}
+
+.lblFailMsg {
+    visibility: visible;
+    color: darkred;
+}
+
 
 /* Login Page */
 #loginContainer {
     background-color: white;
     width: 50%;
-    height: 55%;
+    min-height: 60%;
+    height: 60%;
     border-radius: 15px;
 }
 
@@ -672,8 +685,8 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 #btnLogin:hover {
-        background-color: #e8860e;
-        box-shadow: 1px 1px #4C4B4A;
+    background-color: #e8860e;
+    box-shadow: 1px 1px #4C4B4A;
 }
 
 
