@@ -3,6 +3,8 @@
     Layout = "/Views/Shared/HeaderLogoOnly.cshtml";
 }
 
+@if ((bool)Session["Locked"] == false)
+{
 <!-- Main Currency Exchange Container-->
 <div class="col-md-12">
     <div class="col-md-12 exchangeContainer">
@@ -52,7 +54,10 @@
 
         <div class="col-md-12">
             <div class="putCenter">
+                 @if (Session["Username"] != null)
+                 {
                 <button  type="button" class="btn btn-primary btn-lg starExchange" ><img src="/Assets/Images/yellowStar.png"/></button>
+                 }
                 <button type="button" class="btn btn-primary btn-lg" id="btnViewMoneyChangers">View Money Changers</button>
             </div>
         </div>
@@ -140,3 +145,4 @@
         </table>
     </div>
 </div>
+}

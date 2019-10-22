@@ -19,7 +19,10 @@ namespace Anything.Controllers
             {
                 Session["Locked"] = true;
             }
-            //await ApiController.SetRates();
+            else if ((bool)Session["Locked"] == false)
+            {
+                //await ApiController.SetRates();
+            }
             using (cz2006anythingEntities model = new cz2006anythingEntities())
             {
                 return View(model.Currencies.ToList());
@@ -27,17 +30,16 @@ namespace Anything.Controllers
         }
         //public ActionResult GetCurrency(float ExchangeAmount, string ExchangeFrom, string ExchangeTo)
         //{
-        //    return Json(ApiController.GetCurrency(ExchangeAmount,ExchangeFrom,ExchangeTo), JsonRequestBehavior.AllowGet);
+        //    return Json(ApiController.GetCurrency(ExchangeAmount, ExchangeFrom, ExchangeTo), JsonRequestBehavior.AllowGet);
         //}
-
-        public ActionResult Filter(string Search,string ExchangeFrom, string ExchangeTo, string SortBy, bool IsFavourite)
-        {
-            return Json(FilterController.Filter(Search, ExchangeFrom, ExchangeTo, SortBy, IsFavourite), JsonRequestBehavior.AllowGet);          
-        }
         //public async System.Threading.Tasks.Task<ActionResult> GetGraph(string ExchangeFrom, string ExchangeTo)
         //{
-        //   return Json(await GraphController.GetGraph(ExchangeFrom,ExchangeTo), JsonRequestBehavior.AllowGet);
-        //}  
+        //    return Json(await GraphController.GetGraph(ExchangeFrom, ExchangeTo), JsonRequestBehavior.AllowGet);
+        //}
+        public ActionResult Filter(string Search, string ExchangeFrom, string ExchangeTo, string SortBy, bool IsFavourite)
+        {
+            return Json(FilterController.Filter(Search, ExchangeFrom, ExchangeTo, SortBy, IsFavourite), JsonRequestBehavior.AllowGet);
+        }
         public ActionResult SetFavourite(string MoneyChangerName)
         {
             string changes = "";

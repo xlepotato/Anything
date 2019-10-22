@@ -247,7 +247,18 @@
             Filter();
         }
     });
+    $(".starExchange").click(function () {
+        $("#btnStyleFav").removeClass("btnStyleFav").addClass("btnStyleBest");
+        isFavourite = true;
+        Filter();
+        $('html, .rowContainer').animate({
+            scrollTop: ($('#moneyChangerContainer').offset().top)
+        }, 500);
+    });
     $("#btnViewMoneyChangers").click(function () {
+        $("#btnStyleFav").removeClass("btnStyleBest").addClass("btnStyleFav");
+        isFavourite = false;
+        Filter();
         $('html, .rowContainer').animate({
             scrollTop: ($('#moneyChangerContainer').offset().top)
         }, 500);
@@ -405,16 +416,9 @@
             }
         });
     }
-
-
-
-
+    //Details//////////////////////////////////////////////////////////////////////////////////////////////////////////////
     $('.table-curved tr:last').addClass("lastRow");
     $(".table-curved tr:even").addClass("evenRow");
     $(".table-curved tr:odd").addClass("oddRow");
     $('.table-curved tr:first').removeClass("evenRow");
-
-
-
-
 });

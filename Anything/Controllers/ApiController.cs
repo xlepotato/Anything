@@ -11,7 +11,7 @@ namespace Anything.Controllers
 {
     public class ApiController
     {
-        public static string Key = "6372ddbcd9efaf6482ba812a3f9879cf";
+        public static string Key = "0170c6349c6aa647d6342170b3cc3cc9";
         //6372ddbcd9efaf6482ba812a3f9879cf
         //0170c6349c6aa647d6342170b3cc3cc9
         public static Dictionary<string, float> rates;
