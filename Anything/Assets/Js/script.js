@@ -421,4 +421,31 @@
     $(".table-curved tr:even").addClass("evenRow");
     $(".table-curved tr:odd").addClass("oddRow");
     $('.table-curved tr:first').removeClass("evenRow");
+
+    $(".btnFav").click(function () {
+        var src = ($(this).find("img").attr('src'));
+        if (src == '/Assets/Images/yellowStar_white.png') {
+            src = '/Assets/Images/yellowStar.png';
+        }
+        else {
+            src = '/Assets/Images/yellowStar_white.png';
+        }
+        $(this).find("img").attr('src', src);
+        SetFavouriteDetails($(".btnFav").parent().next().text().trim());
+    });
+    function SetFavouriteDetails(moneyChangerName) {
+        var Data = {
+            MoneyChangerName: moneyChangerName
+        }
+        $.ajax({
+            url: "/MoneyChangerDetails/SetFavourite",
+            data: Data,
+            typr: "GET",
+            contentType: "application/json;charset=UTF-8",
+            dataType: "json",
+            success: function (result) {
+                console.log(result);
+            }
+        });
+    }
 });

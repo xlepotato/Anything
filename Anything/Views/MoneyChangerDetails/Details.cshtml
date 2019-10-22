@@ -4,6 +4,7 @@
     /**/
     
     Layout = "/Views/Shared/HeaderLogoOnly.cshtml";
+    string username = Session["Username"].ToString();
 }
 
 
@@ -20,11 +21,18 @@
             <div class="mcDetailDiv">
                 <div>
                     <div style="padding-top: 2px; float:left;  margin-right: 5px;">
-                        <a href="#" class="btnFav">
+                        <a href="JavaScript:void(0)" class="btnFav">
+                            @if (Model.Favourites.Where(z => z.Username == username).FirstOrDefault() != null)
+                            {
+                                <img src="/Assets/Images/yellowStar.png" class="detailsFavIcon">
+                            }
+                            else
+                            {
                             <img src="/Assets/Images/yellowStar_white.png" class="detailsFavIcon">
+                            }
                         </a>
                     </div>
-                    <div style="">
+                    <div class="moneyChangerName">
                         <label id="moneyChangerName">Convenient Money</label>
                     </div>
                 </div>
