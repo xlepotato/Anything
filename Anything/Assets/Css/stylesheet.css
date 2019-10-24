@@ -833,6 +833,36 @@ input[type=number]::-webkit-outer-spin-button {
     padding: 0px
 }
 
+.favIcon {
+    width: 50px;
+    height: 40px;
+    padding: 0;
+    margin-top: 0.8em;
+    margin-left: 1em;
+    margin-right: 0;
+}
+
+    .favIcon:hover {
+        width: 50px;
+        height: 40px;
+        padding: 0;
+        margin-top: 0.8em;
+        margin-left: 1em;
+        margin-right: 0;
+        content: url("/Assets/Images/yellowStar.png");
+    }
+
+.detailsFavIcon {
+    width: 40px;
+    height: 30px;
+    padding: 0;
+    margin-right: 0;
+}
+
+.detailsFavIcon:hover {
+    content: url("/Assets/Images/yellowStar.png");
+}
+
 /*/*Adjustment for small screen*/
 @media screen and (min-width: 500px) and (max-width: 589px) {
     #headerBtnDiv {
@@ -1109,56 +1139,35 @@ input[type=number]::-webkit-outer-spin-button {
 
     
 }
+
 @media screen and (min-width: 751px) and (max-width:1000px) {
     #MarketRateDiv {
         border: black solid 2px;
         font-size: 20pt;
         background-color: white;
-        width:280px;
-        margin-left:31%;
-    }
-    .table-curved{
-        width:98%;
-        margin-left:2%;
+        width: 280px;
+        margin-left: 31%;
     }
 
-    #regContainer{
+    .table-curved {
+        width: 98%;
+        margin-left: 2%;
+    }
+
+    #headerBtnDiv {
+        padding: 0;
+    }
+
+    #regContainer {
         height: 70vh;
     }
-    #loginContainer{
-        height: 50vh;
+
+    #loginContainer {
+        height: 45vh;
     }
 }
 
-.favIcon{
-    width:50px;
-    height:40px;
-    padding:0;
-    margin-top:0.8em;
-    margin-left:1em;
-    margin-right:0;
-}
 
-.favIcon:hover {
-    width: 50px;
-    height: 40px;
-    padding: 0;
-    margin-top: 0.8em;
-    margin-left: 1em;
-    margin-right: 0;
-    content: url("/Assets/Images/yellowStar.png");
-}
-
-.detailsFavIcon {
-    width: 40px;
-    height: 30px;
-    padding: 0;
-    margin-right: 0;
-}
-
-.detailsFavIcon:hover {
-    content: url("/Assets/Images/yellowStar.png");
-}
 
 
 /*Adjustment for normal screen*/
@@ -1167,20 +1176,30 @@ input[type=number]::-webkit-outer-spin-button {
         margin-left: 20%;
     }
     #regContainer{
-        height: 70vh;
+        height: 55vh;
     }
 
     #loginContainer{
-        height: 50vh;
+        height: 40vh;
     }
+}
 
-    
+@media (min-width: 992px) {
+    #regContainer {
+        height: 58vh;
+    }
 }
 
 /*Adjustment for large screen*/
 @media screen and (min-width: 1300px) {
     #loading{
         margin-left: 28%;
+    }
+    #regContainer{
+        height: 55vh;
+    }
+    #loginContainer{
+        height: 40vh;
     }
 }
 
@@ -1201,3 +1220,9 @@ input[type=number]::-webkit-outer-spin-button {
     }
 
 }
+
+/*@media screen and (min-width: 939px) and (max-width:960px) {
+    #regContainer{
+        height:80vh;
+    }
+}*/
