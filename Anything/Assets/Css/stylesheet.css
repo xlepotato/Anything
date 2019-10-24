@@ -7,6 +7,28 @@
     padding: 0;
 }
 
+#headerBtnDiv {
+    padding-top: 3em;
+    padding-right: 8%;
+}
+
+.headerBtn {
+    box-shadow: none;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-weight: bold;
+    border: white solid 1px;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    border-radius: 50px;
+}
+
+.headerBtn:hover {
+    background: #F5F5F5;
+    color: black;
+}
+
+
 .row {
     margin:0;
 }
@@ -598,8 +620,20 @@ input[type=number]::-webkit-outer-spin-button {
 #regContainer {
     background-color: white;
     width: 50%;
-    height: 100%;
+    padding-bottom: 1em;
     border-radius: 15px;
+    overflow: hidden;
+}
+
+#regForm {
+    padding: 1em 2em 6em 2em;
+    height:100%;
+    overflow: scroll;
+}
+
+#regForm::-webkit-scrollbar {
+    width: 0px; /* Remove scrollbar space */
+    background: transparent; /* Optional: just make scrollbar invisible */
 }
 
 .nav {
@@ -631,10 +665,6 @@ input[type=number]::-webkit-outer-spin-button {
     color: black;
 }
 
-#regForm{
-    padding: 1em 2em 2em 2em;
-}
-
 .errormsg {
     color: red;
 }
@@ -659,7 +689,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 .lblFailMsg {
     visibility: visible;
-    color: darkred;
+    color: red;
 }
 
 
@@ -667,13 +697,20 @@ input[type=number]::-webkit-outer-spin-button {
 #loginContainer {
     background-color: white;
     width: 50%;
-    min-height: 60%;
-    height: 60%;
+    padding-bottom: 1em;
     border-radius: 15px;
+    overflow: hidden;
 }
 
 #loginForm {
     padding: 1em 2em 2em 2em;
+    height: 100%;
+    overflow: scroll;
+}
+
+#loginForm::-webkit-scrollbar {
+    width: 0px; /* Remove scrollbar space */
+    background: transparent; /* Optional: just make scrollbar invisible */
 }
 
 #btnLogin {
@@ -692,6 +729,10 @@ input[type=number]::-webkit-outer-spin-button {
 
 /*Adjustment for mobile screen*/
 @media only screen and (min-width: 350px) and (max-width: 499px) {
+    #headerBtnDiv {
+        padding-top: 0;
+    }
+
 
     .thumbnail {
         width: 100%;
@@ -781,6 +822,10 @@ input[type=number]::-webkit-outer-spin-button {
 
 /*/*Adjustment for small screen*/
 @media screen and (min-width: 500px) and (max-width: 589px) {
+    #headerBtnDiv {
+        padding-top:0;
+    }
+
     .putcenter {
         text-align: center;
         width: 70%;
@@ -908,10 +953,27 @@ input[type=number]::-webkit-outer-spin-button {
         border: 1px solid #ccc;
         border-radius: 32px;
     }
+
+    #regContainer{
+        height: 70vh;
+    }
+
+    #loginContainer{
+        height: 50vh;
+    }
 }
 
 /*/*Adjustment for small screen*/
 @media screen and (min-width: 590px) and (max-width:750px) {
+    #regContainer {
+        height: 70vh;
+    }
+    #loginContainer{
+        height: 50vh;
+    }
+    #headerBtnDiv{
+        padding-top: 0;
+    }
     .putcenter {
         text-align: center;
         width: 70%;
@@ -1027,8 +1089,9 @@ input[type=number]::-webkit-outer-spin-button {
         color: darkgray;
         font-size:10px;
     }
-}
 
+    
+}
 @media screen and (min-width: 751px) and (max-width:1000px) {
     #MarketRateDiv {
         border: black solid 2px;
@@ -1041,7 +1104,9 @@ input[type=number]::-webkit-outer-spin-button {
         width:98%;
         margin-left:2%;
     }
-
+    #loginContainer{
+        height: 50vh;
+    }
 }
 
 .favIcon{
@@ -1080,6 +1145,15 @@ input[type=number]::-webkit-outer-spin-button {
     #loading {
         margin-left: 20%;
     }
+    #regContainer{
+        height: 70vh;
+    }
+
+    #loginContainer{
+        height: 50vh;
+    }
+
+    
 }
 
 /*Adjustment for large screen*/
@@ -1089,3 +1163,20 @@ input[type=number]::-webkit-outer-spin-button {
     }
 }
 
+
+@media screen and (min-height: 800px){
+    #regContainer{
+        height: 30%;
+    }
+    #regForm{
+        height: 100%;
+    }
+
+    #loginContainer {
+        height: 25vh;
+    }
+    #loginForm {
+        height: 100%;
+    }
+
+}
