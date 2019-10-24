@@ -28,6 +28,25 @@
     color: black;
 }
 
+#btnLoggedIn {
+    box-shadow: none;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-weight: bold;
+    border: white solid 1px;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    border-radius: 50px;
+}
+
+#btnLoggedIn:hover {
+    background: #F5F5F5;
+    color: black;
+}
+
+.loggedInDD {
+    margin-right: 7%;
+}
 
 .row {
     margin:0;
@@ -665,14 +684,23 @@ input[type=number]::-webkit-outer-spin-button {
     color: black;
 }
 
+.activeTab {
+    border-top: solid #eb9c15 5px;
+}
+
 .inactiveTab {
     border-left: solid gray 1px;
     border-right: solid gray 1px;
     border-bottom: solid gray 5px;
+    background-color: darkgray;
 }
 
-.inactiveTab:hover{
+.inactiveTab:hover {
     color: black;
+    background-color: whitesmoke;
+    border-left: solid gray 1px;
+    border-right: solid gray 1px;
+    border-bottom: solid gray 5px;
 }
 
 .errormsg {
@@ -742,11 +770,6 @@ input[type=number]::-webkit-outer-spin-button {
 
 /*Adjustment for mobile screen*/
 @media only screen and (min-width: 350px) and (max-width: 499px) {
-    #headerBtnDiv {
-        padding-top: 0;
-    }
-
-
     .thumbnail {
         width: 100%;
     }
@@ -866,7 +889,10 @@ input[type=number]::-webkit-outer-spin-button {
 /*/*Adjustment for small screen*/
 @media screen and (min-width: 500px) and (max-width: 589px) {
     #headerBtnDiv {
-        padding-top:0;
+        width: 100%;
+    }
+    .headerBtn{
+        width:49%;
     }
 
     .putcenter {
@@ -1008,14 +1034,19 @@ input[type=number]::-webkit-outer-spin-button {
 
 /*/*Adjustment for small screen*/
 @media screen and (min-width: 500px) and (max-width:750px) {
+    #headerBtnDiv {
+        padding-top: 3em;
+        padding-right: 0.5em;
+        float: right;
+    }
+    .headerBtn{
+        /*width:49%;*/
+    }
     #regContainer {
         height: 75vh;
     }
     #loginContainer{
         height: 50vh;
-    }
-    #headerBtnDiv{
-        padding-top: 0;
     }
     .inactiveTab{
         border-left: none;
@@ -1141,6 +1172,12 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 @media screen and (min-width: 751px) and (max-width:1000px) {
+    #headerBtnDiv {
+        margin-top: 3em;
+        margin-right: 1.5em;
+        float: right;
+    }
+
     #MarketRateDiv {
         border: black solid 2px;
         font-size: 20pt;
@@ -1221,8 +1258,3 @@ input[type=number]::-webkit-outer-spin-button {
 
 }
 
-/*@media screen and (min-width: 939px) and (max-width:960px) {
-    #regContainer{
-        height:80vh;
-    }
-}*/

@@ -299,7 +299,7 @@
     //Login Page//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     if (window.location.pathname === '/login' || window.location.pathname === '/Login' || window.location.pathname === '/Login/Index') { //hide scrollbar
         $(".rowContainer").css({ 'overflow': 'hidden' });
-        $("#headerBtnDiv").css({ 'visibility': 'hidden' });
+        document.getElementById("headerBtnDiv").remove();
     }
 
     $("#btnLogin").click(function () {
@@ -326,7 +326,8 @@
     
     if (window.location.pathname === '/signup' || window.location.pathname === '/SignUp' || window.location.pathname === '/SignUp/Index') { //hide scrollbar
         $(".rowContainer").css({ 'overflow': 'hidden' });
-        $("#headerBtnDiv").css({ 'visibility': 'hidden' });
+        document.getElementById("headerBtnDiv").remove();
+
     }
     function ValidateUsername() {
         var reg = /[a-zA-Z0-9]{6,}$/;
