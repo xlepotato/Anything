@@ -91,6 +91,7 @@
     function GetGraph() {
         $(".loadingContainer").show();
         $("#myChart").remove();
+        $(".chartContainer").hide();
         $(".chartContainer").append('<canvas id="myChart"><canvas>');        
         var Data = {
             ExchangeFrom: $("#btnExchangeFrom").text().trim(),
@@ -105,6 +106,7 @@
             success: function (result) {
                 GenerateGraph(result.Title, result.ShortDate, result.RegressionY, result.Amount);
                 $(".loadingContainer").hide();
+                $(".chartContainer").show();
             }
         });
     }
@@ -454,4 +456,64 @@
             }
         });
     }
+    //GetWebscrape();
 });
+//Home Read Webscrape Date
+function GetWebscrape() {
+    $.ajax({
+        url: "/Assets/Data/Data.json",
+        typr: "GET",
+        contentType: "application/json;charset=UTF-8",
+        dataType: "json",
+        success: function (result) {
+            $.each(result, function () {
+                var MoneyChangers = {
+                    Name: this.moneychanger_name,
+                    Address: this.address,
+                    Img: this.img,
+                    OpeningHours: this.operating_hours,
+                    Tel_No: this.tel_No.trim()
+                };
+                var moneychanger_name = this.moneychanger_name;
+                SaveWebscrapeMoneyChanger(MoneyChangers);
+                $.each(this.currency_table, function () {
+                    var ExchangeRates = {
+                        moneychanger_name: moneychanger_name,
+                        currency_code: this.currency_code,
+                        exchange_rate_buy: this.exchange_rate_buy,
+                        exchange_rate_sell: this.exchange_rate_sell,
+                        last_update_buy: this.last_update_buy,
+                        last_update_sell: this.last_update_sell
+                    };
+                    SaveWebscrapeExchangeRates(ExchangeRates);
+                });
+
+            });
+        }
+    });
+}
+function SaveWebscrapeMoneyChanger(MoneyChangers) {
+    $.ajax({
+        url: "/Home/UpdateMoneyChanger",
+        data: MoneyChangers,
+        typr: "GET",
+        contentType: "application/json;charset=UTF-8",
+        dataType: "json",
+        success: function (result) {
+          
+        }
+    });
+}
+function SaveWebscrapeExchangeRates(ExchangeRates) {
+    $.ajax({
+        url: "/Home/UpdateExchangeRates",
+        data: ExchangeRates,
+        typr: "GET",
+        contentType: "application/json;charset=UTF-8",
+        dataType: "json",
+        success: function (result) {
+
+        }
+    });
+}
+

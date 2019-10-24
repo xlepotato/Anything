@@ -28,7 +28,7 @@ namespace Anything.Controllers
                     exchangeRates = exchangeRates.OrderBy(z => z.Rate);
                 }
                 var userFavourites = model.Favourites.Where(a => a.Username == username);
-                var x = exchangeRates.AsEnumerable().Select(z => new
+                var x = exchangeRates.Take(10).AsEnumerable().Select(z => new
                 {
                     z.Rate,
                     z.MoneyChanger.Name,

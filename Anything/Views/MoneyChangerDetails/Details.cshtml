@@ -2,9 +2,13 @@
 
 @{
     /**/
-    
+
     Layout = "/Views/Shared/HeaderLogoOnly.cshtml";
-    string username = Session["Username"].ToString();
+    string username = null;
+    if (Session["Username"] != null)
+    {
+        username = Session["Username"].ToString();
+    }
 }
 
 
@@ -20,7 +24,10 @@
             </div>
             <div class="mcDetailDiv">
                 <div>
+                   
                     <div style="padding-top: 2px; float:left;  margin-right: 5px;">
+                         @if (username != null)
+                        {
                         <a href="JavaScript:void(0)" class="btnFav">
                             @if (Model.Favourites.Where(z => z.Username == username).FirstOrDefault() != null)
                             {
@@ -31,7 +38,9 @@
                             <img src="/Assets/Images/yellowStar_white.png" class="detailsFavIcon">
                             }
                         </a>
+                         }
                     </div>
+                   
                     <div class="moneyChangerName">
                         <label id="moneyChangerName">Convenient Money</label>
                     </div>
