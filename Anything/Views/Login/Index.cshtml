@@ -15,19 +15,23 @@
     </ul>
 
     <form id="loginForm">
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" class="form-control" id="username" placeholder="Username">
+        <div class="form-group row formDiv">
+            <label for="username" class="col-md-3 col-form-label">Username</label>
+            <div class="col-md-9">
+                <input type="text" class="form-control" id="username" placeholder="Username">
+            </div>
         </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" placeholder="Password">
+        <div class="form-group row formDiv">
+            <label for="password" class="col-md-3 col-form-label">Password</label>
+            <div class="col-md-9">
+                <input type="password" class="form-control" id="password" placeholder="Password">
+            </div>
         </div>
         <div class="col-md-12">
             <label class="lblFailMsg">fail</label>
         </div>
         <button type="button" class="btn btn-default" id="btnLogin">Login</button>
-        
+
     </form>
 
 </div>

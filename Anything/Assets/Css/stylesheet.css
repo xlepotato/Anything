@@ -626,7 +626,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 #regForm {
-    padding: 1em 2em 6em 2em;
+    padding: 1em 2em 6em 1em;
     height:100%;
     overflow: scroll;
 }
@@ -635,6 +635,16 @@ input[type=number]::-webkit-outer-spin-button {
     width: 0px; /* Remove scrollbar space */
     background: transparent; /* Optional: just make scrollbar invisible */
 }
+
+.formDisplay{
+    display: inline;
+}
+
+.formDiv{
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
 
 .nav {
     font-size: 16pt;
@@ -675,6 +685,7 @@ input[type=number]::-webkit-outer-spin-button {
     background-color: #eb9c15;
     border: none;
     box-shadow: 2px 3px #fff;
+    margin-left: 0.8em;
 }
 
 #btnRegister:hover {
@@ -683,6 +694,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .lblSuccessMsg {
+    padding-left: 1em;
     visibility: visible;
     color: forestgreen;
 }
@@ -719,6 +731,7 @@ input[type=number]::-webkit-outer-spin-button {
     background-color: #eb9c15;
     border: none;
     box-shadow: 2px 3px #fff;
+    margin-left: 0.8em;
 }
 
 #btnLogin:hover {
@@ -964,15 +977,19 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 /*/*Adjustment for small screen*/
-@media screen and (min-width: 590px) and (max-width:750px) {
+@media screen and (min-width: 500px) and (max-width:750px) {
     #regContainer {
-        height: 70vh;
+        height: 75vh;
     }
     #loginContainer{
         height: 50vh;
     }
     #headerBtnDiv{
         padding-top: 0;
+    }
+    .inactiveTab{
+        border-left: none;
+        border-right: none;
     }
     .putcenter {
         text-align: center;
@@ -1103,6 +1120,10 @@ input[type=number]::-webkit-outer-spin-button {
     .table-curved{
         width:98%;
         margin-left:2%;
+    }
+
+    #regContainer{
+        height: 70vh;
     }
     #loginContainer{
         height: 50vh;

@@ -15,26 +15,33 @@
     </ul>
 
     <form id="regForm">
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" class="form-control" id="username" placeholder="Username">
-            <small for="username" class="errormsg" id="usernameError"></small>
+        <div class="form-group row formDiv">
+            <label for="username" class="col-md-3 col-form-label">Username</label>
+            <div class="col-md-9">
+                <input type="text" class="form-control" id="username" placeholder="Username">
+                <small for="username" class="errormsg" id="usernameError"></small>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" placeholder="Password">
-            <small class="errormsg" id="passwordError"></small>
-            </br >
+        <div class="form-group row formDiv">
+            <label for="password" class="col-md-3 col-form-label">Password</label>
+            <div class="col-md-9">
+                <input type="password" class="form-control" id="password" placeholder="Password">
+                <small for="password" class="errormsg" id="passwordError"></small>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="confirmpassword">Confirm Password</label>
-            <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password">
-            <small class="errormsg" id="confirmPWError"></small>
+        <div class="form-group row formDiv">
+            <label id="lblConfirmPassword" for="confirmpassword" class="col-md-3 col-form-label">Confirm Password</label>
+            <div class="col-md-9">
+                <input type="password" class="form-control" id="confirmpassword" placeholder="Confirm Password">
+                <small for="confirmpassword" class="errormsg" id="confirmPWError"></small>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="mobilenumber">Mobile Number</label>
-            <input type="number" class="form-control" id="mobilenumber" placeholder="e.g. 8765 4321">
-            <small for="username" class="errormsg" id="mobileNoError"></small>
+        <div class="form-group row formDiv">
+            <label for="mobilenumber" class="col-md-3 col-form-label">Mobile Number</label>
+            <div class="col-md-9">
+                <input type="number" class="form-control" id="mobilenumber" placeholder="e.g. 8765 4321">
+                <small for="mobilenumber" class="errormsg" id="mobileNoError"></small>
+            </div>
         </div>
         <div>
             <label class="lblSuccessMsg">success</label>
