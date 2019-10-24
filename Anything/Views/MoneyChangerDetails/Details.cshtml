@@ -42,16 +42,37 @@
                     </div>
                    
                     <div class="moneyChangerName">
-                        <label id="moneyChangerName">Convenient Money</label>
+                        <label id="moneyChangerName">@Model.Name</label>
                     </div>
                 </div>
                 <div style="margin-left:2%;">
                     <img src="/Assets/Images/clock.png" class="detailIcon">
-                    <label class="moneyChangerDetails mcDetailLbl">@Model.OpeningHours</label><br />
+                    @if (Model.OpeningHours == null)
+                    {
+                        <label class="moneyChangerDetails mcDetailLbl">Opening Hours Currently Unavailable</label><br />
+                    }
+                    else
+                    {
+                     <label class="moneyChangerDetails mcDetailLbl">@Model.OpeningHours</label><br />
+                    }
                     <img src="/Assets/Images/phone.png" class="detailIcon">
-                    <label class="moneyChangerDetails mcDetailLbl">@Model.ContactNumber</label><br />
+                    @if (Model.ContactNumber == null)
+                    {
+                        <label class="moneyChangerDetails mcDetailLbl">Contact Number Currrently Unavailable</label><br />
+                    }
+                    else
+                    {
+                        <label class="moneyChangerDetails mcDetailLbl">@Model.ContactNumber</label><br />
+                    }
                     <img src="/Assets/Images/location.png" class="detailIcon" id="locationIcon">
-                    <label class="moneyChangerDetails mcDetailLbl" id="detailLocationLbl">@Model.Location</label>
+                    @if (Model.Location == null)
+                    {
+                        <label class="moneyChangerDetails mcDetailLbl" id="detailLocationLbl">Location Currently Unavailable</label>
+                    }
+                    else
+                    {
+                         <label class="moneyChangerDetails mcDetailLbl" id="detailLocationLbl">@Model.Location</label>
+                    }
                 </div>
                 </div>
             <!--Map display-->

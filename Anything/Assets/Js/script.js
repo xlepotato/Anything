@@ -305,6 +305,12 @@
     $("#btnLogin").click(function () {
         Login();
     });
+    $("#username").on('input', function () {
+        $(".lblFailMsg").text("");
+    });
+    $("#password").on('input', function () {
+        $(".lblFailMsg").text("");
+    });
     function Login() {
         var Data = {
             Username: $("#username").val(),
@@ -317,8 +323,12 @@
             contentType: "application/json;charset=UTF-8",
             dataType: "json",
             success: function (result) {
-                $("#lblLoginMessage").html("");
-                $("#lblLoginMessage").append(result);
+                if (result == "Success") {
+                    window.location.href = "/";
+                }
+                else {
+                    $(".lblFailMsg").text(result);
+                }
             }
         });
     }
@@ -332,46 +342,46 @@
     function ValidateUsername() {
         var reg = /[a-zA-Z0-9]{6,}$/;
         if (reg.test($("#username").val())) {
-            return true
+            return true;
         }
         else
         {
             $("#usernameError").text("Please enter at least 6 alpha numeric characters.");
             $("#usernameError").show();
-            return false
+            return false;
         }
     }
     function ValidatePassword() {
         var reg = /[\w]{8,}$/;
         if (reg.test($("#password").val())) {
-            return true
+            return true;
         }
         else {
             $("#passwordError").text("Please enter at least 8 characters.");
             $("#passwordError").show();
-            return false
+            return false;
         }
     }
     function ValidateConfirmPassword() {
       
-        if ($("#password").val() == $("#confirmPassword").val()) {
-            return true
+        if ($("#password").val() == $("#confirmpassword").val()) {
+            return true;
         }
         else {
             $("#confirmPWError").text("Password does not match!");
             $("#confirmPWError").show();
-            return false
+            return false;
         }
     }
     function ValidateMobileNumber() {
         var reg = /^[0-9]{8}$/;
         if (reg.test($("#mobilenumber").val())) {
-            return true
+            return true;
         }
         else {
             $("#mobileNoError").text("Please enter your 8 digit singapore number.");
             $("#mobileNoError").show();
-            return false
+            return false;
         }
     }
 
@@ -411,8 +421,7 @@
             dataType: "json",
             success: function (result) {
                 if (result == "Success") {
-                    $("#lblSuccess").html("");
-                    $("#lblSuccess").append(result);
+                    $(".lblSuccessMsg").text("Account Has Been Successfully Created.");
                 }
                 else if (result == "Mobile")
                 {

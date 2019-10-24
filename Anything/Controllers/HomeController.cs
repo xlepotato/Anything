@@ -118,7 +118,7 @@ namespace Anything.Controllers
         {
             using (cz2006anythingEntities model = new cz2006anythingEntities())
             {
-                if (exchange_rate_sell != null)
+                if (exchange_rate_sell != null && exchange_rate_sell !=0)
                 {
                     var selling = model.ExchangeRates.Where(z => z.MoneyChanger.Name == moneychanger_name && z.Currency.Name == currency_code && z.Currency1.Name == "SGD").FirstOrDefault();
                     if (selling == null)
@@ -192,7 +192,7 @@ namespace Anything.Controllers
                     }
 
                 }
-                if (exchange_rate_buy != null)
+                if (exchange_rate_buy != null && exchange_rate_buy!=0)
                 {
                     var buying = model.ExchangeRates.Where(z => z.MoneyChanger.Name == moneychanger_name && z.Currency1.Name == currency_code && z.Currency.Name == "SGD").FirstOrDefault();
                     if (buying == null)
