@@ -28,6 +28,37 @@ namespace Anything.Controllers
             }
             return "timespan error";
         }
+        public static DateTime SetDate(string datestring)
+        {
+            if (datestring.ToLower().Contains("year"))
+            {
+                return DateTime.Now.AddYears(-Convert.ToInt32(datestring.Split(' ')[0]));
+            }
+            else if (datestring.ToLower().Contains("month"))
+            {
+                return DateTime.Now.AddMonths(-Convert.ToInt32(datestring.Split(' ')[0]));
+            }
+            else if (datestring.ToLower().Contains("day"))
+            {
+                return DateTime.Now.AddDays(-Convert.ToInt32(datestring.Split(' ')[0]));
+            }
+            else if (datestring.ToLower().Contains("hour"))
+            {
+                return DateTime.Now.AddHours(-Convert.ToInt32(datestring.Split(' ')[0]));
+            }
+            else if (datestring.ToLower().Contains("min"))
+            {
+                return DateTime.Now.AddMinutes(-Convert.ToInt32(datestring.Split(' ')[0]));
+            }
+            else if (datestring.ToLower().Contains("second"))
+            {
+                return DateTime.Now.AddSeconds(-Convert.ToInt32(datestring.Split(' ')[0]));
+            }
+            else
+            {
+                return DateTime.Now.AddYears(-1);
+            }
+        }
         public static double ConvertCurrency(double ExchangeAmount, double ExchangeFrom, double ExchangeTo)
         {
             double amount = (ExchangeAmount / ExchangeFrom) * ExchangeTo;

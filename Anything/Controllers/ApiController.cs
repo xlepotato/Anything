@@ -55,5 +55,89 @@ namespace Anything.Controllers
             var result = new { Amount = amount, Rate = baseRate };
             return result;
         }
+        public static void UpdateMoneyChanger(string Name, string Address, string Img, string OpeningHours, int? Tel_No)
+        {
+            using (cz2006anythingEntities model = new cz2006anythingEntities())
+            {
+                var thisMC = model.MoneyChangers.Where(z => z.Name == Name).FirstOrDefault();
+                if (thisMC == null)
+                {
+                    thisMC = new MoneyChanger();
+                    var arr = Address.Split(' ');
+                    thisMC.Name = Name;
+                    if (arr.Count() > 0)
+                    {
+                        string PostalCode = arr[arr.Count() - 1];
+                        thisMC.Location = Address.Replace(", " + PostalCode, "");
+                        thisMC.PostalCode = PostalCode;
+                    }
+                    thisMC.OpeningHours = OpeningHours;
+                    thisMC.Photo = Img;
+                    thisMC.ContactNumber = Tel_No;
+                    model.MoneyChangers.Add(thisMC);
+                }
+                else
+                {
+                    var arr = Address.Split(' ');
+                    if (arr.Count() > 0)
+                    {
+                        string PostalCode = arr[arr.Count() - 1];
+                        thisMC.Location = Address.Replace(", " + PostalCode, "");
+                        thisMC.PostalCode = PostalCode;
+                    }
+                    thisMC.OpeningHours = OpeningHours;
+                    thisMC.Photo = Img;
+                    thisMC.ContactNumber = Tel_No;
+                }
+                model.SaveChanges();
+            }
+        }
+        public static void UpdateExchangeRates(string moneychanger_name, string currency_code, float? exchange_rate_buy, float? exchange_rate_sell, string last_update_buy, string last_update_sell)
+        {
+            using (cz2006anythingEntities model = new cz2006anythingEntities())
+            {
+                if (exchange_rate_sell != null && exchange_rate_sell != 0)
+                {
+                    var selling = model.ExchangeRates.Where(z => z.MoneyChanger.Name == moneychanger_name && z.Currency.Name == currency_code && z.Currency1.Name == "SGD").FirstOrDefault();
+                    if (selling == null)
+                    {
+                        selling = new ExchangeRate();
+                        selling.MoneyChanger = model.MoneyChangers.Where(z => z.Name == moneychanger_name).FirstOrDefault();
+                        selling.Currency = model.Currencies.Where(z => z.Name == currency_code).FirstOrDefault();
+                        selling.Currency1 = model.Currencies.Where(z => z.Name == "SGD").FirstOrDefault();
+                        selling.Rate = (float)exchange_rate_sell;
+                        selling.LastUpdated = CalculationController.SetDate(last_update_sell);
+                        model.ExchangeRates.Add(selling);
+                    }
+                    else
+                    {
+                        selling.Rate = (float)exchange_rate_sell;
+                        selling.LastUpdated = CalculationController.SetDate(last_update_sell);
+                    }
+
+                }
+                if (exchange_rate_buy != null && exchange_rate_buy != 0)
+                {
+                    exchange_rate_buy = 1 / exchange_rate_buy;
+                    var buying = model.ExchangeRates.Where(z => z.MoneyChanger.Name == moneychanger_name && z.Currency1.Name == currency_code && z.Currency.Name == "SGD").FirstOrDefault();
+                    if (buying == null)
+                    {
+                        buying = new ExchangeRate();
+                        buying.MoneyChanger = model.MoneyChangers.Where(z => z.Name == moneychanger_name).FirstOrDefault();
+                        buying.Currency1 = model.Currencies.Where(z => z.Name == currency_code).FirstOrDefault();
+                        buying.Currency = model.Currencies.Where(z => z.Name == "SGD").FirstOrDefault();
+                        buying.Rate = (float)exchange_rate_buy;
+                        buying.LastUpdated = CalculationController.SetDate(last_update_buy);
+                        model.ExchangeRates.Add(buying);
+                    }
+                    else
+                    {
+                        buying.Rate = (float)exchange_rate_buy;
+                        buying.LastUpdated = CalculationController.SetDate(last_update_buy);
+                    }
+                }
+                model.SaveChanges();
+            }
+        }
     }
 }
