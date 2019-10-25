@@ -11,9 +11,9 @@ namespace Anything.Controllers
 {
     public  class GraphController
     {
-        public static async System.Threading.Tasks.Task<HomeHistoricalRates> GetGraph(string ExchangeFrom, string ExchangeTo)
+        public static async System.Threading.Tasks.Task<Graph> GetGraph(string ExchangeFrom, string ExchangeTo)
         {
-            HomeHistoricalRates historicalRates = new HomeHistoricalRates();
+            Graph historicalRates = new Graph();
             if (ExchangeFrom != ExchangeTo)
             {
                 int numOfDays = 30;             

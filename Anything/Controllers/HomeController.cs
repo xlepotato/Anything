@@ -21,21 +21,21 @@ namespace Anything.Controllers
             }
             else if ((bool)Session["Locked"] == false)
             {
-                //await ApiController.SetRates();
+                await ApiController.SetRates();
             }
             using (cz2006anythingEntities model = new cz2006anythingEntities())
             {
                 return View(model.Currencies.ToList());
             }
         }
-        //public ActionResult GetCurrency(float ExchangeAmount, string ExchangeFrom, string ExchangeTo)
-        //{
-        //    return Json(ApiController.GetCurrency(ExchangeAmount, ExchangeFrom, ExchangeTo), JsonRequestBehavior.AllowGet);
-        //}
-        //public async System.Threading.Tasks.Task<ActionResult> GetGraph(string ExchangeFrom, string ExchangeTo)
-        //{
-        //    return Json(await GraphController.GetGraph(ExchangeFrom, ExchangeTo), JsonRequestBehavior.AllowGet);
-        //}
+        public ActionResult GetCurrency(float ExchangeAmount, string ExchangeFrom, string ExchangeTo)
+        {
+            return Json(ApiController.GetCurrency(ExchangeAmount, ExchangeFrom, ExchangeTo), JsonRequestBehavior.AllowGet);
+        }
+        public async System.Threading.Tasks.Task<ActionResult> GetGraph(string ExchangeFrom, string ExchangeTo)
+        {
+            return Json(await GraphController.GetGraph(ExchangeFrom, ExchangeTo), JsonRequestBehavior.AllowGet);
+        }
         public ActionResult Filter(string Search, string ExchangeFrom, string ExchangeTo, string SortBy, bool IsFavourite)
         {
             return Json(FilterController.Filter(Search, ExchangeFrom, ExchangeTo, SortBy, IsFavourite), JsonRequestBehavior.AllowGet);
@@ -114,7 +114,7 @@ namespace Anything.Controllers
             }
             return Json("", JsonRequestBehavior.AllowGet);
         }
-        public ActionResult UpdateExchangeRates(string moneychanger_name,string currency_code, float? rate_buy, float? exchange_rate_sell,string last_update_buy,string last_update_sell)
+        public ActionResult UpdateExchangeRates(string moneychanger_name,string currency_code, float? exchange_rate_buy, float? exchange_rate_sell,string last_update_buy,string last_update_sell)
         {
             using (cz2006anythingEntities model = new cz2006anythingEntities())
             {
@@ -192,8 +192,9 @@ namespace Anything.Controllers
                     }
 
                 }
-                if (rate_buy != null && rate_buy != 0)
+                if (exchange_rate_buy != null && exchange_rate_buy != 0)
                 {
+                    exchange_rate_buy = 1 / exchange_rate_buy;
                     var buying = model.ExchangeRates.Where(z => z.MoneyChanger.Name == moneychanger_name && z.Currency1.Name == currency_code && z.Currency.Name == "SGD").FirstOrDefault();
                     if (buying == null)
                     {
@@ -201,7 +202,7 @@ namespace Anything.Controllers
                         buying.MoneyChanger = model.MoneyChangers.Where(z => z.Name == moneychanger_name).FirstOrDefault();
                         buying.Currency1 = model.Currencies.Where(z => z.Name == currency_code).FirstOrDefault();
                         buying.Currency = model.Currencies.Where(z => z.Name == "SGD").FirstOrDefault();
-                        buying.Rate = (float)rate_buy;
+                        buying.Rate = (float)exchange_rate_buy;
                         if (last_update_buy.ToLower().Contains("year"))
                         {
                             buying.LastUpdated = DateTime.Now.AddYears(-Convert.ToInt32(last_update_buy.Split(' ')[0]));
@@ -234,7 +235,7 @@ namespace Anything.Controllers
                     }
                     else
                     {
-                        buying.Rate = (float)rate_buy;
+                        buying.Rate = (float)exchange_rate_buy;
                         if (last_update_buy.ToLower().Contains("year"))
                         {
                             buying.LastUpdated = DateTime.Now.AddYears(-Convert.ToInt32(last_update_buy.Split(' ')[0]));

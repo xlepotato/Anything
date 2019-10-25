@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Anything.Models
 {
-    public class HomeHistoricalRates
+    public class Graph
     {
         public string Title { get; set; }
         public List<string> ShortDate { get; set; }

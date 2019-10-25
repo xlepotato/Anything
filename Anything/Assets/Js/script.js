@@ -490,7 +490,7 @@ function GetWebscrape() {
                     var ExchangeRates = {
                         moneychanger_name: moneychanger_name,
                         currency_code: this.currency_code,
-                        rate_buy: this.rate_buy,
+                        exchange_rate_buy: this.exchange_rate_buy,
                         exchange_rate_sell: this.exchange_rate_sell,
                         last_update_buy: this.last_update_buy,
                         last_update_sell: this.last_update_sell

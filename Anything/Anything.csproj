@@ -190,7 +190,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\HomeHistoricalRates.cs" />
+    <Compile Include="Models\Graph.cs" />
     <Compile Include="Models\MarketRate.cs" />
     <Compile Include="MoneyChanger.cs">
       <DependentUpon>Model1.tt</DependentUpon>
