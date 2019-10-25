@@ -333,6 +333,7 @@ input[type=number]::-webkit-outer-spin-button {
 .detailIcon {
     width: 22px;
     height: 22px;
+    float:left;
 }
 
 #locationIcon {
@@ -355,11 +356,28 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .moneyChangerDetails {
-    padding-top: 0.5em;
     font-size: 11pt;
     color: #616161;
     font-weight: lighter;
     font-family: 'Almarai', sans-serif;
+}
+
+.format {
+    float:left;
+    width:90%;
+    padding-bottom:0.5em
+}
+
+.moneyChangerDetailsOH {
+    margin-top:0.5em;
+}
+
+.moneyChangerDetailsContact {
+    margin-top: 1em;
+}
+
+.moneyChangerDetailsLoc {
+    margin-top: 1em;
 }
 
 .tableCtyIcon {
@@ -373,7 +391,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .tableHeader {
-    background-color: #eb9c15;
+    background-color: navajowhite;
     color: black;
 }
 
@@ -418,11 +436,11 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .table-curved tr.oddRow {
-    background-color: floralwhite;
+    background-color: white;
 }
 
 .table-curved tr.evenRow {
-    background-color: navajowhite;
+    background-color: oldlace;
 }
 .lastRow {
 }
@@ -638,6 +656,7 @@ input[type=number]::-webkit-outer-spin-button {
 /* Register Page */
 #regContainer {
     background-color: white;
+    height:70%;
     width: 50%;
     padding-bottom: 1em;
     border-radius: 15px;

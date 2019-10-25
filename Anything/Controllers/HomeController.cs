@@ -114,7 +114,7 @@ namespace Anything.Controllers
             }
             return Json("", JsonRequestBehavior.AllowGet);
         }
-        public ActionResult UpdateExchangeRates(string moneychanger_name,string currency_code, float? exchange_rate_buy, float? exchange_rate_sell,string last_update_buy,string last_update_sell)
+        public ActionResult UpdateExchangeRates(string moneychanger_name,string currency_code, float? rate_buy, float? exchange_rate_sell,string last_update_buy,string last_update_sell)
         {
             using (cz2006anythingEntities model = new cz2006anythingEntities())
             {
@@ -192,7 +192,7 @@ namespace Anything.Controllers
                     }
 
                 }
-                if (exchange_rate_buy != null && exchange_rate_buy!=0)
+                if (rate_buy != null && rate_buy != 0)
                 {
                     var buying = model.ExchangeRates.Where(z => z.MoneyChanger.Name == moneychanger_name && z.Currency1.Name == currency_code && z.Currency.Name == "SGD").FirstOrDefault();
                     if (buying == null)
@@ -201,7 +201,7 @@ namespace Anything.Controllers
                         buying.MoneyChanger = model.MoneyChangers.Where(z => z.Name == moneychanger_name).FirstOrDefault();
                         buying.Currency1 = model.Currencies.Where(z => z.Name == currency_code).FirstOrDefault();
                         buying.Currency = model.Currencies.Where(z => z.Name == "SGD").FirstOrDefault();
-                        buying.Rate = (float)exchange_rate_buy;
+                        buying.Rate = (float)rate_buy;
                         if (last_update_buy.ToLower().Contains("year"))
                         {
                             buying.LastUpdated = DateTime.Now.AddYears(-Convert.ToInt32(last_update_buy.Split(' ')[0]));
@@ -234,7 +234,7 @@ namespace Anything.Controllers
                     }
                     else
                     {
-                        buying.Rate = (float)exchange_rate_buy;
+                        buying.Rate = (float)rate_buy;
                         if (last_update_buy.ToLower().Contains("year"))
                         {
                             buying.LastUpdated = DateTime.Now.AddYears(-Convert.ToInt32(last_update_buy.Split(' ')[0]));

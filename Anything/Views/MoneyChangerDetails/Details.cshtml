@@ -46,33 +46,39 @@
                     </div>
                 </div>
                 <div style="margin-left:2%;">
-                    <img src="/Assets/Images/clock.png" class="detailIcon">
-                    @if (Model.OpeningHours == null)
-                    {
-                        <label class="moneyChangerDetails mcDetailLbl">Opening Hours Currently Unavailable</label><br />
-                    }
-                    else
-                    {
-                     <label class="moneyChangerDetails mcDetailLbl">@Model.OpeningHours</label><br />
-                    }
-                    <img src="/Assets/Images/phone.png" class="detailIcon">
-                    @if (Model.ContactNumber == null)
-                    {
-                        <label class="moneyChangerDetails mcDetailLbl">Contact Number Currrently Unavailable</label><br />
-                    }
-                    else
-                    {
-                        <label class="moneyChangerDetails mcDetailLbl">@Model.ContactNumber</label><br />
-                    }
-                    <img src="/Assets/Images/location.png" class="detailIcon" id="locationIcon">
-                    @if (Model.Location == null)
-                    {
-                        <label class="moneyChangerDetails mcDetailLbl" id="detailLocationLbl">Location Currently Unavailable</label>
-                    }
-                    else
-                    {
-                         <label class="moneyChangerDetails mcDetailLbl" id="detailLocationLbl">@Model.Location</label>
-                    }
+                    <div class="moneyCHangerDetailsOH">
+                        <img src="/Assets/Images/clock.png" class="detailIcon">
+                        @if (Model.OpeningHours == null)
+                        {
+                            <label class="moneyChangerDetails mcDetailLbl format">Currently Unavailable.</label><br />
+                        }
+                        else
+                        {
+                            <div class="moneyChangerDetails mcDetailLbl format">@Html.Raw(Model.OpeningHours.Replace("; ", "<br />"))</div><br />
+                        }
+                    </div>
+                    <div class="moneyCHangerDetailsContact">
+                        <img src="/Assets/Images/phone.png" class="detailIcon">
+                        @if (Model.ContactNumber == null)
+                        {
+                            <label class="moneyChangerDetails mcDetailLbl format">Currrently Unavailable.</label><br />
+                        }
+                        else
+                        {
+                            <label class="moneyChangerDetails mcDetailLbl format">@Model.ContactNumber</label><br />
+                        }
+                    </div>
+                    <div class="moneyCHangerDetailsLoc">
+                        <img src="/Assets/Images/location.png" class="detailIcon" id="locationIcon">
+                        @if (Model.Location == null)
+                        {
+                            <label class="moneyChangerDetails mcDetailLbl format" id="detailLocationLbl">Currently Unavailable.</label>
+                        }
+                        else
+                        {
+                            <label class="moneyChangerDetails mcDetailLbl format" id="detailLocationLbl">@Model.Location</label>
+                        }
+                    </div>
                 </div>
                 </div>
             <!--Map display-->
