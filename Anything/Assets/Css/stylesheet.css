@@ -942,6 +942,11 @@ input[type=number]::-webkit-outer-spin-button {
         border-left: none;
     }
 
+    #logoNew{
+        width: 200px;
+        height:80px;
+    }
+
     #loading {
         width: 60%;
         height: 50%;
@@ -1046,6 +1051,10 @@ input[type=number]::-webkit-outer-spin-button {
         height: 70vh;
     }
 
+    #regForm{
+        padding-top: 0;
+    }
+
     #loginContainer{
         height: 50vh;
     }
@@ -1062,10 +1071,13 @@ input[type=number]::-webkit-outer-spin-button {
         /*width:49%;*/
     }
     #regContainer {
-        height: 75vh;
+        height: 80vh;
+    }
+    #regForm{
+        padding-right: 0;
     }
     #loginContainer{
-        height: 50vh;
+        height: 65vh;
     }
     .inactiveTab{
         border-left: none;
@@ -1215,7 +1227,10 @@ input[type=number]::-webkit-outer-spin-button {
     }
 
     #regContainer {
-        height: 70vh;
+        height: 80vh;
+    }
+    #regForm {
+        padding-top: 0;
     }
 
     #loginContainer {
@@ -1236,13 +1251,13 @@ input[type=number]::-webkit-outer-spin-button {
     }
 
     #loginContainer{
-        height: 40vh;
+        height: 50vh;
     }
 }
 
 @media (min-width: 992px) {
     #regContainer {
-        height: 58vh;
+        height: 75vh;
     }
 }
 
