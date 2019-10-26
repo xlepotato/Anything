@@ -201,7 +201,7 @@
                                                     .replace("{{Rate}}", this.Rate.toFixed(4))
                                                     .replace("{{ExchangeTo}}", exchangeTo)
                                                     .replace("{{LastUpdated}}", this.LastUpdated)
-                                                    .replace("{{Name}}", this.Name));
+                                                    .replace("{{Name}}", this.Name.replace(/\./g,"")));
                 });
                 $(".btnFav").click(function () {
                     var src = ($(this).find("img").attr('src'));
