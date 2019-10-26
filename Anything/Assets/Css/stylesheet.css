@@ -704,22 +704,34 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .activeTab {
-    border-top: solid #eb9c15 5px;
+    border-top: solid #fcad03 5px;
 }
 
 .inactiveTab {
     border-left: solid gray 1px;
     border-right: solid gray 1px;
-    border-bottom: solid gray 5px;
-    background-color: darkgray;
+    border-bottom: solid #bc7d10 5px;
+    background-color: #e89505;
 }
 
 .inactiveTab:hover {
     color: black;
-    background-color: whitesmoke;
+    background: #fcad03;
     border-left: solid gray 1px;
     border-right: solid gray 1px;
     border-bottom: solid gray 5px;
+}
+
+.inactiveTab::selection {
+    background: #fcad03;
+}
+.nav > li > a:focus, .nav > li > a:hover {
+    text-decoration: none;
+    background-color: #ffb700;
+}
+
+.inactiveTab:focus {
+    background: #fcad03;
 }
 
 .errormsg {
@@ -1277,14 +1289,14 @@ input[type=number]::-webkit-outer-spin-button {
 
 @media screen and (min-height: 800px){
     #regContainer{
-        height: 30%;
+        height: 45vh;
     }
     #regForm{
         height: 100%;
     }
 
     #loginContainer {
-        height: 25vh;
+        height: 28vh;
     }
     #loginForm {
         height: 100%;
