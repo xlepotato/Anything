@@ -28,14 +28,21 @@ namespace Anything.Controllers
                     exchangeRates = exchangeRates.OrderBy(z => z.Rate);
                 }
                 var userFavourites = model.Favourites.Where(a => a.Username == username);
-                var x = exchangeRates.Take(10).AsEnumerable().Select(z => new
+                var x = exchangeRates.Take(10).Select(z => new
                 {
                     z.Rate,
                     z.MoneyChanger.Name,
                     z.MoneyChanger.Location,
-                    HasFavourite = userFavourites.AsEnumerable().Where(a=> a.MoneyChanger == z.MoneyChanger).FirstOrDefault() != null?true:false,
-                    LastUpdated = CalculationController.CalculateDate(z.LastUpdated),
-                }).ToList();
+                    z.LastUpdated
+                })
+               .AsEnumerable().Select(z => new
+               {
+                   z.Rate,
+                   z.Name,
+                   z.Location,
+                   HasFavourite = userFavourites.Where(a => a.MoneyChanger.Name == z.Name).AsEnumerable().FirstOrDefault() != null ? true : false,
+                   LastUpdated = CalculationController.CalculateDate(z.LastUpdated),
+               }).ToList();
                 var zxc = new
                 {
                     ExchangeRates = x,
