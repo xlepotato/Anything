@@ -12,10 +12,4 @@ namespace Anything.Models
         public DateTime date {get;set;}
         public Dictionary<string, float> rates { get; set; }
     }
-    public class rate
-    {
-        public string curr { get; set; }
-        public float amt { get; set; }
-
-    }
 }
