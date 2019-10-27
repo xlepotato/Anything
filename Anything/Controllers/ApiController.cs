@@ -96,9 +96,9 @@ namespace Anything.Controllers
         {
             using (cz2006anythingEntities model = new cz2006anythingEntities())
             {
+                var selling = model.ExchangeRates.Where(z => z.MoneyChanger.Name == moneychanger_name && z.Currency.Name == currency_code && z.Currency1.Name == "SGD").FirstOrDefault();
                 if (exchange_rate_sell != null && exchange_rate_sell != 0)
-                {
-                    var selling = model.ExchangeRates.Where(z => z.MoneyChanger.Name == moneychanger_name && z.Currency.Name == currency_code && z.Currency1.Name == "SGD").FirstOrDefault();
+                {                   
                     if (selling == null)
                     {
                         selling = new ExchangeRate();
@@ -116,10 +116,17 @@ namespace Anything.Controllers
                     }
 
                 }
+                else
+                {
+                    if (selling != null)
+                    {
+                        model.ExchangeRates.Remove(selling);
+                    }
+                }
+                var buying = model.ExchangeRates.Where(z => z.MoneyChanger.Name == moneychanger_name && z.Currency1.Name == currency_code && z.Currency.Name == "SGD").FirstOrDefault();
                 if (exchange_rate_buy != null && exchange_rate_buy != 0)
                 {
-                    exchange_rate_buy = 1 / exchange_rate_buy;
-                    var buying = model.ExchangeRates.Where(z => z.MoneyChanger.Name == moneychanger_name && z.Currency1.Name == currency_code && z.Currency.Name == "SGD").FirstOrDefault();
+                    exchange_rate_buy = 1 / exchange_rate_buy;                   
                     if (buying == null)
                     {
                         buying = new ExchangeRate();
@@ -134,6 +141,13 @@ namespace Anything.Controllers
                     {
                         buying.Rate = (float)exchange_rate_buy;
                         buying.LastUpdated = CalculationController.SetDate(last_update_buy);
+                    }
+                }
+                else
+                {
+                    if (buying != null)
+                    {
+                        model.ExchangeRates.Remove(buying);
                     }
                 }
                 model.SaveChanges();
