@@ -1,16 +1,4 @@
-﻿<html>
-<head>
-    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
-    <script src="/assets/js/jquery.min.js"></script>
-    <script src="/assets/js/bootstrap.min.js"></script>
-    <script src="/assets/js/script.js"></script>
-    <script src="assets/js/Chart.min.js"></script>
-    <link href="/Assets/Css/stylesheet.css" rel="stylesheet" />    
-</head>
-
-    
-
-@if ((bool)Session["Locked"] == true)
+﻿@if ((bool)Session["Locked"] == true)
 {
     <body style="display:none;">     
           @RenderBody()                     
@@ -18,46 +6,57 @@
 }
 else
 {
-<body>
+    <html>
+    <head>
+        <title>CurrencyXchange</title>
+        <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+        <script src="/assets/js/jquery.min.js"></script>
+        <script src="/assets/js/bootstrap.min.js"></script>
+        <script src="/assets/js/script.js"></script>
+        <script src="assets/js/Chart.min.js"></script>
+        <link href="/Assets/Css/stylesheet.css" rel="stylesheet" />
+        <link rel="shortcut icon" href="/Assets/Images/favicon.png" />
+    </head>
+    <body>
 
 
-    <div class="container mainContainer">
-        <div class="row rowContainer" id="outerContainer">
-            @*currency conversion section*@
-            <div class="col-md-12 row" @*style="background-color:black"*@ id="headerContainer">
-                <a class="navbar-left" href="/"><img id="logoNew" src="/Assets/Images/Logo4.png"></a>
-                <div class="navbar-right" id="headerBtnDiv">
-                    @if (Session["Username"] == null)
-                    { 
-                    <a class="btn headerBtn" id="headerBtnRegister" href="/SignUp">Sign Up</a>
-                    <a class="btn headerBtn" id="headerBtnLogin" href="/Login">Log In</a>
-                    }
-                    else
-                    {
-                        <a href="#" class="btn dropdown-toggle" id="btnLoggedIn" data-toggle="dropdown">@Session["Username"].ToString() &nbsp;<b class="caret"></b></a>
-                        <ul class="dropdown-menu loggedInDD">
-                            <li><a href="/login">Logout</a></li>
-                        </ul>
-                    }
+        <div class="container mainContainer">
+            <div class="row rowContainer" id="outerContainer">
+                @*currency conversion section*@
+                <div class="col-md-12 row" @*style="background-color:black"*@ id="headerContainer">
+                    <a class="navbar-left" href="/"><img id="logoNew" src="/Assets/Images/Logo4.png"></a>
+                    <div class="navbar-right" id="headerBtnDiv">
+                        @if (Session["Username"] == null)
+                        {
+                            <a class="btn headerBtn" id="headerBtnRegister" href="/SignUp">Sign Up</a>
+                            <a class="btn headerBtn" id="headerBtnLogin" href="/Login">Log In</a>
+                        }
+                        else
+                        {
+                            <a href="#" class="btn dropdown-toggle" id="btnLoggedIn" data-toggle="dropdown">@Session["Username"].ToString() &nbsp;<b class="caret"></b></a>
+                            <ul class="dropdown-menu loggedInDD">
+                                <li><a href="/login">Logout</a></li>
+                            </ul>
+                        }
+                    </div>
+
                 </div>
-                                            
-            </div>
-            <div class="col-md-12">
-                <div class="col-md-1"></div>
-                <div class="row col-md-10">
-                    <div class="row rowContainer">
-                        <div class="subContainer">
-                            @RenderBody()
+                <div class="col-md-12">
+                    <div class="col-md-1"></div>
+                    <div class="row col-md-10">
+                        <div class="row rowContainer">
+                            <div class="subContainer">
+                                @RenderBody()
+                            </div>
                         </div>
                     </div>
+                    <div class="col-md-1"></div>
                 </div>
-                <div class="col-md-1"></div>
             </div>
-        </div>
-    </div> @*end container*@
+        </div> @*end container*@
 
-</body>
-}
+    </body>
 </html>
+}
 
 
