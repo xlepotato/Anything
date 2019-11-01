@@ -33,10 +33,24 @@ else
                         }
                         else
                         {
-                            <a href="#" class="btn dropdown-toggle" id="btnLoggedIn" data-toggle="dropdown">@Session["Username"].ToString() &nbsp;<b class="caret"></b></a>
+                            <div class="btn-group dropdown">
+                                <button class="btn btn-default dropdown-toggle" type="button" id="btnLoggedIn" data-toggle="dropdown" aria-expanded="true">
+                                    @Session["Username"].ToString() &nbsp;
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu loggedInDD" role="menu" aria-labelledby="btnLoggedIn">
+                                    <li role="presentation" ><a role="menuitem" tabindex="-1" href="/login">Logout</a></li>
+                                </ul>
+                            </div>
+                            @*<a href="#" class="btn dropdown-toggle" id="btnLoggedIn" data-toggle="dropdown">@Session["Username"].ToString() &nbsp;<b class="caret"></b></a>
                             <ul class="dropdown-menu loggedInDD">
                                 <li><a href="/login">Logout</a></li>
-                            </ul>
+                            </ul>*@
+
+                         @*<ul class="dropdown-menu loggedInDD">
+                            <li><a href="/login">Logout</a></li>
+                         </ul>*@
+
                         }
                     </div>
 

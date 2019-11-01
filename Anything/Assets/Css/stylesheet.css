@@ -45,7 +45,13 @@
 }
 
 .loggedInDD {
-    margin-right: 7%;
+    margin-top: 1em !important;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 .row {
@@ -705,12 +711,12 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .activeTab {
-    border-top: solid gray 5px;
+    border-top: solid #fcad03 5px;
 }
 
 .inactiveTab {
-    border-left: solid gray 1px;
-    border-right: solid gray 1px;
+    border-left: solid #fcad03 1px;
+    border-right: solid #fcad03 1px;
     border-bottom: solid #fcad03 5px;
     background-color: #FEDEAD;
 }
@@ -718,9 +724,7 @@ input[type=number]::-webkit-outer-spin-button {
 .inactiveTab:hover {
     color: black;
     background: #fcad03;
-    border-left: solid gray 1px;
-    border-right: solid gray 1px;
-    border-bottom: solid #fcad03y 5px;
+    border-bottom: solid #fcad03 5px;
 }
 
 .inactiveTab::selection {
