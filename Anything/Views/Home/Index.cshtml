@@ -9,7 +9,7 @@
 <div class="col-md-12">
     <div class="col-md-12 exchangeContainer">
         <!--Left Container-->
-        <div class="currencyInfoContainer form-group col-md-4" id="leftContainer">
+        <div class="currencyInfoContainer form-group col-md-5" id="leftContainer">
             <div class="drawBorder btn" id="drawBorder1">
                 <input class="currencyInputTF" id="tbExchangeFrom" type="number" min="0.00" max="9999" value="1.00">
                 <button type="button" id="btnExchangeFrom" class="btn btn-default dropdown-toggle exchangeDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -18,6 +18,7 @@
                 <ul class="dropdown-menu scrollable-menu" id="ddlExchangeFrom">
                     @foreach (var x in Model)
                     {
+
                         <li class="drop">
                             <a href="JavaScript:void(0)"><img class="scrollbarDispFlag" src="@x.Flag">&nbsp;&nbsp;@x.Name</a>
                         </li>
@@ -26,11 +27,11 @@
             </div>
         </div>
         <!--Mid Container-->
-        <div class="currencyInfoContainer form-group col-md-4" id="midContainer">
+        <div class="currencyInfoContainer form-group col-md-2" id="midContainer">
             <img src="~/Assets/Images/exchangeicon_white.png" id="exchangeIcon" />
         </div>
         <!--Right Container-->
-        <div class="currencyInfoContainer form-group col-md-4" id="rightContainer" ;">
+        <div class="currencyInfoContainer form-group col-md-5" id="rightContainer" ;">
             <div class="drawBorder btn" id="drawBorder2">
                 <input class="currencyInputTF" id="tbExchangeTo" type="number" min="0.00" max="9999" value="1.00">
                 <button type="button" id="btnExchangeTo" class="btn btn-default dropdown-toggle exchangeDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
