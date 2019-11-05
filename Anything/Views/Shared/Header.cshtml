@@ -1,8 +1,11 @@
 ﻿@if ((bool)Session["Locked"] == true)
 {
-    <body style="display:none;">     
+    <p>To avoid having copyright issue,</p>
+    <p>the website have been blocked.</p>
+    <p>Please email the leader of <b>team anything</b> for access of the website.</p>
+    <div style="display:none;">     
           @RenderBody()                     
-    </body>
+    </div>
 }
 else
 {

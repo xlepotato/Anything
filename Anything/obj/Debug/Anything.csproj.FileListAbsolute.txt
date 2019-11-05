@@ -183,7 +183,6 @@ D:\GitHub\Anything\Anything\bin\Microsoft.AI.ServerTelemetryChannel.xml
 D:\GitHub\Anything\Anything\bin\Microsoft.AI.WindowsServer.xml
 D:\GitHub\Anything\Anything\bin\Microsoft.AI.Web.xml
 D:\GitHub\Anything\Anything\obj\Debug\Anything.csproj.CoreCompileInputs.cache
-D:\GitHub\Anything\Anything\obj\Debug\Anything.csproj.CopyComplete
 D:\GitHub\Anything\Anything\obj\Debug\Anything.dll
 D:\GitHub\Anything\Anything\obj\Debug\Anything.pdb
-D:\GitHub\Anything\Anything\obj\Debug\Anything.csprojAssemblyReference.cache
+D:\GitHub\Anything\Anything\obj\Debug\Anything.csprojResolveAssemblyReference.cache

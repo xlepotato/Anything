@@ -267,6 +267,7 @@
     <Content Include="Assets\Images\EUR.png" />
     <Content Include="Assets\Images\exchangeicon.jpg" />
     <Content Include="Assets\Images\exchangeicon_white.png" />
+    <Content Include="Assets\Images\favicon.PNG" />
     <Content Include="Assets\Images\FJD.png" />
     <Content Include="Assets\Images\FKP.png" />
     <Content Include="Assets\Images\GBP.png" />

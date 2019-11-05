@@ -65,7 +65,8 @@
             success: function (result) {
                 $("#tbExchangeTo").val(result.Amount.toFixed(2));
                 $("#lblResult").text(result.Rate);
-            }
+            },
+            error: function (jqXHR, textStatus, errorThrown) { $("#tbExchangeTo").val(0); }
         });
     }
     function GetCurrencyFrom() {
@@ -83,7 +84,8 @@
             success: function (result) {
                 $("#tbExchangeFrom").val(result.Amount.toFixed(2));
                 $("#lblResult").text(result.Rate);
-            }
+            },
+            error: function (jqXHR, textStatus, errorThrown) { $("#tbExchangeFrom").val(0); }
         });
     }
     //Home Page(Graph)////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -124,7 +126,7 @@
             data: {
                 labels: ShortDates,
                 datasets: [{
-                    label: 'Prediction',
+                    label: 'Trend',
                     
                     borderColor: 'rgb(' + red + ', ' + green + ', ' + blue + ')',
                     fill: false,

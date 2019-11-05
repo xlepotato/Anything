@@ -118,7 +118,7 @@
                                 </td>
                                 @if (sellingExchangeTo != null && buyingRateExchangeFrom != null)
                                 {
-                                    <td><input type="text" class="currencyInput" value="1" id="@(sellingExchangeTo.Name + "SGD")" /> @sellingExchangeTo.Name <br />= @Math.Round(buyingRateExchangeFrom.Rate, 5) SGD</td>
+                                    <td><input type="text" class="currencyInput" value="1" id="@(sellingExchangeTo.Name + "SGD")" /> @sellingExchangeTo.Name <br />= @Math.Round(buyingRateExchangeFrom.Rate, 6) SGD</td>
                                 }
                                 else
                                 {
@@ -126,7 +126,7 @@
                                 }
                                  @if (sellingExchangeTo != null)
                                  {
-                                     <td><input type="text" class="currencyInput" value="1" id="@("SGD" + sellingExchangeTo.Name)" /> SGD <br />= @Math.Round(sellingRateExchangeFrom.Rate, 5) @sellingExchangeTo.Name</td>
+                                     <td><input type="text" class="currencyInput" value="1" id="@("SGD" + sellingExchangeTo.Name)" /> SGD <br />= @Math.Round(sellingRateExchangeFrom.Rate, 6) @sellingExchangeTo.Name</td>
                                  }
                                  else
                                  {
@@ -144,7 +144,7 @@
                                         $(this).parent().find("br").remove();
                                         $(this).parent().append(" @sellingExchangeTo.Name ");
                                         $(this).parent().append("<br />= ");
-                                        var amount = ($(this).val() * @buyingRateExchangeFrom.Rate).toFixed(5);
+                                        var amount = ($(this).val() * @buyingRateExchangeFrom.Rate).toFixed(6);
                                         $(this).parent().append(amount);
                                         $(this).parent().append(" SGD");
                                     });
@@ -161,7 +161,7 @@
                                         $(this).parent().find("br").remove();
                                         $(this).parent().append(" SGD ");
                                         $(this).parent().append("<br />= ");
-                                        var amount = ($(this).val() * @sellingRateExchangeFrom.Rate).toFixed(5);
+                                        var amount = ($(this).val() * @sellingRateExchangeFrom.Rate).toFixed(6);
                                         $(this).parent().append(amount);
                                         $(this).parent().append(" @sellingExchangeTo.Name");
                                     });
@@ -183,7 +183,7 @@
                                
                                 @if (sellingExchangeTo != null)
                                 {
-                                    <td><input type="text" class="currencyInput" value="1" id="@("SGD" + sellingExchangeTo.Name)" /> @sellingExchangeTo.Name <br />= @Math.Round(sellingRateExchangeFrom.Rate, 5) SGD</td>
+                                    <td><input type="text" class="currencyInput" value="1" id="@("SGD" + sellingExchangeTo.Name)" /> @sellingExchangeTo.Name <br />= @Math.Round(sellingRateExchangeFrom.Rate, 6) SGD</td>
                                 }
                                 else
                                 {
@@ -191,7 +191,7 @@
                                 }
                                 @if (sellingExchangeTo != null && buyingRateExchangeFrom != null)
                                 {
-                                    <td><input type="text" class="currencyInput" value="1" id="@(sellingExchangeTo.Name + "SGD")" /> SGD <br />= @Math.Round(buyingRateExchangeFrom.Rate, 5) @sellingExchangeTo.Name</td>
+                                    <td><input type="text" class="currencyInput" value="1" id="@(sellingExchangeTo.Name + "SGD")" /> SGD <br />= @Math.Round(buyingRateExchangeFrom.Rate, 6) @sellingExchangeTo.Name</td>
                                 }
                                 else
                                 {
@@ -209,7 +209,7 @@
                                         $(this).parent().find("br").remove();
                                         $(this).parent().append(" @sellingExchangeTo.Name ");
                                         $(this).parent().append("<br />= ");
-                                        var amount = ($(this).val() * @buyingRateExchangeFrom.Rate).toFixed(5);
+                                        var amount = ($(this).val() * @buyingRateExchangeFrom.Rate).toFixed(6);
                                         $(this).parent().append(amount);
                                         $(this).parent().append(" SGD");
                                     });
@@ -226,7 +226,7 @@
                                         $(this).parent().find("br").remove();
                                         $(this).parent().append(" SGD ");
                                         $(this).parent().append("<br />= ");
-                                        var amount = ($(this).val() * @sellingRateExchangeFrom.Rate).toFixed(5);
+                                        var amount = ($(this).val() * @sellingRateExchangeFrom.Rate).toFixed(6);
                                         $(this).parent().append(amount);
                                         $(this).parent().append(" @sellingExchangeTo.Name");
                                     });
