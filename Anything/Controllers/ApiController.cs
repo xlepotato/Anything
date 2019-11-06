@@ -12,8 +12,10 @@ namespace Anything.Controllers
     public class ApiController
     {
         public static string Key = "0170c6349c6aa647d6342170b3cc3cc9";
-        //6372ddbcd9efaf6482ba812a3f9879cf
-        //0170c6349c6aa647d6342170b3cc3cc9
+        //6fe677e438e04557167fe3dde5f986b9
+        //5a60f47c79eb8b98e65baff7df338657
+        //df8d8bc6dacb1da60fae09d862320c02
+        //8485c16a5044ee39dc818d00b8f4b67e
         public static Dictionary<string, float> rates;
         public static async System.Threading.Tasks.Task SetRates()
         {
