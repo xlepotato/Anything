@@ -63,6 +63,9 @@
             contentType: "application/json;charset=UTF-8",
             dataType: "json",
             success: function (result) {
+                if (result.Rate  < 0) {
+                    result.Rate  = 0;
+                }
                 $("#tbExchangeTo").val(result.Amount.toFixed(2));
                 $("#lblResult").text(result.Rate);
             },
@@ -82,6 +85,9 @@
             contentType: "application/json;charset=UTF-8",
             dataType: "json",
             success: function (result) {
+                if (result.Rate < 0) {
+                    result.Rate  = 0;
+                }
                 $("#tbExchangeFrom").val(result.Amount.toFixed(2));
                 $("#lblResult").text(result.Rate);
             },
@@ -376,7 +382,7 @@
         }
     }
     function ValidateMobileNumber() {
-        var reg = /^[0-9]{8}$/;
+        var reg = /^[8-9][0-9]{7}$/;
         if (reg.test($("#mobilenumber").val())) {
             return true;
         }

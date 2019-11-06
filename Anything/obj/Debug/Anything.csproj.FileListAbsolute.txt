@@ -185,4 +185,5 @@ D:\GitHub\Anything\Anything\bin\Microsoft.AI.Web.xml
 D:\GitHub\Anything\Anything\obj\Debug\Anything.csproj.CoreCompileInputs.cache
 D:\GitHub\Anything\Anything\obj\Debug\Anything.dll
 D:\GitHub\Anything\Anything\obj\Debug\Anything.pdb
-D:\GitHub\Anything\Anything\obj\Debug\Anything.csprojResolveAssemblyReference.cache
+D:\Github\Anything\Anything\obj\Debug\Anything.csprojAssemblyReference.cache
+D:\Github\Anything\Anything\obj\Debug\Anything.csproj.CopyComplete

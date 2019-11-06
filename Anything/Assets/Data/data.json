@@ -20642,16 +20642,16 @@
             "rate_buy":"EUR 1 = SGD 1.48",
             "rate_sell":"-"
          },
-         {
-            "currency_code":"CNY",
-            "currency_name":"Chinese Yuan (RMB)",
-            "exchange_rate_buy":"5.2356",
-            "exchange_rate_sell":"5.1282",
-            "last_update_buy":"3 days ago",
-            "last_update_sell":"3 days ago",
-            "rate_buy":"CNY 100 = SGD 19.1",
-            "rate_sell":"CNY 100 = SGD 19.5"
-         },
+        {
+          "currency_code": "CNY",
+          "currency_name": "Chinese Yuan (RMB)",
+          "exchange_rate_buy": "5.000",
+          "exchange_rate_sell": "5.282",
+          "last_update_buy": "1 second ago",
+          "last_update_sell": "1 second ago",
+          "rate_buy": "CNY 100 = SGD 19.1",
+          "rate_sell": "CNY 100 = SGD 19.5"
+        },
          {
             "currency_code":"CHF",
             "currency_name":"Swiss Francs",
@@ -20676,9 +20676,9 @@
             "currency_code":"AUD",
             "currency_name":"Australian Dollar",
             "exchange_rate_buy":"1.0869",
-            "exchange_rate_sell":"0.96",
-            "last_update_buy":"3 days ago",
-            "last_update_sell":"3 days ago",
+            "exchange_rate_sell":"0",
+            "last_update_buy":"1 minute ago",
+            "last_update_sell":"1 minute ago",
             "rate_buy":"AUD 1 = SGD 0.92",
             "rate_sell":"AUD 1 = SGD 1.0416"
          }
