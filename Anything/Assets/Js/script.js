@@ -342,13 +342,13 @@
 
     }
     function ValidateUsername() {
-        var reg = /[a-zA-Z0-9]{6,}$/;
+        var reg = /[a-zA-Z0-9]{8,}$/;
         if (reg.test($("#username").val())) {
             return true;
         }
         else
         {
-            $("#usernameError").text("Please enter at least 6 alpha numeric characters.");
+            $("#usernameError").text("Please enter at least 8 alpha numeric characters.");
             $("#usernameError").show();
             return false;
         }
