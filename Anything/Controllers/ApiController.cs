@@ -65,32 +65,23 @@ namespace Anything.Controllers
                 if (thisMC == null)
                 {
                     thisMC = new MoneyChanger();
-                    var arr = Address.Split(' ');
-                    thisMC.Name = Name;
-                    if (arr.Count() > 0)
-                    {
-                        string PostalCode = arr[arr.Count() - 1];
-                        thisMC.Location = Address.Replace(", " + PostalCode, "");
-                        thisMC.PostalCode = PostalCode;
-                    }
-                    thisMC.OpeningHours = OpeningHours;
-                    thisMC.Photo = Img;
-                    thisMC.ContactNumber = Tel_No;
+                }
+                var arr = Address.Split(' ');
+                thisMC.Name = Name;
+                if (arr.Count() > 0)
+                {
+                    string PostalCode = arr[arr.Count() - 1];
+                    thisMC.Location = Address.Replace(", " + PostalCode, "");
+                    thisMC.PostalCode = PostalCode;
+                }
+                thisMC.OpeningHours = OpeningHours;
+                thisMC.Photo = Img;
+                thisMC.ContactNumber = Tel_No;
+                if (model.MoneyChangers.Where(z => z.Name == thisMC.Name).FirstOrDefault()==null)
+                {
                     model.MoneyChangers.Add(thisMC);
                 }
-                else
-                {
-                    var arr = Address.Split(' ');
-                    if (arr.Count() > 0)
-                    {
-                        string PostalCode = arr[arr.Count() - 1];
-                        thisMC.Location = Address.Replace(", " + PostalCode, "");
-                        thisMC.PostalCode = PostalCode;
-                    }
-                    thisMC.OpeningHours = OpeningHours;
-                    thisMC.Photo = Img;
-                    thisMC.ContactNumber = Tel_No;
-                }
+                
                 model.SaveChanges();
             }
         }
